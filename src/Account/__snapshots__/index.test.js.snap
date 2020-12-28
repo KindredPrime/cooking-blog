@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account Component renders the UI as expected 1`] = `
+<body>
+  <div>
+    <main
+      class="Account"
+    >
+      <h1>
+        username
+      </h1>
+      <p>
+        Email: 
+        email
+      </p>
+      <div
+        class="PostsList"
+      />
+      <div
+        class="CommentsList"
+      />
+    </main>
+  </div>
+</body>
+`;
