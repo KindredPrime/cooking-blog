@@ -1,0 +1,20 @@
+.Nav {
+  background-color: lightgray;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 5% 20px 5%;
+}
+
+.Nav a {
+  margin-left: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.Nav a.active {
+  font-weight: bold;
+}

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav Component loads the account page when clicked 1`] = `
+<body>
+  <div>
+    <div
+      class="App"
+    >
+      <nav
+        class="Nav"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+        <a
+          aria-current="page"
+          class="active"
+          href="/account"
+        >
+          Account
+        </a>
+      </nav>
+      <main
+        class="Account"
+      >
+        <h1>
+          User1
+        </h1>
+        <p>
+          Email: 
+          user1@gmail.com
+        </p>
+        <div
+          class="PostsList"
+        />
+        <div
+          class="CommentsList"
+        />
+      </main>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Nav Component loads the homepage when clicked 1`] = `
+<body>
+  <div>
+    <div
+      class="App"
+    >
+      <nav
+        class="Nav"
+      >
+        <a
+          aria-current="page"
+          class="active"
+          href="/"
+        >
+          Home
+        </a>
+        <a
+          href="/account"
+        >
+          Account
+        </a>
+      </nav>
+      <main
+        class="Home"
+      >
+        <h1>
+          Welcome to the Cooking Blog!
+        </h1>
+        <p>
+          Ever wanted to learn more about cooking, or share your experiences with others? Here you can read all kinds of posts from other users: things they've tried, things they want to try, recipes, cooking tips, etc. And if you create an account you can make posts of your own, and leave comments on posts.
+        </p>
+        <div
+          class="PostsList"
+        />
+      </main>
+    </div>
+  </div>
+</body>
+`;
