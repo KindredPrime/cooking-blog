@@ -1,0 +1,77 @@
+body {
+  text-align: center;
+  margin: 0;
+}
+
+nav {
+  background-color: lightgrey;
+  text-align: center;
+  padding: 10px;
+}
+
+main {
+  margin: 0 10% 0 10%;
+}
+
+section.blog-posts, section.comments {
+  margin-top: 50px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+li.blog-post, li.comment {
+  margin-bottom: 50px;
+}
+
+li.blog-post *, p.content, p.timestamp {
+  margin: 0 0 5px 0;
+}
+
+li.comment p.blog-title {
+  margin-bottom: 10px;
+}
+
+li.comment button {
+  margin-top: 10px;
+}
+
+p.blog-title {
+  font-weight: bold;
+}
+
+p.blog-content {
+  margin-top: 30px;
+}
+
+p.creator {
+  font-weight: bold;
+}
+
+form {
+  text-align: center;
+}
+
+form label {
+  margin-right: 10px;
+}
+
+form input {
+  margin-bottom: 15px;
+}
+
+form button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.content {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  margin-bottom: 15px;
+}
