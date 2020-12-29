@@ -34,7 +34,45 @@ exports[`Nav Component loads the account page when clicked 1`] = `
         </p>
         <div
           class="PostsList"
-        />
+        >
+          <h1>
+            Posts
+          </h1>
+          <ul>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/2"
+              >
+                How to Save Money When Cooking
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Dec 28 18:24:43 2020
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/4"
+              >
+                Cooking Basics for Beginners
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Jan 10 08:28:28 2021
+              </p>
+            </li>
+          </ul>
+        </div>
         <div
           class="CommentsList"
         />
@@ -77,7 +115,185 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
         </p>
         <div
           class="PostsList"
-        />
+        >
+          <h1>
+            Posts
+          </h1>
+          <ul>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/1"
+              >
+                Lessons I Learned from Cooking
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Dec 17 07:37:16 2020
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/2"
+              >
+                How to Save Money When Cooking
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Dec 28 18:24:43 2020
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/3"
+              >
+                5 Easy Cooking Tips
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/4"
+              >
+                Cooking Basics for Beginners
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Jan 10 08:28:28 2021
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/5"
+              >
+                Winter Seasoning Guide
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Dec 15 11:56:48 2020
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/6"
+              >
+                Title6
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Jan 15 14:22:39 2021
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/7"
+              >
+                Title7
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Jan 25 16:22:39 2021
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/8"
+              >
+                Title8
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Jan 18 12:22:39 2021
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/9"
+              >
+                Title9
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Jan 15 11:22:39 2021
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blogs/10"
+              >
+                Title10
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Jan 15 19:22:39 2021
+              </p>
+            </li>
+          </ul>
+          <button
+            class="page-button prev-posts"
+            disabled=""
+            type="button"
+          >
+            Previous
+          </button>
+          <button
+            class="page-button"
+            type="button"
+          >
+            Next
+          </button>
+        </div>
       </main>
     </div>
   </div>

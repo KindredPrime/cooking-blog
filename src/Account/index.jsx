@@ -11,7 +11,7 @@ function Account(props) {
 
       <p>Email: {email}</p>
 
-      <PostsList />
+      <PostsList onlyUserPosts />
 
       <CommentsList />
     </main>

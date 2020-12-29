@@ -15,7 +15,12 @@ exports[`Account Component renders the UI as expected 1`] = `
       </p>
       <div
         class="PostsList"
-      />
+      >
+        <h1>
+          Posts
+        </h1>
+        <ul />
+      </div>
       <div
         class="CommentsList"
       />

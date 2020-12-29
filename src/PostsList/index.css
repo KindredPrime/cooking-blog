@@ -1,0 +1,19 @@
+.PostsList {
+  margin-top: 50px;
+}
+
+li.blog-post {
+  margin-bottom: 50px;
+}
+
+li.blog-post * {
+  margin: 0 0 5px 0;
+}
+
+a.blog-title {
+  font-weight: bold;
+}
+
+a.blog-title:focus, a.blog-title:hover {
+  text-decoration: underline;
+}

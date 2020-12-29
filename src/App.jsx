@@ -13,7 +13,7 @@ function App() {
       <Route
         path="/account"
         // The username and email are set to a default for the static client
-        render={() => <Account username="User1" email="user1@gmail.com"/>}
+        render={() => <Account username="User1" email="user1@gmail.com" />}
       />
     </div>
   );
