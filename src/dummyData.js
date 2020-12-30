@@ -15,7 +15,7 @@ const dummyPosts = [
   },
   {
     id: 3,
-    lasEdited: 'Dec 1 12:54:31 2020',
+    lastEdited: 'Dec 1 12:54:31 2020',
     title: '5 Easy Cooking Tips',
     author: 'User3',
     content: `1. When experimenting with seasonings in a recipe, mix them dry in a cup and smell it. If it smells good, then it'll probably taste good.
@@ -82,6 +82,44 @@ const dummyPosts = [
   }
 ];
 
+const dummyComments = [
+  {
+    id: 1,
+    lastEdited: 'Dec 19 07:37:16 2020',
+    content: 'These are all great lessons!',
+    creator: 'User1',
+    postTitle: 'Lessons I Learned from Cooking'
+  },
+  {
+    id: 2,
+    lastEdited: 'Dec 17 08:37:52 2020',
+    content: `I can't wait to try these seasoning combinations in my next meal!`,
+    creator: 'User1',
+    postTitle: 'Winter Seasoning Guide'
+  },
+  {
+    id: 3,
+    lastEdited: 'Jan 15 08:28:28 2021',
+    content: `I wish I knew these when I started learning to cook!`,
+    creator: 'User4',
+    postTitle: 'Cooking Basics for Beginners'
+  },
+  {
+    id: 4,
+    lastEdited: 'Dec 31 09:24:43 2020',
+    content: `Great advice!  This'll help me save so much money feeding my three teenagers!`,
+    creator: 'User4',
+    postTitle: `How to Save Money When Cooking`
+  },
+  {
+    id: 5,
+    lastEdited: 'Jan 31 10:31:39 2021',
+    content: `What an insightful post`,
+    creator: 'FakeUser2',
+    postTitle: 'Title7'
+  }
+];
+
 const dummyUsers = [
   {
     id: 1,
@@ -111,5 +149,6 @@ const dummyUsers = [
 
 export {
   dummyPosts,
+  dummyComments,
   dummyUsers
 };

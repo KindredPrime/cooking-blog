@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment Component renders the UI as expected 1`] = `
+<body>
+  <div>
+    <li
+      class="Comment"
+    >
+      <p
+        class="creator"
+      >
+        User1
+      </p>
+      <p
+        class="content"
+      >
+        These are all great lessons!
+      </p>
+      <p
+        class="timestamp"
+      >
+        Last edited on 
+      </p>
+      <div
+        class="comment-buttons"
+      >
+        <button
+          type="button"
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+        >
+          Delete
+        </button>
+      </div>
+    </li>
+  </div>
+</body>
+`;
