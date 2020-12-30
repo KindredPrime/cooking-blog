@@ -1,4 +1,5 @@
 import AbortController from 'abort-controller';
+import { dummyPosts, dummyComments, dummyUsers } from './dummyData';
 
 const posts = [
   {
@@ -151,8 +152,30 @@ function getPostsByUser(id) {
   });
 }
 
+function getPostById(id) {
+  return new Promise((resolve, reject) => {
+    const post = posts.find((post) => post.id === parseInt(id));
+
+    if (!post) {
+      reject(`There is no post with id ${id}`);
+    }
+
+    resolve(post);
+  });
+}
+
+function getCommentsByPost(title) {
+  return new Promise((resolve, reject) => {
+    const comments = dummyComments.filter((comment) => comment.postTitle === title);
+
+    resolve(comments);
+  });
+}
+
 export {
   abortTasks,
   getAllPosts,
-  getPostsByUser
+  getPostsByUser,
+  getPostById,
+  getCommentsByPost
 };

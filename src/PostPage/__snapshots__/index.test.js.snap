@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostPage Component renders the post as expected, where the user IS the post's author 1`] = `
+<body>
+  <div>
+    <main
+      class="PostPage"
+    >
+      <h1>
+        Lessons I Learned from Cooking
+      </h1>
+      <h2>
+        By 
+        FakeUser2
+      </h2>
+      <p>
+        Last edited on 
+        Dec 17 07:37:16 2020
+      </p>
+      <p
+        class="PostPage__content"
+      >
+        Have patience, it can be fun to experiment and explore, having a hard time learning something may only be temporary, bringing an idea of yours to life by creating it from scratch without relying on any instructions can be fun and rewarding, the meals you cook don't have to be fancy or difficult to taste good.
+      </p>
+      <button
+        type="button"
+      >
+        Edit
+      </button>
+      <div
+        class="CommentsList"
+      />
+    </main>
+  </div>
+</body>
+`;
+
+exports[`PostPage Component renders the post as expected, where the user is NOT the post's author 1`] = `
+<body>
+  <div>
+    <main
+      class="PostPage"
+    >
+      <h1>
+        Lessons I Learned from Cooking
+      </h1>
+      <h2>
+        By 
+        FakeUser2
+      </h2>
+      <p>
+        Last edited on 
+        Dec 17 07:37:16 2020
+      </p>
+      <p
+        class="PostPage__content"
+      >
+        Have patience, it can be fun to experiment and explore, having a hard time learning something may only be temporary, bringing an idea of yours to life by creating it from scratch without relying on any instructions can be fun and rewarding, the meals you cook don't have to be fancy or difficult to taste good.
+      </p>
+      <div
+        class="CommentsList"
+      />
+    </main>
+  </div>
+</body>
+`;

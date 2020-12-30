@@ -2,6 +2,7 @@ import { Route } from 'react-router-dom';
 import Nav from './Nav/index';
 import Home from './Home/index';
 import Account from './Account/index';
+import PostPage from './PostPage/index';
 import CookingContext from './CookingContext';
 import './App.css';
 
@@ -20,6 +21,10 @@ function App() {
           path="/account"
           // The username and email are set to a default for the static client
           render={() => <Account username="User1" email="user1@gmail.com" />}
+        />
+        <Route
+          path="/posts/:id"
+          component={PostPage}
         />
       </div>
     </CookingContext.Provider>
