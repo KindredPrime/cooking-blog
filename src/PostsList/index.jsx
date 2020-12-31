@@ -24,7 +24,9 @@ class PostsList extends Component {
         .then((posts) => this.setState({
           posts
         }))
-        .catch(() => console.log('API process was aborted'));
+        .catch((err) => {
+          console.log(err, 'API process was aborted');
+        });
     } else {
       API.getAllPosts()
         .then((posts) => {
@@ -33,7 +35,7 @@ class PostsList extends Component {
           });
         })
         // What else can/should I do when the process is aborted?
-        .catch(() => console.log('API process was aborted'));
+        .catch((err) => console.log(err, 'API process was aborted'));
     }
   }
 
@@ -63,7 +65,7 @@ class PostsList extends Component {
 
             return (
               <li key={`post${id}`} className="blog-post">
-                <NavLink className="blog-title" to={`/blogs/${id}`}>{title}</NavLink>
+                <NavLink className="blog-title" to={`/blog-posts/${id}`}>{title}</NavLink>
                 <p className="timestamp">Last edited on {lastEdited}</p>
               </li>
             );

@@ -44,7 +44,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/2"
+                href="/blog-posts/2"
               >
                 How to Save Money When Cooking
               </a>
@@ -60,7 +60,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/4"
+                href="/blog-posts/4"
               >
                 Cooking Basics for Beginners
               </a>
@@ -125,7 +125,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/1"
+                href="/blog-posts/1"
               >
                 Lessons I Learned from Cooking
               </a>
@@ -141,7 +141,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/2"
+                href="/blog-posts/2"
               >
                 How to Save Money When Cooking
               </a>
@@ -157,7 +157,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/3"
+                href="/blog-posts/3"
               >
                 5 Easy Cooking Tips
               </a>
@@ -173,7 +173,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/4"
+                href="/blog-posts/4"
               >
                 Cooking Basics for Beginners
               </a>
@@ -189,7 +189,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/5"
+                href="/blog-posts/5"
               >
                 Winter Seasoning Guide
               </a>
@@ -205,7 +205,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/6"
+                href="/blog-posts/6"
               >
                 Title6
               </a>
@@ -221,7 +221,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/7"
+                href="/blog-posts/7"
               >
                 Title7
               </a>
@@ -237,7 +237,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/8"
+                href="/blog-posts/8"
               >
                 Title8
               </a>
@@ -253,7 +253,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/9"
+                href="/blog-posts/9"
               >
                 Title9
               </a>
@@ -269,7 +269,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blogs/10"
+                href="/blog-posts/10"
               >
                 Title10
               </a>

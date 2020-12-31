@@ -42,7 +42,7 @@ describe('PostPage Component', () => {
 
     render(
       <CookingContext.Provider value={contextValue}>
-        <PostPage match={{ params: { id } }} />
+        <PostPage match={{ params: { id: id.toString() } }} />
       </CookingContext.Provider>
     );
 
@@ -58,7 +58,7 @@ describe('PostPage Component', () => {
 
     render(
       <CookingContext.Provider value={contextValue}>
-        <PostPage match={{ params: { id } }} />
+        <PostPage match={{ params: { id: id.toString() } }} />
       </CookingContext.Provider>
     );
 

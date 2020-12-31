@@ -23,7 +23,7 @@ function App() {
           render={() => <Account username="User1" email="user1@gmail.com" />}
         />
         <Route
-          path="/posts/:id"
+          path="/blog-posts/:id"
           component={PostPage}
         />
       </div>

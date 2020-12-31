@@ -1,5 +1,8 @@
-import AbortController from 'abort-controller';
 import { dummyPosts, dummyComments, dummyUsers } from './dummyData';
+
+const blogPosts = dummyPosts;
+const comments = dummyComments;
+const users = dummyUsers;
 
 let controller = new AbortController();
 let signal = controller.signal;
@@ -12,7 +15,7 @@ function abortTasks() {
 
 function getAllPosts() {
   return new Promise((resolve, reject) => {
-    const timeout = window.setTimeout(() => resolve(dummyPosts), 1000);
+    const timeout = window.setTimeout(() => resolve(blogPosts), 1000);
 
     signal.addEventListener('abort', () => {
       clearTimeout(timeout);
@@ -23,40 +26,60 @@ function getAllPosts() {
 
 function getPostsByUser(id) {
   return new Promise((resolve, reject) => {
-    const user = dummyUsers.find((user) => user.id === id);
+    const user = users.find((user) => user.id === id);
 
     if (!user) {
       throw new Error(`There is no user with id ${id}`);
     }
 
-    const userPosts = dummyPosts.filter((post) => post.author === user.username);
+    const userPosts = blogPosts.filter((post) => post.author === user.username);
 
     const timeout = window.setTimeout(() => resolve(userPosts), 1000);
 
     signal.addEventListener('abort', () => {
       clearTimeout(timeout);
-      reject('getAllPosts has been aborted');
+      reject('getPostsByUser has been aborted');
     });
   });
 }
 
 function getPostById(id) {
   return new Promise((resolve, reject) => {
-    const post = dummyPosts.find((post) => post.id === parseInt(id));
+    const blogPost = blogPosts.find((post) => post.id === parseInt(id));
 
-    if (!post) {
-      reject(`There is no post with id ${id}`);
+    if (!blogPost) {
+      reject(`There is no blog post with id ${id}`);
     }
 
-    resolve(post);
+    resolve(blogPost);
   });
 }
 
 function getCommentsByPost(title) {
   return new Promise((resolve, reject) => {
-    const comments = dummyComments.filter((comment) => comment.postTitle === title);
+    const postComments = comments.filter((comment) => comment.postTitle === title);
 
-    resolve(comments);
+    resolve(postComments);
+  });
+}
+
+function patchPostById(id, updatedFields) {
+  return new Promise((resolve, reject) => {
+    const { content } = updatedFields;
+    getPostById(id)
+      .then((post) => {
+        if (post.content === content) {
+          resolve();
+        }
+
+        // Update the post stored in this file
+        const postsIndex = blogPosts.findIndex((elem) => elem.id === id);
+        blogPosts[postsIndex] = {
+          ...post,
+          content
+        };
+        resolve();
+      });
   });
 }
 
@@ -65,5 +88,6 @@ export {
   getAllPosts,
   getPostsByUser,
   getPostById,
-  getCommentsByPost
+  getCommentsByPost,
+  patchPostById
 };

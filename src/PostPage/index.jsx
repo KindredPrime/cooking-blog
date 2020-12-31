@@ -18,6 +18,25 @@ class PostPage extends Component {
     comments: []
   };
 
+  handleEditCancel = () => {
+    this.setState({
+      isEditingPost: false
+    });
+  }
+
+  handleEditSubmit = (content) => {
+    const { id } = this.props.match.params;
+
+    API.patchPostById(id, content)
+      .then(() => {
+        this.setState({
+          content,
+          isEditingPost: false
+        });
+      })
+      .catch(console.log);
+  }
+
   componentDidMount() {
     const { id } = this.props.match.params;
 
@@ -39,6 +58,10 @@ class PostPage extends Component {
       .catch((error) => console.log(error));
   }
 
+  componentWillUnmount() {
+    API.abortTasks();
+  }
+
   render() {
     const { isEditingPost, lastEdited, title, author, content, comments } = this.state;
     const { username } = this.context;
@@ -51,7 +74,7 @@ class PostPage extends Component {
         <p>Last edited on {lastEdited}</p>
 
         {isEditingPost
-          ? <EditPost content={content} />
+          ? <EditPost content={content} handleCancel={this.handleEditCancel} handleSubmit={this.handleEditSubmit} />
           : <>
             <p className="PostPage__content">{content}</p>
 

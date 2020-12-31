@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditPost Component renders the UI as expected 1`] = `
+<body>
+  <div>
+    <form
+      class="EditPost"
+    >
+      <textarea>
+        Content of the post to be edited
+      </textarea>
+      <div
+        class="EditPost__buttons"
+      >
+        <button
+          type="submit"
+        >
+          Submit
+        </button>
+        <button
+          type="submit"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+`;
