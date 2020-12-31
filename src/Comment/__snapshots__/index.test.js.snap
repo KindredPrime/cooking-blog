@@ -20,6 +20,7 @@ exports[`Comment Component renders the UI as expected 1`] = `
         class="timestamp"
       >
         Last edited on 
+        Dec 19 07:37:16 2020
       </p>
       <div
         class="comment-buttons"

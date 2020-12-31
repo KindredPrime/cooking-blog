@@ -11,9 +11,9 @@ class Comment extends Component {
 
     return (
       <li className="Comment">
-        <p class="creator">{creator}</p>
-        <p class="content">{content}</p>
-        <p class="timestamp">Last edited on {lastEdited}</p>
+        <p className="creator">{creator}</p>
+        <p className="content">{content}</p>
+        <p className="timestamp">Last edited on {lastEdited}</p>
 
         {(username && username === creator) &&
           <div className="comment-buttons">

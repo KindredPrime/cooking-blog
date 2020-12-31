@@ -2,14 +2,20 @@ import ReactDOM from 'react-dom';
 import { render } from '@testing-library/react';
 import Comment from './index';
 import CookingContext from '../CookingContext';
-import { dummyComments, dummyUsers } from '../dummyData';
+import { dummyComments } from '../dummyData';
 
 describe('Comment Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <CookingContext.Provider value={{username: 'username'}}>
-        <Comment creator="creator" content="content" lastEdited="today" />
+        <Comment
+          creator="creator"
+          content="content"
+          lastEdited="today"
+          handleEdit={() => {}}
+          handleDelete={() => {}}
+        />
       </CookingContext.Provider>,
       div
     );
@@ -26,7 +32,9 @@ describe('Comment Component', () => {
         <Comment
           creator={dummyComments[0].creator}
           content={dummyComments[0].content}
-          lastEdit={dummyComments[0].lastEdited}
+          lastEdited={dummyComments[0].lastEdited}
+          handleEdit={() => {}}
+          handleDelete={() => {}}
         />
       </CookingContext.Provider>
     );

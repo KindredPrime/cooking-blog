@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as API from '../apiCalls';
 import './index.css';
@@ -65,7 +65,7 @@ class PostsList extends Component {
 
             return (
               <li key={`post${id}`} className="blog-post">
-                <NavLink className="blog-title" to={`/blog-posts/${id}`}>{title}</NavLink>
+                <Link className="blog-title" to={`/blog-posts/${id}`}>{title}</Link>
                 <p className="timestamp">Last edited on {lastEdited}</p>
               </li>
             );
