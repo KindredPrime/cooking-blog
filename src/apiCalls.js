@@ -15,12 +15,11 @@ function abortTasks() {
 
 function getAllPosts() {
   return new Promise((resolve, reject) => {
-    const timeout = window.setTimeout(() => resolve(blogPosts), 1000);
-
     signal.addEventListener('abort', () => {
-      clearTimeout(timeout);
       reject('getAllPosts has been aborted');
     });
+
+    resolve(blogPosts)
   });
 }
 
@@ -29,17 +28,16 @@ function getPostsByUser(id) {
     const user = users.find((user) => user.id === id);
 
     if (!user) {
-      throw new Error(`There is no user with id ${id}`);
+      reject(`There is no user with id ${id}`);
     }
 
     const userPosts = blogPosts.filter((post) => post.author === user.username);
 
-    const timeout = window.setTimeout(() => resolve(userPosts), 1000);
-
     signal.addEventListener('abort', () => {
-      clearTimeout(timeout);
       reject('getPostsByUser has been aborted');
     });
+
+    resolve(userPosts)
   });
 }
 
