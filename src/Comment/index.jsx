@@ -1,44 +1,64 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import CookingContext from '../CookingContext';
+import { formatDate } from '../util';
+import './index.css';
 
 class Comment extends Component {
   static contextType = CookingContext;
 
   render() {
     const { username } = this.context;
-    const { creator, content, lastEdited, handleEdit, handleDelete } = this.props;
+    const { id, creator, postTitle, content, lastEdited, deleted, handleEdit, handleDelete } = this.props;
 
     return (
       <li className="Comment">
-        <p className="creator">{creator}</p>
-        <p className="content">{content}</p>
-        <p className="timestamp">Last edited on {lastEdited}</p>
+        {!deleted
+          ? <>
+            {creator && <p className="Comment__creator">{creator}</p>}
+            {postTitle && <p className="Comment__post-title">{postTitle}</p>}
+            <p className="Comment__content">{content}</p>
+            <p className="Comment__timestamp">Last edited on {formatDate(lastEdited)}</p>
 
-        {(username && username === creator) &&
-          <div className="comment-buttons">
-            <button
-              type="button"
-              onClick={handleEdit}
-            >
-              Edit
-            </button>
-            <button
-              type="button"
-              onClick={handleDelete}
-            >
-              Delete
-            </button>
-          </div>}
+            {(username && username === creator) &&
+              <div className="Comment__buttons">
+                <button
+                  type="button"
+                  onClick={() => handleEdit(id)}
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDelete(id)}
+                >
+                  Delete
+                </button>
+              </div>}
+          </>
+          : <>
+            {creator && <p className="Comment__creator">{creator}</p>}
+            {postTitle && <p className="Comment__post-title">{postTitle}</p>}
+            <p className="Comment__content">[Deleted]</p>
+            <p className="Comment__timestamp">Last edited on {formatDate(lastEdited)}</p>
+          </>}
       </li>
     );
   }
 }
 
+/*
+  There are instances where it is redundant to include either the creator or the postTitle, so they are optional.
+  Example: the comments on a user's account page do not need to include the user as their creator
+
+  content is null when the comment has been marked as deleted
+*/
 Comment.propTypes = {
-  creator: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  lastEdited: PropTypes.string.isRequired,
+  creator: PropTypes.string,
+  postTitle: PropTypes.string,
+  content: PropTypes.string,
+  lastEdited: PropTypes.instanceOf(Date).isRequired,
+  deleted: PropTypes.bool,
   handleEdit: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired
 };

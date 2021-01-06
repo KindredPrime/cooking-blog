@@ -1,0 +1,892 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommentsList Component renders the UI as expected 1`] = `
+<body>
+  <div>
+    <section
+      class="CommentsList"
+    >
+      <h2>
+        Comments
+      </h2>
+      <ul>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User4
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Cooking Basics for Beginners
+          </p>
+          <p
+            class="Comment__content"
+          >
+            I wish I knew these when I started learning to cook!
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 05 2021 08:28:28
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User5
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment14
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 05 2021 06:07:08
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User5
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment15
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 03 2021 20:21:22
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User5
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment13
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 02 2021 13:14:15
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User5
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment12
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 01 2021 12:13:14
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            FakeUser2
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Title7
+          </p>
+          <p
+            class="Comment__content"
+          >
+            What an insightful post
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 01 2021 10:31:39
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User4
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            How to Save Money When Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Great advice!  This'll help me save so much money feeding my three teenagers!
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 31 2020 09:24:43
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User4
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            It's amazing what you can learn from cooking
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 20 2020 10:43:16
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User7
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment10
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 19 2020 15:22:16
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User3
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            I know, right?
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 19 2020 08:37:16
+          </p>
+        </li>
+      </ul>
+      <button
+        class="page-button prev"
+        disabled=""
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        class="page-button next"
+        type="button"
+      >
+        Next
+      </button>
+    </section>
+  </div>
+</body>
+`;
+
+exports[`CommentsList Component renders the UI as expected, without the comments' blog post title 1`] = `
+<body>
+  <div>
+    <section
+      class="CommentsList"
+    >
+      <h2>
+        Comments
+      </h2>
+      <ul>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User4
+          </p>
+          <p
+            class="Comment__content"
+          >
+            I wish I knew these when I started learning to cook!
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 05 2021 08:28:28
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User5
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment14
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 05 2021 06:07:08
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User5
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment15
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 03 2021 20:21:22
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User5
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment13
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 02 2021 13:14:15
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User5
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment12
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 01 2021 12:13:14
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            FakeUser2
+          </p>
+          <p
+            class="Comment__content"
+          >
+            What an insightful post
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 01 2021 10:31:39
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User4
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Great advice!  This'll help me save so much money feeding my three teenagers!
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 31 2020 09:24:43
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User4
+          </p>
+          <p
+            class="Comment__content"
+          >
+            It's amazing what you can learn from cooking
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 20 2020 10:43:16
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User7
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment10
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 19 2020 15:22:16
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User3
+          </p>
+          <p
+            class="Comment__content"
+          >
+            I know, right?
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 19 2020 08:37:16
+          </p>
+        </li>
+      </ul>
+      <button
+        class="page-button prev"
+        disabled=""
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        class="page-button next"
+        type="button"
+      >
+        Next
+      </button>
+    </section>
+  </div>
+</body>
+`;
+
+exports[`CommentsList Component renders the UI as expected, without the comments' creators 1`] = `
+<body>
+  <div>
+    <section
+      class="CommentsList"
+    >
+      <h2>
+        Comments
+      </h2>
+      <ul>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__post-title"
+          >
+            Cooking Basics for Beginners
+          </p>
+          <p
+            class="Comment__content"
+          >
+            I wish I knew these when I started learning to cook!
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 05 2021 08:28:28
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment14
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 05 2021 06:07:08
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment15
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 03 2021 20:21:22
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment13
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 02 2021 13:14:15
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment12
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 01 2021 12:13:14
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__post-title"
+          >
+            Title7
+          </p>
+          <p
+            class="Comment__content"
+          >
+            What an insightful post
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Jan 01 2021 10:31:39
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__post-title"
+          >
+            How to Save Money When Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Great advice!  This'll help me save so much money feeding my three teenagers!
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 31 2020 09:24:43
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            It's amazing what you can learn from cooking
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 20 2020 10:43:16
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment10
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 19 2020 15:22:16
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            I know, right?
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 19 2020 08:37:16
+          </p>
+        </li>
+      </ul>
+      <button
+        class="page-button prev"
+        disabled=""
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        class="page-button next"
+        type="button"
+      >
+        Next
+      </button>
+    </section>
+  </div>
+</body>
+`;
+
+exports[`CommentsList Component switches to the next group of comments after clicking 'Next' 1`] = `
+<body>
+  <div>
+    <section
+      class="CommentsList"
+    >
+      <h2>
+        Comments
+      </h2>
+      <ul>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User1
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            These are all great lessons!
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 19 2020 07:37:16
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User5
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Huh, I never thought about it this way
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 17 2020 20:12:16
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User1
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Winter Seasoning Guide
+          </p>
+          <p
+            class="Comment__content"
+          >
+            I can't wait to try these seasoning combinations in my next meal!
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 17 2020 08:37:52
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User8
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment11
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 15 2020 17:18:19
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <p
+            class="Comment__creator"
+          >
+            User6
+          </p>
+          <p
+            class="Comment__post-title"
+          >
+            Lessons I Learned from Cooking
+          </p>
+          <p
+            class="Comment__content"
+          >
+            Comment9
+          </p>
+          <p
+            class="Comment__timestamp"
+          >
+            Last edited on 
+            Dec 12 2020 07:07:07
+          </p>
+        </li>
+      </ul>
+      <button
+        class="page-button prev"
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        class="page-button next"
+        disabled=""
+        type="button"
+      >
+        Next
+      </button>
+    </section>
+  </div>
+</body>
+`;

@@ -7,23 +7,23 @@ exports[`Comment Component renders the UI as expected 1`] = `
       class="Comment"
     >
       <p
-        class="creator"
+        class="Comment__creator"
       >
         User1
       </p>
       <p
-        class="content"
+        class="Comment__content"
       >
         These are all great lessons!
       </p>
       <p
-        class="timestamp"
+        class="Comment__timestamp"
       >
         Last edited on 
-        Dec 19 07:37:16 2020
+        Dec 19 2020 07:37:16
       </p>
       <div
-        class="comment-buttons"
+        class="Comment__buttons"
       >
         <button
           type="button"

@@ -15,7 +15,7 @@ class PostPage extends Component {
     title: null,
     author: null,
     content: null,
-    comments: []
+    comments: null
   };
 
   handleEditCancel = () => {
@@ -54,7 +54,11 @@ class PostPage extends Component {
         return title;
       })
       .then((title) => API.getCommentsByPost(title))
-      .then((comments) => this.setState({ comments }))
+      .then((comments) => {
+        this.setState({
+          comments
+        });
+      })
       .catch((error) => console.log(error));
   }
 
@@ -88,7 +92,7 @@ class PostPage extends Component {
               </button>}
           </>}
 
-        <CommentsList comments={comments} />
+        {comments && <CommentsList initialComments={comments} renderAdd isExcludingPostTitle />}
       </main>
     );
   }

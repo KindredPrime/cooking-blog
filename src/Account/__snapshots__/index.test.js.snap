@@ -21,9 +21,6 @@ exports[`Account Component renders the UI as expected 1`] = `
         </h1>
         <ul />
       </div>
-      <div
-        class="CommentsList"
-      />
     </main>
   </div>
 </body>

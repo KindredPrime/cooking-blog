@@ -65,7 +65,7 @@ describe('Nav Component', () => {
   });
 
   it('loads the homepage when clicked', async () => {
-    const { unmount } = render(
+    render(
       <MemoryRouter initialEntries={['/account']}>
         <App />
       </MemoryRouter>
@@ -75,11 +75,10 @@ describe('Nav Component', () => {
     await waitFor(() => expect('Welcome to the Cooking Blog!').toBeInTheDocument);
 
     expect(document.body).toMatchSnapshot();
-    unmount();
   });
 
   it('loads the account page when clicked', async () => {
-    const { unmount } = render(
+    render(
       <MemoryRouter initialEntries={['/']}>
         <App />
       </MemoryRouter>
@@ -89,6 +88,5 @@ describe('Nav Component', () => {
     await waitFor(() => expect('User1').toBeInTheDocument);
 
     expect(document.body).toMatchSnapshot();
-    unmount();
   });
 });

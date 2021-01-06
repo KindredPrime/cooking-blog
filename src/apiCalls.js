@@ -53,14 +53,6 @@ function getPostById(id) {
   });
 }
 
-function getCommentsByPost(title) {
-  return new Promise((resolve, reject) => {
-    const postComments = comments.filter((comment) => comment.postTitle === title);
-
-    resolve(postComments);
-  });
-}
-
 function patchPostById(id, updatedFields) {
   return new Promise((resolve, reject) => {
     const { content } = updatedFields;
@@ -81,11 +73,84 @@ function patchPostById(id, updatedFields) {
   });
 }
 
+function getCommentById(id) {
+  return new Promise((resolve, reject) => {
+    const comment = comments.find((comment) => comment.id === id);
+
+    if (!comment) {
+      reject(`Comment with id ${id} does not exist`);
+    }
+
+    resolve(comment);
+  });
+}
+
+function getCommentsByPost(title) {
+  return new Promise((resolve, reject) => {
+    const postComments = comments.filter((comment) => comment.postTitle === title);
+
+    resolve(postComments);
+  });
+}
+
+function getCommentsByUser(username) {
+  return Promise.resolve(comments.filter((comment) => comment.creator === username));
+}
+
+function patchCommentById(id, updatedFields) {
+  return new Promise((resolve, reject) => {
+    const { content } = updatedFields;
+    getCommentById(id)
+      .then((comment) => {
+        if (comment.content === content) {
+          resolve(comment);
+        }
+
+        const newComment = {
+          ...comment,
+          content,
+          lastEdited: new Date(Date.now())
+        };
+
+        // Update the comment stored in this file
+        const commentsIndex = comments.findIndex((elem) => elem.id === id);
+        comments[commentsIndex] = newComment;
+
+        resolve(newComment);
+      })
+      .catch(reject);
+  });
+}
+
+function deleteCommentById(id) {
+  return new Promise((resolve, reject) => {
+    getCommentById(id)
+      .then(() => {
+        const commentsIndex = comments.findIndex((comment) => comment.id === id);
+        const comment = comments[commentsIndex];
+        comments[commentsIndex] = {
+          ...comment,
+          lastEdited: new Date(Date.now()),
+          content: null,
+          creator: null,
+          deleted: true
+        };
+
+        resolve();
+      })
+      .catch(reject);
+  })
+}
+
 export {
   abortTasks,
   getAllPosts,
   getPostsByUser,
   getPostById,
+  patchPostById,
+  getCommentById,
   getCommentsByPost,
-  patchPostById
+  getCommentsByUser,
+  patchCommentById,
+  deleteCommentById
 };
