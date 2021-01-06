@@ -92,7 +92,7 @@ class PostPage extends Component {
               </button>}
           </>}
 
-        {comments && <CommentsList initialComments={comments} renderAdd isExcludingPostTitle />}
+        {comments && <CommentsList initialComments={comments} renderAdd postTitle={title} isExcludingPostTitle />}
       </main>
     );
   }

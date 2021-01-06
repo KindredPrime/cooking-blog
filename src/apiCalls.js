@@ -97,6 +97,25 @@ function getCommentsByUser(username) {
   return Promise.resolve(comments.filter((comment) => comment.creator === username));
 }
 
+function addComment(comment) {
+  return new Promise((resolve, reject) => {
+    const { content, creator, postTitle } = comment;
+    const id = comments.length;
+
+    const newComment = {
+      id,
+      lastEdited: new Date(Date.now()),
+      content,
+      creator,
+      postTitle
+    }
+
+    comments.push(newComment);
+
+    resolve(newComment);
+  });
+}
+
 function patchCommentById(id, updatedFields) {
   return new Promise((resolve, reject) => {
     const { content } = updatedFields;
@@ -151,6 +170,7 @@ export {
   getCommentById,
   getCommentsByPost,
   getCommentsByUser,
+  addComment,
   patchCommentById,
   deleteCommentById
 };

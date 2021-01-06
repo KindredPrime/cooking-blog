@@ -44,6 +44,20 @@ exports[`PostPage Component renders the edit form when the 'Edit' button is clic
         <h2>
           Comments
         </h2>
+        <form
+          class="AddComment"
+        >
+          <textarea
+            id="content"
+            name="content"
+            required=""
+          />
+          <button
+            type="submit"
+          >
+            Add Comment
+          </button>
+        </form>
         <ul>
           <li
             class="Comment"
@@ -246,9 +260,6 @@ exports[`PostPage Component renders the edit form when the 'Edit' button is clic
             </p>
           </li>
         </ul>
-        <div
-          class="AddComment"
-        />
         <button
           class="page-button prev"
           disabled=""
@@ -301,6 +312,20 @@ exports[`PostPage Component renders the post as expected, where the user IS the 
         <h2>
           Comments
         </h2>
+        <form
+          class="AddComment"
+        >
+          <textarea
+            id="content"
+            name="content"
+            required=""
+          />
+          <button
+            type="submit"
+          >
+            Add Comment
+          </button>
+        </form>
         <ul>
           <li
             class="Comment"
@@ -503,9 +528,6 @@ exports[`PostPage Component renders the post as expected, where the user IS the 
             </p>
           </li>
         </ul>
-        <div
-          class="AddComment"
-        />
         <button
           class="page-button prev"
           disabled=""
@@ -553,6 +575,20 @@ exports[`PostPage Component renders the post as expected, where the user is NOT 
         <h2>
           Comments
         </h2>
+        <form
+          class="AddComment"
+        >
+          <textarea
+            id="content"
+            name="content"
+            required=""
+          />
+          <button
+            type="submit"
+          >
+            Add Comment
+          </button>
+        </form>
         <ul>
           <li
             class="Comment"
@@ -755,9 +791,6 @@ exports[`PostPage Component renders the post as expected, where the user is NOT 
             </p>
           </li>
         </ul>
-        <div
-          class="AddComment"
-        />
         <button
           class="page-button prev"
           disabled=""

@@ -95,9 +95,27 @@ class CommentsList extends Component {
       .catch(console.log)
   };
 
-  handleAddSubmit = () => {
+  handleAddSubmit = (content) => {
+    const { postTitle } = this.props;
+    const { username } = this.context;
+    const { currentComments } = this.state;
 
-  }
+    const comment = {
+      content,
+      creator: username,
+      postTitle
+    };
+
+    API.addComment(comment)
+      .then((newComment) => {
+        const modifiedComment = this.excludeFields(newComment);
+
+        this.setState({
+          currentComments: [modifiedComment, ...currentComments]
+        })
+      })
+      .catch(console.log);
+  };
 
   isOnLastPage() {
     const { pageLimit } = this.props;
@@ -136,6 +154,8 @@ class CommentsList extends Component {
       <section className="CommentsList">
         <h2>Comments</h2>
 
+        {renderAdd && username && <AddComment handleSubmit={this.handleAddSubmit} />}
+
         <ul>
           {commentsToRender.map((comment) => {
             const { id, lastEdited, content, creator, postTitle, deleted } = comment;
@@ -165,8 +185,6 @@ class CommentsList extends Component {
             );
           })}
         </ul>
-
-        {renderAdd && username && <AddComment handleSubmit={this.handleAddSubmit} />}
 
         {displayButtons && (
           <>
@@ -210,7 +228,8 @@ CommentsList.propTypes = {
   pageLimit: PropTypes.number,
   isExcludingPostTitle: PropTypes.bool,
   isExcludingCreator: PropTypes.bool,
-  renderAdd: PropTypes.bool
+  renderAdd: PropTypes.bool,
+  postTitle: PropTypes.string
 };
 
 export default CommentsList;
