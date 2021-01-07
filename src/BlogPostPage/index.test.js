@@ -3,10 +3,10 @@ import { render, waitFor, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as API from '../apiCalls';
 import { dummyPosts } from '../dummyData';
-import PostPage from './index';
+import BlogPostPage from './index';
 import CookingContext from '../CookingContext';
 
-describe('PostPage Component', () => {
+describe('BlogPostPage Component', () => {
   const origAPI = API;
 
   /**
@@ -29,7 +29,7 @@ describe('PostPage Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <PostPage match={{ params: { id: '1' } }} />,
+      <BlogPostPage match={{ params: { id: '1' } }} />,
       div
     );
     ReactDOM.unmountComponentAtNode(div);
@@ -43,7 +43,7 @@ describe('PostPage Component', () => {
 
     render(
       <CookingContext.Provider value={contextValue}>
-        <PostPage match={{ params: { id: id.toString() } }} />
+        <BlogPostPage match={{ params: { id: id.toString() } }} />
       </CookingContext.Provider>
     );
 
@@ -59,7 +59,7 @@ describe('PostPage Component', () => {
 
     render(
       <CookingContext.Provider value={contextValue}>
-        <PostPage match={{ params: { id: id.toString() } }} />
+        <BlogPostPage match={{ params: { id: id.toString() } }} />
       </CookingContext.Provider>
     );
 
@@ -75,7 +75,7 @@ describe('PostPage Component', () => {
 
     render(
       <CookingContext.Provider value={contextValue}>
-        <PostPage match={{ params: { id: id.toString() } }} />
+        <BlogPostPage match={{ params: { id: id.toString() } }} />
       </CookingContext.Provider>
     );
 

@@ -7,7 +7,7 @@ import EditPost from '../EditPost/index';
 import BlogPostCommentsList from '../BlogPostCommentsList/index';
 import './index.css';
 
-class PostPage extends Component {
+class BlogPostPage extends Component {
   static contextType = CookingContext;
 
   state = {
@@ -72,7 +72,7 @@ class PostPage extends Component {
     const { username } = this.context;
 
     return (
-      <main className="PostPage">
+      <main className="BlogPostPage">
         <h1>{title}</h1>
         <h2>By {author}</h2>
 
@@ -81,7 +81,7 @@ class PostPage extends Component {
         {isEditingPost
           ? <EditPost content={content} handleCancel={this.handleEditCancel} handleSubmit={this.handleEditSubmit} />
           : <>
-            <p className="PostPage__content">{content}</p>
+            <p className="BlogPostPage__content">{content}</p>
 
             {/* Display an edit button if the current user is the author */}
             {(username && username === author) &&
@@ -99,7 +99,7 @@ class PostPage extends Component {
   }
 }
 
-PostPage.propTypes = {
+BlogPostPage.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired
@@ -107,4 +107,4 @@ PostPage.propTypes = {
   })
 };
 
-export default PostPage;
+export default BlogPostPage;

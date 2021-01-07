@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom';
 import Nav from './Nav/index';
 import Home from './Home/index';
 import UserPage from './UserPage/index';
-import PostPage from './PostPage/index';
+import BlogPostPage from './BlogPostPage/index';
 import CookingContext from './CookingContext';
 import './App.css';
 
@@ -24,7 +24,7 @@ function App() {
         />
         <Route
           path="/blog-posts/:id"
-          component={PostPage}
+          component={BlogPostPage}
         />
       </div>
     </CookingContext.Provider>
