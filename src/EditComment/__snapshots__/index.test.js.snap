@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditComment Component renders the UI as expected 1`] = `
+<body>
+  <div>
+    <form
+      class="EditComment"
+    >
+      <textarea
+        id="content"
+        name="content"
+        required=""
+      >
+        Initial Content
+      </textarea>
+      <div
+        class="EditComment__button-wrapper"
+      >
+        <button
+          class="EditComment__submit"
+          type="submit"
+        >
+          Submit
+        </button>
+        <button
+          type="submit"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+`;

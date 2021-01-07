@@ -116,9 +116,8 @@ function addComment(comment) {
   });
 }
 
-function patchCommentById(id, updatedFields) {
+function patchCommentById(id, content) {
   return new Promise((resolve, reject) => {
-    const { content } = updatedFields;
     getCommentById(id)
       .then((comment) => {
         if (comment.content === content) {

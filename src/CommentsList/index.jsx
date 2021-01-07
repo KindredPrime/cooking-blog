@@ -55,13 +55,13 @@ class CommentsList extends Component {
     });
   }
 
-  handleEditSubmit = (id, updatedFields) => {
-    API.patchCommentById(id, updatedFields)
+  handleEditSubmit = (id, content) => {
+    API.patchCommentById(id, content)
       .then((patchedComment) => {
         const { currentComments } = this.state;
 
-        const commentIndex = currentComments.find((comment) => comment.id === patchedComment.id);
-        currentComments[commentIndex] = this.excludeFields(currentComments[commentIndex]);
+        const commentIndex = currentComments.findIndex((comment) => comment.id === patchedComment.id);
+        currentComments[commentIndex] = this.excludeFields(patchedComment);
 
         this.setState({
           currentComments: this.sortComments(currentComments),
@@ -69,6 +69,12 @@ class CommentsList extends Component {
         });
       })
       .catch(console.log);
+  };
+
+  handleEditCancel = () => {
+    this.setState({
+      editingCommentId: null
+    });
   };
 
   handleDelete = (id) => {
@@ -85,8 +91,6 @@ class CommentsList extends Component {
           creator: null,
           deleted: true
         };
-
-        console.log(currentComments[commentsIndex]);
 
         this.setState({
           currentComments: this.sortComments(currentComments)
@@ -163,9 +167,11 @@ class CommentsList extends Component {
             if (!deleted && editingCommentId && id === editingCommentId) {
               return (
                 <EditComment
-                  creator={creator}
-                  content={content}
+                  key={`comment-${id}`}
+                  id={id}
+                  initialContent={content}
                   handleSubmit={this.handleEditSubmit}
+                  handleCancel={this.handleEditCancel}
                 />
               );
             }
