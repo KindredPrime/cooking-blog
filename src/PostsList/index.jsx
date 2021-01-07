@@ -1,59 +1,35 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import * as API from '../apiCalls';
+import { sortEntities, formatDate, isOnLastPage } from '../util';
 import './index.css';
 
 class PostsList extends Component {
   state = {
-    posts: [],
-    page: 1
+    page: 1,
+    sortedPosts: [],
+    displayButtons: false
   };
 
-  isOnLastPage() {
-    const { pageLimit } = this.props;
-    const { page, posts } = this.state;
-    return page * pageLimit > posts.length;
-  }
+  static defaultProps = {
+    pageLimit: 10,
+    initialBlogPosts: []
+  };
 
   componentDidMount() {
-    const { onlyUserPosts } = this.props;
+    const { initialBlogPosts, pageLimit } = this.props;
 
-    if (onlyUserPosts) {
-      API.getPostsByUser(1)
-        .then((posts) => this.setState({
-          posts
-        }))
-        .catch((err) => {
-          console.log(err, 'API process was aborted');
-        });
-    } else {
-      API.getAllPosts()
-        .then((posts) => {
-          this.setState({
-            posts
-          });
-        })
-        // What else can/should I do when the process is aborted?
-        .catch((err) => console.log(err, 'API process was aborted'));
-    }
-  }
-
-  componentWillUnmount() {
-    // Abort any API calls that are still running
-    API.abortTasks();
+    this.setState({
+      sortedPosts: sortEntities(initialBlogPosts),
+      displayButtons: initialBlogPosts.length > pageLimit
+    });
   }
 
   render() {
     const { pageLimit } = this.props;
-    const { page, posts } = this.state;
+    const { page, sortedPosts, displayButtons } = this.state;
 
-    let postsToRender = posts || [];
-    let displayButtons = false;
-    if (posts && posts.length > pageLimit) {
-      postsToRender = posts.slice((page-1) * pageLimit, page * pageLimit);
-      displayButtons = true;
-    }
+    const postsToRender = sortedPosts.slice((page-1) * pageLimit, page * pageLimit);
 
     return (
       <div className="PostsList">
@@ -64,9 +40,9 @@ class PostsList extends Component {
             const { id, title, lastEdited } = post;
 
             return (
-              <li key={`post${id}`} className="blog-post">
+              <li key={`post-${id}`} className="blog-post">
                 <Link className="blog-title" to={`/blog-posts/${id}`}>{title}</Link>
-                <p className="timestamp">Last edited on {lastEdited}</p>
+                <p className="timestamp">Last edited on {formatDate(lastEdited)}</p>
               </li>
             );
           })}
@@ -87,7 +63,7 @@ class PostsList extends Component {
             <button
               type="button"
               className="page-button"
-              disabled={this.isOnLastPage()}
+              disabled={isOnLastPage(sortedPosts, page, pageLimit)}
               onClick={() => this.setState({
                 page: page+1
               })}
@@ -100,14 +76,17 @@ class PostsList extends Component {
   }
 }
 
-PostsList.defaultProps = {
-  pageLimit: 10,
-  onlyUserPosts: false
-};
-
 PostsList.propTypes = {
-  pageLimit: PropTypes.number,
-  onlyUserPosts: PropTypes.bool
+  initialBlogPosts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      lastEdited: PropTypes.instanceOf(Date).isRequired,
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired
+    })
+  ),
+  pageLimit: PropTypes.number
 };
 
 export default PostsList;

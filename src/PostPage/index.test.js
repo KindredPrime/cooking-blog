@@ -13,7 +13,7 @@ describe('PostPage Component', () => {
    * Rewrite API methods to mock their results
    */
   beforeAll(() => {
-    API.getPostById = (id) => new Promise((resolve, reject) => {
+    API.getBlogPostById = (id) => new Promise((resolve, reject) => {
       resolve(dummyPosts.find((post) => post.id === parseInt(id)));
     });
   });
@@ -22,8 +22,8 @@ describe('PostPage Component', () => {
    * Reset API methods to their original values
    */
   afterAll(() => {
-    API.getAllPosts = origAPI.getAllPosts;
-    API.getPostsByUser = origAPI.getPostsByUser;
+    API.getAllBlogPosts = origAPI.getAllBlogPosts;
+    API.getBlogPostsByUser = origAPI.getBlogPostsByUser;
   });
 
   it('renders without crashing', () => {

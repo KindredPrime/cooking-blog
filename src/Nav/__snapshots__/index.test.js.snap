@@ -32,47 +32,6 @@ exports[`Nav Component loads the account page when clicked 1`] = `
           Email: 
           user1@gmail.com
         </p>
-        <div
-          class="PostsList"
-        >
-          <h1>
-            Posts
-          </h1>
-          <ul>
-            <li
-              class="blog-post"
-            >
-              <a
-                class="blog-title"
-                href="/blog-posts/2"
-              >
-                How to Save Money When Cooking
-              </a>
-              <p
-                class="timestamp"
-              >
-                Last edited on 
-                Dec 28 18:24:43 2020
-              </p>
-            </li>
-            <li
-              class="blog-post"
-            >
-              <a
-                class="blog-title"
-                href="/blog-posts/4"
-              >
-                Cooking Basics for Beginners
-              </a>
-              <p
-                class="timestamp"
-              >
-                Last edited on 
-                Jan 5 08:28:28 2021
-              </p>
-            </li>
-          </ul>
-        </div>
         <section
           class="UserCommentsList"
         >
@@ -171,79 +130,15 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blog-posts/1"
+                href="/blog-posts/8"
               >
-                Lessons I Learned from Cooking
+                Title8
               </a>
               <p
                 class="timestamp"
               >
                 Last edited on 
-                Dec 17 07:37:16 2020
-              </p>
-            </li>
-            <li
-              class="blog-post"
-            >
-              <a
-                class="blog-title"
-                href="/blog-posts/2"
-              >
-                How to Save Money When Cooking
-              </a>
-              <p
-                class="timestamp"
-              >
-                Last edited on 
-                Dec 28 18:24:43 2020
-              </p>
-            </li>
-            <li
-              class="blog-post"
-            >
-              <a
-                class="blog-title"
-                href="/blog-posts/3"
-              >
-                5 Easy Cooking Tips
-              </a>
-              <p
-                class="timestamp"
-              >
-                Last edited on 
-                Dec 1 12:54:31 2020
-              </p>
-            </li>
-            <li
-              class="blog-post"
-            >
-              <a
-                class="blog-title"
-                href="/blog-posts/4"
-              >
-                Cooking Basics for Beginners
-              </a>
-              <p
-                class="timestamp"
-              >
-                Last edited on 
-                Jan 5 08:28:28 2021
-              </p>
-            </li>
-            <li
-              class="blog-post"
-            >
-              <a
-                class="blog-title"
-                href="/blog-posts/5"
-              >
-                Winter Seasoning Guide
-              </a>
-              <p
-                class="timestamp"
-              >
-                Last edited on 
-                Dec 15 11:56:48 2020
+                Jan 06 2021 12:22:39
               </p>
             </li>
             <li
@@ -259,7 +154,39 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited on 
-                Jan 5 14:22:39 2021
+                Jan 05 2021 14:22:39
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blog-posts/4"
+              >
+                Cooking Basics for Beginners
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Jan 05 2021 08:28:28
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blog-posts/11"
+              >
+                Title11
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Jan 04 2021 18:22:39
               </p>
             </li>
             <li
@@ -275,7 +202,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited on 
-                Jan 2 16:22:39 2021
+                Jan 02 2021 16:22:39
               </p>
             </li>
             <li
@@ -283,15 +210,15 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blog-posts/8"
+                href="/blog-posts/2"
               >
-                Title8
+                How to Save Money When Cooking
               </a>
               <p
                 class="timestamp"
               >
                 Last edited on 
-                Jan 6 12:22:39 2021
+                Dec 28 2020 18:24:43
               </p>
             </li>
             <li
@@ -299,15 +226,15 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
             >
               <a
                 class="blog-title"
-                href="/blog-posts/9"
+                href="/blog-posts/1"
               >
-                Title9
+                Lessons I Learned from Cooking
               </a>
               <p
                 class="timestamp"
               >
                 Last edited on 
-                Dec 15 11:22:39 2021
+                Dec 17 2020 07:37:16
               </p>
             </li>
             <li
@@ -323,7 +250,39 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited on 
-                Dec 15 19:22:39 2021
+                Dec 15 2020 19:22:39
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blog-posts/5"
+              >
+                Winter Seasoning Guide
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Dec 15 2020 11:56:48
+              </p>
+            </li>
+            <li
+              class="blog-post"
+            >
+              <a
+                class="blog-title"
+                href="/blog-posts/9"
+              >
+                Title9
+              </a>
+              <p
+                class="timestamp"
+              >
+                Last edited on 
+                Dec 15 2020 11:22:39
               </p>
             </li>
           </ul>

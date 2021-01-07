@@ -6,6 +6,7 @@ import * as API from '../apiCalls';
 
 class Account extends Component {
   state = {
+    blogPosts: null,
     comments: null
   };
 
@@ -19,11 +20,19 @@ class Account extends Component {
         });
       })
       .catch(console.log);
+
+    API.getBlogPostsByUser(username)
+      .then((blogPosts) => this.setState({ blogPosts }))
+      .catch(console.log);
+  }
+
+  componentWillUnmount() {
+    API.abortTasks();
   }
 
   render() {
     const { username, email } = this.props;
-    const { comments } = this.state;
+    const { blogPosts, comments } = this.state;
 
     return (
       <main className="Account">
@@ -31,7 +40,7 @@ class Account extends Component {
 
         <p>Email: {email}</p>
 
-        <PostsList onlyUserPosts />
+        {blogPosts && <PostsList initialBlogPosts={blogPosts} />}
 
         {comments && <UserCommentsList initialComments={comments} />}
       </main>

@@ -22,14 +22,14 @@ describe('Nav Component', () => {
       controller = new AbortController();
       signal = controller.signal;
     };
-    API.getAllPosts = () => new Promise((resolve, reject) => {
+    API.getAllBlogPosts = () => new Promise((resolve, reject) => {
       signal.addEventListener('abort', () => {
         reject('API call has been aborted');
       });
 
       resolve(dummyPosts);
     });
-    API.getPostsByUser = (id) => new Promise((resolve, reject) => {
+    API.getBlogPostsByUser = (id) => new Promise((resolve, reject) => {
       signal.addEventListener('abort', () => {
         reject('API call has been aborted');
       });
@@ -49,8 +49,8 @@ describe('Nav Component', () => {
    * Reset API methods to their original values
    */
   afterAll(() => {
-    API.getAllPosts = origAPI.getAllPosts;
-    API.getPostsByUser = origAPI.getPostsByUser;
+    API.getAllBlogPosts = origAPI.getAllBlogPosts;
+    API.getBlogPostsByUser = origAPI.getBlogPostsByUser;
   });
 
   it('renders without crashing', () => {

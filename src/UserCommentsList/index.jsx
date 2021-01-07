@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isOnLastPage, sortComments } from '../util';
+import { isOnLastPage, sortEntities } from '../util';
 import Comment from '../Comment/index';
 import './index.css';
 
@@ -20,7 +20,7 @@ class UserCommentsList extends Component {
     const { initialComments, pageLimit } = this.props;
 
     this.setState({
-      sortedComments: sortComments(initialComments),
+      sortedComments: sortEntities(initialComments),
       displayButtons: initialComments.length > pageLimit
     });
   }

@@ -2,6 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import CookingContext from '../CookingContext';
 import * as API from '../apiCalls';
+import { formatDate } from '../util';
 import EditPost from '../EditPost/index';
 import BlogPostCommentsList from '../BlogPostCommentsList/index';
 import './index.css';
@@ -27,7 +28,7 @@ class PostPage extends Component {
   handleEditSubmit = (content) => {
     const { id } = this.props.match.params;
 
-    API.patchPostById(id, content)
+    API.patchBlogPostById(id, content)
       .then(() => {
         this.setState({
           content,
@@ -40,7 +41,7 @@ class PostPage extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
 
-    API.getPostById(id)
+    API.getBlogPostById(id)
       .then((post) => {
         const { lastEdited, title, author, content } = post;
 
@@ -53,7 +54,7 @@ class PostPage extends Component {
 
         return title;
       })
-      .then((title) => API.getCommentsByPost(title))
+      .then((title) => API.getCommentsByBlogPost(title))
       .then((comments) => {
         this.setState({
           comments
@@ -75,7 +76,7 @@ class PostPage extends Component {
         <h1>{title}</h1>
         <h2>By {author}</h2>
 
-        <p>Last edited on {lastEdited}</p>
+        <p>Last edited on {formatDate(lastEdited)}</p>
 
         {isEditingPost
           ? <EditPost content={content} handleCancel={this.handleEditCancel} handleSubmit={this.handleEditSubmit} />

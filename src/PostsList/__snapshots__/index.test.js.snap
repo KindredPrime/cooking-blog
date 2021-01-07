@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostsList Component renders the UI as expected 1`] = `
+<body>
+  <div>
+    <div
+      class="PostsList"
+    >
+      <h1>
+        Posts
+      </h1>
+      <ul>
+        <li
+          class="blog-post"
+        >
+          <a
+            class="blog-title"
+            href="/blog-posts/8"
+          >
+            Title8
+          </a>
+          <p
+            class="timestamp"
+          >
+            Last edited on 
+            Jan 06 2021 12:22:39
+          </p>
+        </li>
+        <li
+          class="blog-post"
+        >
+          <a
+            class="blog-title"
+            href="/blog-posts/6"
+          >
+            Title6
+          </a>
+          <p
+            class="timestamp"
+          >
+            Last edited on 
+            Jan 05 2021 14:22:39
+          </p>
+        </li>
+        <li
+          class="blog-post"
+        >
+          <a
+            class="blog-title"
+            href="/blog-posts/4"
+          >
+            Cooking Basics for Beginners
+          </a>
+          <p
+            class="timestamp"
+          >
+            Last edited on 
+            Jan 05 2021 08:28:28
+          </p>
+        </li>
+      </ul>
+      <button
+        class="page-button prev-posts"
+        disabled=""
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        class="page-button"
+        type="button"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`PostsList Component switches to the next group of blog posts after clicking 'Next' 1`] = `
+<body>
+  <div>
+    <div
+      class="PostsList"
+    >
+      <h1>
+        Posts
+      </h1>
+      <ul>
+        <li
+          class="blog-post"
+        >
+          <a
+            class="blog-title"
+            href="/blog-posts/3"
+          >
+            5 Easy Cooking Tips
+          </a>
+          <p
+            class="timestamp"
+          >
+            Last edited on 
+            Dec 01 2020 12:54:31
+          </p>
+        </li>
+      </ul>
+      <button
+        class="page-button prev-posts"
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        class="page-button"
+        disabled=""
+        type="button"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</body>
+`;

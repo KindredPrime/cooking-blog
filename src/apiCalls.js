@@ -13,35 +13,29 @@ function abortTasks() {
   signal = controller.signal;
 }
 
-function getAllPosts() {
+function getAllBlogPosts() {
   return new Promise((resolve, reject) => {
     signal.addEventListener('abort', () => {
-      reject('getAllPosts has been aborted');
+      reject('getAllBlogPosts has been aborted');
     });
 
     resolve(blogPosts)
   });
 }
 
-function getPostsByUser(id) {
+function getBlogPostsByUser(username) {
   return new Promise((resolve, reject) => {
-    const user = users.find((user) => user.id === id);
-
-    if (!user) {
-      reject(`There is no user with id ${id}`);
-    }
-
-    const userPosts = blogPosts.filter((post) => post.author === user.username);
+    const userPosts = blogPosts.filter((post) => post.author === username);
 
     signal.addEventListener('abort', () => {
-      reject('getPostsByUser has been aborted');
+      reject('getBlogPostsByUser has been aborted');
     });
 
     resolve(userPosts)
   });
 }
 
-function getPostById(id) {
+function getBlogPostById(id) {
   return new Promise((resolve, reject) => {
     const blogPost = blogPosts.find((post) => post.id === parseInt(id));
 
@@ -53,10 +47,10 @@ function getPostById(id) {
   });
 }
 
-function patchPostById(id, updatedFields) {
+function patchBlogPostById(id, updatedFields) {
   return new Promise((resolve, reject) => {
     const { content } = updatedFields;
-    getPostById(id)
+    getBlogPostById(id)
       .then((post) => {
         if (post.content === content) {
           resolve();
@@ -85,7 +79,7 @@ function getCommentById(id) {
   });
 }
 
-function getCommentsByPost(title) {
+function getCommentsByBlogPost(title) {
   return new Promise((resolve, reject) => {
     const postComments = comments.filter((comment) => comment.postTitle === title);
 
@@ -162,12 +156,12 @@ function deleteCommentById(id) {
 
 export {
   abortTasks,
-  getAllPosts,
-  getPostsByUser,
-  getPostById,
-  patchPostById,
+  getAllBlogPosts,
+  getBlogPostsByUser,
+  getBlogPostById,
+  patchBlogPostById,//
   getCommentById,
-  getCommentsByPost,
+  getCommentsByBlogPost,//
   getCommentsByUser,
   addComment,
   patchCommentById,

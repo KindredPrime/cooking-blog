@@ -1,21 +1,21 @@
 const dummyPosts = [
   {
     id: 1,
-    lastEdited: 'Dec 17 07:37:16 2020',
+    lastEdited: new Date('Dec 17 07:37:16 2020'),
     title: 'Lessons I Learned from Cooking',
     author: 'FakeUser2',
     content: `Have patience, it can be fun to experiment and explore, having a hard time learning something may only be temporary, bringing an idea of yours to life by creating it from scratch without relying on any instructions can be fun and rewarding, the meals you cook don't have to be fancy or difficult to taste good.`
   },
   {
     id: 2,
-    lastEdited: 'Dec 28 18:24:43 2020',
+    lastEdited: new Date('Dec 28 18:24:43 2020'),
     title: 'How to Save Money When Cooking',
     author: 'User1',
     content: `Buy in bulk, cook in bulk and freeze the leftovers, but store brand products.`
   },
   {
     id: 3,
-    lastEdited: 'Dec 1 12:54:31 2020',
+    lastEdited: new Date('Dec 1 12:54:31 2020'),
     title: '5 Easy Cooking Tips',
     author: 'User3',
     content: `1. When experimenting with seasonings in a recipe, mix them dry in a cup and smell it. If it smells good, then it'll probably taste good.
@@ -26,56 +26,56 @@ const dummyPosts = [
   },
   {
     id: 4,
-    lastEdited: 'Jan 5 08:28:28 2021',
+    lastEdited: new Date('Jan 5 08:28:28 2021'),
     title: 'Cooking Basics for Beginners',
     author: 'User1',
     content: `Go easy on seasonings and salt, if the inside of cooked chicken is pink or its juices aren't clear then it needs to be cooked longer, cooked ground beef needs to be brown in order to be safe to eat`
   },
   {
     id: 5,
-    lastEdited: 'Dec 15 11:56:48 2020',
+    lastEdited: new Date('Dec 15 11:56:48 2020'),
     title: 'Winter Seasoning Guide',
     author: 'User 2',
     content: `Rosemary, sage, thyme, cinnamon, nutmeg`
   },
   {
     id: 6,
-    lastEdited: 'Jan 5 14:22:39 2021',
+    lastEdited: new Date('Jan 5 14:22:39 2021'),
     title: 'Title6',
     author: 'User3',
     content: 'Post 6 content'
   },
   {
     id: 7,
-    lastEdited: 'Jan 2 16:22:39 2021',
+    lastEdited: new Date('Jan 2 16:22:39 2021'),
     title: 'Title7',
     author: 'User3',
     content: 'Post 7 content'
   },
   {
     id: 8,
-    lastEdited: 'Jan 6 12:22:39 2021',
+    lastEdited: new Date('Jan 6 12:22:39 2021'),
     title: 'Title8',
     author: 'User3',
     content: 'Post 8 content'
   },
   {
     id: 9,
-    lastEdited: 'Dec 15 11:22:39 2021',
+    lastEdited: new Date('Dec 15 11:22:39 2020'),
     title: 'Title9',
     author: 'User3',
     content: 'Post 9 content'
   },
   {
     id: 10,
-    lastEdited: 'Dec 15 19:22:39 2021',
+    lastEdited: new Date('Dec 15 19:22:39 2020'),
     title: 'Title10',
     author: 'User3',
     content: 'Post 10 content'
   },
   {
     id: 11,
-    lastEdited: 'Jan 4 18:22:39 2021',
+    lastEdited: new Date('Jan 4 18:22:39 2021'),
     title: 'Title11',
     author: 'User3',
     content: 'Post 11 content'

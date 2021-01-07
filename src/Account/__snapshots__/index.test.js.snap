@@ -13,14 +13,6 @@ exports[`Account Component renders the UI as expected 1`] = `
         Email: 
         email
       </p>
-      <div
-        class="PostsList"
-      >
-        <h1>
-          Posts
-        </h1>
-        <ul />
-      </div>
     </main>
   </div>
 </body>

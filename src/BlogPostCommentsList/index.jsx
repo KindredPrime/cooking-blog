@@ -2,7 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import CookingContext from '../CookingContext';
 import * as API from '../apiCalls';
-import { isOnLastPage, sortComments } from '../util';
+import { isOnLastPage, sortEntities } from '../util';
 import Comment from '../Comment/index';
 import EditComment from '../EditComment/index';
 import AddComment from '../AddComment/index';
@@ -41,7 +41,7 @@ class BlogPostCommentsList extends Component {
         };
 
         this.setState({
-          currentComments: sortComments(currentComments),
+          currentComments: sortEntities(currentComments),
           editingCommentId: null
         });
       })
@@ -70,7 +70,7 @@ class BlogPostCommentsList extends Component {
         };
 
         this.setState({
-          currentComments: sortComments(currentComments)
+          currentComments: sortEntities(currentComments)
         });
       })
       .catch(console.log)
@@ -106,7 +106,7 @@ class BlogPostCommentsList extends Component {
     const { initialComments, pageLimit } = this.props;
 
     this.setState({
-      currentComments: sortComments(initialComments),
+      currentComments: sortEntities(initialComments),
       displayButtons: initialComments.length > pageLimit
     });
   }
