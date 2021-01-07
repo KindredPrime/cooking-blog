@@ -151,7 +151,11 @@ function deleteCommentById(id) {
         resolve();
       })
       .catch(reject);
-  })
+  });
+}
+
+function getUserById(id) {
+  return Promise.resolve(users.find((user) => user.id === parseInt(id)));
 }
 
 export {
@@ -165,5 +169,6 @@ export {
   getCommentsByUser,
   addComment,
   patchCommentById,
-  deleteCommentById
+  deleteCommentById,
+  getUserById
 };

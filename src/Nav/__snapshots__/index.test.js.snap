@@ -17,13 +17,13 @@ exports[`Nav Component loads the account page when clicked 1`] = `
         <a
           aria-current="page"
           class="active"
-          href="/account"
+          href="/user/1"
         >
           Account
         </a>
       </nav>
       <main
-        class="Account"
+        class="UserPage"
       >
         <h1>
           User1
@@ -104,7 +104,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
           Home
         </a>
         <a
-          href="/account"
+          href="/user/1"
         >
           Account
         </a>
