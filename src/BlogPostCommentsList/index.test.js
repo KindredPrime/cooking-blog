@@ -1,47 +1,35 @@
 import ReactDOM from 'react-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import UserEvent from '@testing-library/user-event';
-import CommentsList from './index';
+import BlogPostCommentsList from './index';
 import { dummyComments, dummyUsers } from '../dummyData';
 import CookingContext from '../CookingContext';
 
-describe('CommentsList Component', () => {
+describe('BlogPostCommentsList Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <CommentsList />,
+      <BlogPostCommentsList postTitle="" />,
       div
     );
     ReactDOM.unmountComponentAtNode(div);
   });
 
   it(`renders the UI as expected`, () => {
-    render(<CommentsList initialComments={dummyComments} />);
-
-    expect(document.body).toMatchSnapshot();
-  });
-
-  it(`renders the UI as expected, without the comments' creators`, () => {
-    render(<CommentsList initialComments={dummyComments} isExcludingCreator />);
-
-    expect(document.body).toMatchSnapshot();
-  });
-
-  it(`renders the UI as expected, without the comments' blog post title`, () => {
-    render(<CommentsList initialComments={dummyComments} isExcludingPostTitle />);
+    render(<BlogPostCommentsList initialComments={dummyComments} postTitle="" />);
 
     expect(document.body).toMatchSnapshot();
   });
 
   it(`switches to the next group of comments after clicking 'Next'`, () => {
-    render(<CommentsList initialComments={dummyComments} />);
+    render(<BlogPostCommentsList initialComments={dummyComments} postTitle="" />);
 
     UserEvent.click(screen.getByText('Next'));
     expect(document.body).toMatchSnapshot();
   });
 
   it(`switches to the previous group of comments after clicking 'Previous'`, () => {
-    render(<CommentsList initialComments={dummyComments} />);
+    render(<BlogPostCommentsList initialComments={dummyComments} postTitle="" />);
 
     const previous = document.body;
 
@@ -57,7 +45,7 @@ describe('CommentsList Component', () => {
     };
     render(
       <CookingContext.Provider value={contextValue}>
-        <CommentsList initialComments={dummyComments} />
+        <BlogPostCommentsList initialComments={dummyComments} />
       </CookingContext.Provider>
     );
 

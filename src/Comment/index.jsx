@@ -54,6 +54,7 @@ class Comment extends Component {
   content is null when the comment has been marked as deleted
 */
 Comment.propTypes = {
+  id: PropTypes.number.isRequired,
   creator: PropTypes.string,
   postTitle: PropTypes.string,
   content: PropTypes.string,

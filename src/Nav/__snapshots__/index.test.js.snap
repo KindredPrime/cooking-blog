@@ -74,7 +74,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
           </ul>
         </div>
         <section
-          class="CommentsList"
+          class="UserCommentsList"
         >
           <h2>
             Comments

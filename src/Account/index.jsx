@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import PostsList from '../PostsList/index';
-import CommentsList from '../CommentsList/index';
+import UserCommentsList from '../UserCommentsList/index';
 import * as API from '../apiCalls';
 
 class Account extends Component {
@@ -33,11 +33,7 @@ class Account extends Component {
 
         <PostsList onlyUserPosts />
 
-        {/*
-          There's no need to include the comment's creator when the comment is seen on a user's
-          account page
-        */}
-        {comments && <CommentsList initialComments={comments} isExcludingCreator />}
+        {comments && <UserCommentsList initialComments={comments} />}
       </main>
     );
   }

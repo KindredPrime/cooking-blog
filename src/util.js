@@ -5,6 +5,20 @@ function formatDate(date) {
   return date.toString().split(' ').slice(1, 5).join(' ');
 }
 
+// Returns true of the current 'page' of comments is the last group
+function isOnLastPage(comments, page, pageLimit) {
+  return page * pageLimit > comments.length;
+}
+
+// Sorts the comments by their timestamp, descending
+function sortComments(comments) {
+  return comments.sort((a, b) => {
+    return b.lastEdited.valueOf() - a.lastEdited.valueOf();
+  });
+}
+
 export {
-  formatDate
+  formatDate,
+  isOnLastPage,
+  sortComments
 };

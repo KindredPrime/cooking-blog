@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CookingContext from '../CookingContext';
 import * as API from '../apiCalls';
 import EditPost from '../EditPost/index';
-import CommentsList from '../CommentsList/index';
+import BlogPostCommentsList from '../BlogPostCommentsList/index';
 import './index.css';
 
 class PostPage extends Component {
@@ -92,7 +92,7 @@ class PostPage extends Component {
               </button>}
           </>}
 
-        {comments && <CommentsList initialComments={comments} renderAdd postTitle={title} isExcludingPostTitle />}
+        {comments && <BlogPostCommentsList initialComments={comments} postTitle={title} />}
       </main>
     );
   }

@@ -2,17 +2,19 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import CookingContext from '../CookingContext';
 import * as API from '../apiCalls';
+import { isOnLastPage, sortComments } from '../util';
 import Comment from '../Comment/index';
 import EditComment from '../EditComment/index';
 import AddComment from '../AddComment/index';
 import './index.css';
 
-class CommentsList extends Component {
+class BlogPostCommentsList extends Component {
   static contextType = CookingContext;
 
   state = {
     page: 1,
-    currentComments: this.props.initialComments,
+    currentComments: [],
+    displayButtons: false,
     editingCommentId: null
   };
 
@@ -20,34 +22,6 @@ class CommentsList extends Component {
     pageLimit: 10,
     initialComments: []
   };
-
-  excludeFields(comment) {
-    const { isExcludingCreator, isExcludingPostTitle } = this.props;
-
-    // Exclude the creator from the comment when rendering
-    if (isExcludingCreator) {
-      comment = {
-        ...comment,
-        creator: null
-      };
-    }
-
-    // Exclude the post title from the comment when rendering
-    if (isExcludingPostTitle) {
-      comment = {
-        ...comment,
-        postTitle: null
-      };
-    }
-
-    return comment;
-  }
-
-  sortComments(comments) {
-    return comments.sort((a, b) => {
-      return b.lastEdited.valueOf() - a.lastEdited.valueOf();
-    });
-  }
 
   renderEdit = (id) => {
     this.setState({
@@ -61,10 +35,13 @@ class CommentsList extends Component {
         const { currentComments } = this.state;
 
         const commentIndex = currentComments.findIndex((comment) => comment.id === patchedComment.id);
-        currentComments[commentIndex] = this.excludeFields(patchedComment);
+        currentComments[commentIndex] = {
+          ...patchedComment,
+          postTitle: null
+        };
 
         this.setState({
-          currentComments: this.sortComments(currentComments),
+          currentComments: sortComments(currentComments),
           editingCommentId: null
         });
       })
@@ -93,14 +70,14 @@ class CommentsList extends Component {
         };
 
         this.setState({
-          currentComments: this.sortComments(currentComments)
+          currentComments: sortComments(currentComments)
         });
       })
       .catch(console.log)
   };
 
   handleAddSubmit = (content) => {
-    const { postTitle } = this.props;
+    const { postTitle, pageLimit } = this.props;
     const { username } = this.context;
     const { currentComments } = this.state;
 
@@ -112,29 +89,25 @@ class CommentsList extends Component {
 
     API.addComment(comment)
       .then((newComment) => {
-        const modifiedComment = this.excludeFields(newComment);
+        const modifiedComment = {
+          ...newComment,
+          postTitle: null
+        };
 
         this.setState({
-          currentComments: [modifiedComment, ...currentComments]
-        })
+          currentComments: [modifiedComment, ...currentComments],
+          displayButtons: currentComments.length > pageLimit
+        });
       })
       .catch(console.log);
   };
 
-  isOnLastPage() {
-    const { pageLimit } = this.props;
-    const { page, currentComments } = this.state;
-    return page * pageLimit > currentComments.length;
-  }
-
   componentDidMount() {
-    const { initialComments } = this.props;
-
-    const modifiedComments = initialComments
-      .map((comment) => this.excludeFields(comment));
+    const { initialComments, pageLimit } = this.props;
 
     this.setState({
-      currentComments: this.sortComments(modifiedComments)
+      currentComments: sortComments(initialComments),
+      displayButtons: initialComments.length > pageLimit
     });
   }
 
@@ -144,25 +117,20 @@ class CommentsList extends Component {
 
   render() {
     const { username } = this.context;
-    const { pageLimit, renderAdd } = this.props;
-    const { currentComments, page, editingCommentId } = this.state;
+    const { pageLimit } = this.props;
+    const { page, currentComments, displayButtons, editingCommentId } = this.state;
 
-    let commentsToRender = currentComments;
-    let displayButtons = false;
-    if (currentComments.length > pageLimit) {
-      commentsToRender = currentComments.slice((page-1) * pageLimit, page * pageLimit);
-      displayButtons = true;
-    }
+    let commentsToRender = currentComments.slice((page-1) * pageLimit, page * pageLimit);
 
     return (
-      <section className="CommentsList">
+      <section className="BlogPostCommentsList">
         <h2>Comments</h2>
 
-        {renderAdd && username && <AddComment handleSubmit={this.handleAddSubmit} />}
+        {username && <AddComment handleSubmit={this.handleAddSubmit} />}
 
         <ul>
           {commentsToRender.map((comment) => {
-            const { id, lastEdited, content, creator, postTitle, deleted } = comment;
+            const { id, lastEdited, content, creator, deleted } = comment;
 
             if (!deleted && editingCommentId && id === editingCommentId) {
               return (
@@ -181,7 +149,6 @@ class CommentsList extends Component {
                 key={`comment-${id}`}
                 id={id}
                 creator={creator}
-                postTitle={postTitle}
                 content={content}
                 lastEdited={lastEdited}
                 deleted={deleted}
@@ -207,7 +174,7 @@ class CommentsList extends Component {
             <button
               type="button"
               className="page-button next"
-              disabled={this.isOnLastPage()}
+              disabled={isOnLastPage(currentComments, page, pageLimit)}
               onClick={() => this.setState({
                 page: page+1
               })}
@@ -221,7 +188,7 @@ class CommentsList extends Component {
   }
 }
 
-CommentsList.propTypes = {
+BlogPostCommentsList.propTypes = {
   initialComments: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -232,10 +199,7 @@ CommentsList.propTypes = {
     })
   ),
   pageLimit: PropTypes.number,
-  isExcludingPostTitle: PropTypes.bool,
-  isExcludingCreator: PropTypes.bool,
-  renderAdd: PropTypes.bool,
-  postTitle: PropTypes.string
+  postTitle: PropTypes.string.isRequired
 };
 
-export default CommentsList;
+export default BlogPostCommentsList;
