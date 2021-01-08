@@ -11,6 +11,10 @@ class AddComment extends Component {
     e.preventDefault();
 
     this.props.handleSubmit(this.state.content);
+
+    this.setState({
+      content: null
+    });
   }
 
   render() {

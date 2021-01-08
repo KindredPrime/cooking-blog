@@ -13,35 +13,26 @@ class Comment extends Component {
 
     return (
       <li className="Comment">
-        {!deleted
-          ? <>
-            {creator && <p className="Comment__creator">{creator}</p>}
-            {postTitle && <p className="Comment__post-title">{postTitle}</p>}
-            <p className="Comment__content">{content}</p>
-            <p className="Comment__timestamp">Last edited on {formatDate(lastEdited)}</p>
+        {creator && <p className="Comment__creator">{creator}</p>}
+        {postTitle && <p className="Comment__post-title">{postTitle}</p>}
+        <p className="Comment__content">{content}</p>
+        <p className="Comment__timestamp">Last edited on {formatDate(lastEdited)}</p>
 
-            {(username && username === creator) &&
-              <div className="Comment__buttons">
-                <button
-                  type="button"
-                  onClick={() => handleEdit(id)}
-                >
-                  Edit
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleDelete(id)}
-                >
-                  Delete
-                </button>
-              </div>}
-          </>
-          : <>
-            {creator && <p className="Comment__creator">{creator}</p>}
-            {postTitle && <p className="Comment__post-title">{postTitle}</p>}
-            <p className="Comment__content">[Deleted]</p>
-            <p className="Comment__timestamp">Last edited on {formatDate(lastEdited)}</p>
-          </>}
+        {(!deleted && username && username === creator) &&
+          <div className="Comment__buttons">
+            <button
+              type="button"
+              onClick={() => handleEdit(id)}
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              onClick={() => handleDelete(id)}
+            >
+              Delete
+            </button>
+          </div>}
       </li>
     );
   }

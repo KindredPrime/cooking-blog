@@ -47,7 +47,7 @@ function getBlogPostById(id) {
   });
 }
 
-function patchBlogPostById(id, updatedFields) {
+function patchBlogPost(id, updatedFields) {
   return new Promise((resolve, reject) => {
     const { content } = updatedFields;
     getBlogPostById(id)
@@ -65,6 +65,10 @@ function patchBlogPostById(id, updatedFields) {
         resolve();
       });
   });
+}
+
+function getAllComments() {
+  return Promise.resolve(comments);
 }
 
 function getCommentById(id) {
@@ -94,7 +98,7 @@ function getCommentsByUser(username) {
 function addComment(comment) {
   return new Promise((resolve, reject) => {
     const { content, creator, postTitle } = comment;
-    const id = comments.length;
+    const id = comments.length + 1;
 
     const newComment = {
       id,
@@ -110,7 +114,7 @@ function addComment(comment) {
   });
 }
 
-function patchCommentById(id, content) {
+function patchComment(id, content) {
   return new Promise((resolve, reject) => {
     getCommentById(id)
       .then((comment) => {
@@ -134,23 +138,24 @@ function patchCommentById(id, content) {
   });
 }
 
-function deleteCommentById(id) {
+function deleteComment(id) {
   return new Promise((resolve, reject) => {
-    getCommentById(id)
-      .then(() => {
-        const commentsIndex = comments.findIndex((comment) => comment.id === id);
-        const comment = comments[commentsIndex];
-        comments[commentsIndex] = {
-          ...comment,
-          lastEdited: new Date(Date.now()),
-          content: null,
-          creator: null,
-          deleted: true
-        };
+    const commentsIndex = comments.findIndex((comment) => comment.id === id);
 
-        resolve();
-      })
-      .catch(reject);
+    if (commentsIndex < 0) {
+      reject(`Comment with id ${id} does not exist`);
+    }
+
+    const comment = comments[commentsIndex];
+    comments[commentsIndex] = {
+      ...comment,
+      lastEdited: new Date(Date.now()),
+      content: '[Deleted]',
+      creator: null,
+      deleted: true
+    };
+
+    resolve();
   });
 }
 
@@ -163,12 +168,13 @@ export {
   getAllBlogPosts,
   getBlogPostsByUser,
   getBlogPostById,
-  patchBlogPostById,//
+  patchBlogPost,
+  getAllComments,
   getCommentById,
-  getCommentsByBlogPost,//
+  getCommentsByBlogPost,
   getCommentsByUser,
   addComment,
-  patchCommentById,
-  deleteCommentById,
+  patchComment,
+  deleteComment,
   getUserById
 };

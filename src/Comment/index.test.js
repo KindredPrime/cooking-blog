@@ -10,9 +10,10 @@ describe('Comment Component', () => {
     ReactDOM.render(
       <CookingContext.Provider value={{username: 'username'}}>
         <Comment
+          id={1}
           creator="creator"
           content="content"
-          lastEdited="today"
+          lastEdited={new Date(Date.now())}
           handleEdit={() => {}}
           handleDelete={() => {}}
         />
@@ -23,16 +24,18 @@ describe('Comment Component', () => {
   });
 
   it('renders the UI as expected', () => {
+    const id = 1;
     const contextValue = {
-      username: dummyComments[0].creator
+      username: dummyComments[id-1].creator
     };
 
     render(
       <CookingContext.Provider value={contextValue}>
         <Comment
-          creator={dummyComments[0].creator}
-          content={dummyComments[0].content}
-          lastEdited={dummyComments[0].lastEdited}
+          id={id}
+          creator={dummyComments[id-1].creator}
+          content={dummyComments[id-1].content}
+          lastEdited={dummyComments[id-1].lastEdited}
           handleEdit={() => {}}
           handleDelete={() => {}}
         />

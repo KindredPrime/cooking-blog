@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import CookingContext from '../CookingContext';
-import * as API from '../apiCalls';
-import { isOnLastPage, sortEntities } from '../util';
+import { isOnLastPage } from '../util';
 import Comment from '../Comment/index';
 import EditComment from '../EditComment/index';
 import AddComment from '../AddComment/index';
@@ -13,38 +12,26 @@ class BlogPostCommentsList extends Component {
 
   state = {
     page: 1,
-    currentComments: [],
-    displayButtons: false,
     editingCommentId: null
   };
 
   static defaultProps = {
     pageLimit: 10,
-    initialComments: []
+    comments: []
   };
 
   renderEdit = (id) => {
     this.setState({
       editingCommentId: id
     });
-  }
+  };
 
   handleEditSubmit = (id, content) => {
-    API.patchCommentById(id, content)
-      .then((patchedComment) => {
-        const { currentComments } = this.state;
-
-        const commentIndex = currentComments.findIndex((comment) => comment.id === patchedComment.id);
-        currentComments[commentIndex] = {
-          ...patchedComment,
-          postTitle: null
-        };
-
-        this.setState({
-          currentComments: sortEntities(currentComments),
-          editingCommentId: null
-        });
-      })
+    this.props.handleEditSubmit(id, content)
+      // Un-render the EditComment after the API updates the comment
+      .then(() => this.setState({
+        editingCommentId: null
+      }))
       .catch(console.log);
   };
 
@@ -54,79 +41,19 @@ class BlogPostCommentsList extends Component {
     });
   };
 
-  handleDelete = (id) => {
-    const { currentComments } = this.state;
-
-    API.deleteCommentById(id)
-      .then(() => {
-        const commentsIndex = currentComments.findIndex((comment) => comment.id === id);
-        const comment = currentComments[commentsIndex];
-        currentComments[commentsIndex] = {
-          ...comment,
-          lastEdited: new Date(Date.now()),
-          content: null,
-          creator: null,
-          deleted: true
-        };
-
-        this.setState({
-          currentComments: sortEntities(currentComments)
-        });
-      })
-      .catch(console.log)
-  };
-
-  handleAddSubmit = (content) => {
-    const { postTitle, pageLimit } = this.props;
-    const { username } = this.context;
-    const { currentComments } = this.state;
-
-    const comment = {
-      content,
-      creator: username,
-      postTitle
-    };
-
-    API.addComment(comment)
-      .then((newComment) => {
-        const modifiedComment = {
-          ...newComment,
-          postTitle: null
-        };
-
-        this.setState({
-          currentComments: [modifiedComment, ...currentComments],
-          displayButtons: currentComments.length > pageLimit
-        });
-      })
-      .catch(console.log);
-  };
-
-  componentDidMount() {
-    const { initialComments, pageLimit } = this.props;
-
-    this.setState({
-      currentComments: sortEntities(initialComments),
-      displayButtons: initialComments.length > pageLimit
-    });
-  }
-
-  componentWillUnmount() {
-    API.abortTasks();
-  }
-
   render() {
     const { username } = this.context;
-    const { pageLimit } = this.props;
-    const { page, currentComments, displayButtons, editingCommentId } = this.state;
+    const { comments, pageLimit, handleAdd, handleDelete } = this.props;
+    const { page, editingCommentId } = this.state;
 
-    let commentsToRender = currentComments.slice((page-1) * pageLimit, page * pageLimit);
+    const displayButtons = comments.length > pageLimit;
+    const commentsToRender = comments.slice((page-1) * pageLimit, page * pageLimit);
 
     return (
       <section className="BlogPostCommentsList">
         <h2>Comments</h2>
 
-        {username && <AddComment handleSubmit={this.handleAddSubmit} />}
+        {username && <AddComment handleSubmit={handleAdd} />}
 
         <ul>
           {commentsToRender.map((comment) => {
@@ -153,7 +80,7 @@ class BlogPostCommentsList extends Component {
                 lastEdited={lastEdited}
                 deleted={deleted}
                 handleEdit={this.renderEdit}
-                handleDelete={this.handleDelete}
+                handleDelete={handleDelete}
               />
             );
           })}
@@ -174,7 +101,7 @@ class BlogPostCommentsList extends Component {
             <button
               type="button"
               className="page-button next"
-              disabled={isOnLastPage(currentComments, page, pageLimit)}
+              disabled={isOnLastPage(comments, page, pageLimit)}
               onClick={() => this.setState({
                 page: page+1
               })}
@@ -189,7 +116,7 @@ class BlogPostCommentsList extends Component {
 }
 
 BlogPostCommentsList.propTypes = {
-  initialComments: PropTypes.arrayOf(
+  comments: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       lastEdited: PropTypes.instanceOf(Date),
@@ -199,7 +126,10 @@ BlogPostCommentsList.propTypes = {
     })
   ),
   pageLimit: PropTypes.number,
-  postTitle: PropTypes.string.isRequired
+  postTitle: PropTypes.string.isRequired,
+  handleAdd: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  handleEditSubmit: PropTypes.func.isRequired
 };
 
 export default BlogPostCommentsList;

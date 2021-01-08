@@ -34,7 +34,7 @@ describe('UserPage Component', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <BrowserRouter>
-        <UserPage match={{ params: { id: '' }}} />
+        <UserPage match={{ params: { id: '1' }}} />
       </BrowserRouter>,
       div
     );
@@ -42,14 +42,14 @@ describe('UserPage Component', () => {
   });
 
   it('renders the UI as expected', async () => {
-    const id = '3';
+    const id = 3;
     const contextValue = {
       username: dummyUsers[id-1].username
     };
     render(
       <BrowserRouter>
         <CookingContext.Provider value={contextValue}>
-          <UserPage match={{ params: { id }}} />
+          <UserPage match={{ params: { id: id.toString() }}} />
         </CookingContext.Provider>
       </BrowserRouter>
     );

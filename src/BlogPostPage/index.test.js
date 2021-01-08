@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom';
 import { render, waitFor, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import UserEvent from '@testing-library/user-event';
 import * as API from '../apiCalls';
-import { dummyPosts } from '../dummyData';
+import { dummyPosts, dummyComments, dummyUsers } from '../dummyData';
 import BlogPostPage from './index';
 import CookingContext from '../CookingContext';
 
@@ -16,14 +16,70 @@ describe('BlogPostPage Component', () => {
     API.getBlogPostById = (id) => new Promise((resolve, reject) => {
       resolve(dummyPosts.find((post) => post.id === parseInt(id)));
     });
+
+    API.patchBlogPost = () => Promise.resolve();
+
+    API.addComment = (comment) => Promise.resolve({
+      ...comment,
+      id: dummyComments.length + 1,
+      lastEdited: new Date(Date.now())
+    })
+
+    API.deleteComment = () => Promise.resolve();
+
+    API.getCommentById = (id) => new Promise((resolve, reject) => {
+      const comment = dummyComments.find((comment) => comment.id === id);
+
+      if (!comment) {
+        reject(`Comment with id ${id} does not exist`);
+      }
+
+      resolve(comment);
+    });
+
+    API.patchComment = (id, content) => new Promise((resolve, reject) => {
+      API.getCommentById(id)
+        .then((comment) => {
+          if (comment.content === content) {
+            resolve(comment);
+          }
+
+          resolve({
+            ...comment,
+            content,
+            lastEdited: new Date(Date.now())
+          });
+        })
+        .catch(reject);
+    });
+
+    API.getBlogPostById = (id) => new Promise((resolve, reject) => {
+      const blogPost = dummyPosts.find((post) => post.id === parseInt(id));
+
+      if (!blogPost) {
+        reject(`There is no blog post with id ${id}`);
+      }
+
+      resolve(blogPost);
+    });
+
+    API.getCommentsByBlogPost = (title) => (
+      Promise.resolve(dummyComments.filter((comment) => comment.postTitle === title))
+    );
   });
 
   /**
    * Reset API methods to their original values
    */
   afterAll(() => {
-    API.getAllBlogPosts = origAPI.getAllBlogPosts;
-    API.getBlogPostsByUser = origAPI.getBlogPostsByUser;
+    API.getBlogPostById = origAPI.getBlogPostById;
+    API.patchBlogPost = origAPI.patchBlogPost;
+    API.addComment = origAPI.addComment;
+    API.deleteComment = origAPI.deleteComment;
+    API.getCommentById = origAPI.getCommentById;
+    API.patchComment = origAPI.patchComment;
+    API.getBlogPostById = origAPI.getBlogPostById;
+    API.getCommentsByBlogPost = origAPI.getCommentsByBlogPost;
   });
 
   it('renders without crashing', () => {
@@ -81,7 +137,36 @@ describe('BlogPostPage Component', () => {
 
     await waitFor(() => expect(dummyPosts[id-1].title).toBeInTheDocument);
 
-    userEvent.click(screen.getByText('Edit'));
+    UserEvent.click(screen.getByText('Edit'));
     expect(document.body).toMatchSnapshot();
+  });
+
+  it(`marks a comment as deleted after clicking 'Delete'`, async () => {
+    const contextValue = {
+      username: dummyUsers[4].username
+    };
+    render(
+      <CookingContext.Provider value={contextValue}>
+        <BlogPostPage match={{ params: { id: '1' } }} />
+      </CookingContext.Provider>
+    );
+
+    await waitFor(() => expect(screen.getByText('Comments')).toBeInTheDocument());
+
+    const deleteButton = screen.getAllByText('Delete')[0];
+    const commentToDelete = deleteButton.parentNode.parentNode;
+    const commentContent = commentToDelete.firstChild.nextSibling.nextSibling.textContent;
+
+    UserEvent.click(deleteButton);
+
+    // Comment content was replaced
+    await waitFor(() => expect(screen.getByText('[Deleted]')).toBeInTheDocument());
+
+    // Original comment content was removed from the page
+    expect(screen.queryByText(commentContent)).toEqual(null);
+
+    // Comment was moved to the top of the comments list, since it was the most recently edited
+    const deletedComment = screen.getByText('[Deleted]').parentNode;
+    expect(deletedComment.previousSibling).toBeNull();
   });
 });

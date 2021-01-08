@@ -2,7 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import CookingContext from '../CookingContext';
 import * as API from '../apiCalls';
-import { formatDate } from '../util';
+import { formatDate, sortEntities } from '../util';
 import EditPost from '../EditPost/index';
 import BlogPostCommentsList from '../BlogPostCommentsList/index';
 import './index.css';
@@ -19,16 +19,16 @@ class BlogPostPage extends Component {
     comments: null
   };
 
-  handleEditCancel = () => {
+  handlePostEditCancel = () => {
     this.setState({
       isEditingPost: false
     });
   }
 
-  handleEditSubmit = (content) => {
+  handlePostEditSubmit = (content) => {
     const { id } = this.props.match.params;
 
-    API.patchBlogPostById(id, content)
+    API.patchBlogPost(id, content)
       .then(() => {
         this.setState({
           content,
@@ -37,6 +37,71 @@ class BlogPostPage extends Component {
       })
       .catch(console.log);
   }
+
+  handleAdd = (content) => {
+    const { username } = this.context;
+    const { comments, title } = this.state;
+
+    const comment = {
+      content,
+      creator: username,
+      postTitle: title
+    };
+
+    API.addComment(comment)
+      .then((newComment) => {
+        const modifiedComment = {
+          ...newComment,
+          postTitle: null
+        };
+
+        this.setState({
+          comments: sortEntities([modifiedComment, ...comments])
+        });
+      })
+      .catch(console.log);
+  };
+
+  handleDelete = (id) => {
+    const { comments } = this.state;
+
+    API.deleteComment(id)
+      .then(() => {
+        const commentsIndex = comments.findIndex((comment) => comment.id === id);
+        const comment = comments[commentsIndex];
+        comments[commentsIndex] = {
+          ...comment,
+          lastEdited: new Date(Date.now()),
+          content: '[Deleted]',
+          creator: null,
+          deleted: true
+        };
+
+        this.setState({
+          comments: sortEntities(comments)
+        });
+      })
+      .catch(console.log)
+  };
+
+  handleCommentEditSubmit = (id, content) => {
+    return API.patchComment(id, content)
+      .then((patchedComment) => {
+        const { comments } = this.state;
+
+        const commentIndex = comments.findIndex((comment) => comment.id === patchedComment.id);
+        comments[commentIndex] = {
+          ...patchedComment,
+          // It's redundant to include a comment's post title when it's on the blog post page
+          postTitle: null
+        };
+
+        this.setState({
+          comments: sortEntities(comments)
+        });
+      })
+      .catch(console.log);
+  };
 
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -55,12 +120,10 @@ class BlogPostPage extends Component {
         return title;
       })
       .then((title) => API.getCommentsByBlogPost(title))
-      .then((comments) => {
-        this.setState({
-          comments
-        });
-      })
-      .catch((error) => console.log(error));
+      .then((comments) => this.setState({
+        comments: sortEntities(comments)
+      }))
+      .catch(console.log);
   }
 
   componentWillUnmount() {
@@ -79,7 +142,7 @@ class BlogPostPage extends Component {
         <p>Last edited on {formatDate(lastEdited)}</p>
 
         {isEditingPost
-          ? <EditPost content={content} handleCancel={this.handleEditCancel} handleSubmit={this.handleEditSubmit} />
+          ? <EditPost content={content} handleCancel={this.handlePostEditCancel} handleSubmit={this.handlePostEditSubmit} />
           : <>
             <p className="BlogPostPage__content">{content}</p>
 
@@ -93,7 +156,14 @@ class BlogPostPage extends Component {
               </button>}
           </>}
 
-        {comments && <BlogPostCommentsList initialComments={comments} postTitle={title} />}
+        {comments &&
+          <BlogPostCommentsList
+            comments={comments}
+            postTitle={title}
+            handleAdd={this.handleAdd}
+            handleDelete={this.handleDelete}
+            handleEditSubmit={this.handleCommentEditSubmit}
+          />}
       </main>
     );
   }
