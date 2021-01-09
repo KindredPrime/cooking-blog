@@ -13,7 +13,7 @@ describe('Comment Component', () => {
           id={1}
           creator="creator"
           content="content"
-          lastEdited={new Date(Date.now())}
+          lastEdited={new Date()}
           handleEdit={() => {}}
           handleDelete={() => {}}
         />

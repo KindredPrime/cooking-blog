@@ -14,15 +14,36 @@ describe('BlogPostPage Component', () => {
    */
   beforeAll(() => {
     API.getBlogPostById = (id) => new Promise((resolve, reject) => {
-      resolve(dummyPosts.find((post) => post.id === parseInt(id)));
+      const blogPost = dummyPosts.find((post) => post.id === parseInt(id));
+
+      if (!blogPost) {
+        reject(`There is no blog post with id ${id}`);
+      }
+
+      resolve(blogPost);
     });
 
-    API.patchBlogPost = () => Promise.resolve();
+    API.patchBlogPost = (id, content) => new Promise((resolve, reject) => {
+      API.getBlogPostById(id)
+        .then((blogPost) => {
+          if (blogPost.content === content) {
+            resolve(blogPost);
+          }
+
+          const newBlogPost = {
+            ...blogPost,
+            content,
+            lastEdited: new Date()
+          };
+          resolve(newBlogPost);
+        })
+        .catch(reject);
+    });
 
     API.addComment = (comment) => Promise.resolve({
       ...comment,
       id: dummyComments.length + 1,
-      lastEdited: new Date(Date.now())
+      lastEdited: new Date()
     })
 
     API.deleteComment = () => Promise.resolve();
@@ -47,20 +68,10 @@ describe('BlogPostPage Component', () => {
           resolve({
             ...comment,
             content,
-            lastEdited: new Date(Date.now())
+            lastEdited: new Date()
           });
         })
         .catch(reject);
-    });
-
-    API.getBlogPostById = (id) => new Promise((resolve, reject) => {
-      const blogPost = dummyPosts.find((post) => post.id === parseInt(id));
-
-      if (!blogPost) {
-        reject(`There is no blog post with id ${id}`);
-      }
-
-      resolve(blogPost);
     });
 
     API.getCommentsByBlogPost = (title) => (
@@ -78,7 +89,6 @@ describe('BlogPostPage Component', () => {
     API.deleteComment = origAPI.deleteComment;
     API.getCommentById = origAPI.getCommentById;
     API.patchComment = origAPI.patchComment;
-    API.getBlogPostById = origAPI.getBlogPostById;
     API.getCommentsByBlogPost = origAPI.getCommentsByBlogPost;
   });
 
@@ -91,82 +101,131 @@ describe('BlogPostPage Component', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it(`renders the post as expected, where the user is NOT the post's author`, async () => {
-    const contextValue = {
-      username: 'not-the-author'
-    };
-    const id = 1;
+  it('renders the UI as expected', () => {
+    render(<BlogPostPage match={{ params: { id: '1' } }} />);
 
-    render(
-      <CookingContext.Provider value={contextValue}>
-        <BlogPostPage match={{ params: { id: id.toString() } }} />
-      </CookingContext.Provider>
-    );
-
-    await waitFor(() => expect(dummyPosts[id-1].title).toBeInTheDocument);
     expect(document.body).toMatchSnapshot();
   });
 
-  it(`renders the post as expected, where the user IS the post's author`, async () => {
-    const id = 1;
-    const contextValue = {
-      username: dummyPosts[id-1].author
-    };
+  describe('BlogPost Child Component', () => {
+    it(
+      `changes the post's content and updates the post's timestamp after clicking 'Edit' then 'Submit'`,
+      async () => {
+        const id = 1;
+        const { title, author, lastEdited } = dummyPosts[id-1];
+        const contextValue = {
+          username: author
+        };
+        render(
+          <CookingContext.Provider value={contextValue}>
+            <BlogPostPage match={{ params: { id: id.toString() } }} />
+          </CookingContext.Provider>
+        );
+        await waitFor(() => expect(screen.getByText(title)).toBeInTheDocument());
 
-    render(
-      <CookingContext.Provider value={contextValue}>
-        <BlogPostPage match={{ params: { id: id.toString() } }} />
-      </CookingContext.Provider>
+        UserEvent.click(screen.getAllByText('Edit')[0]);
+
+        // Submit the new content
+        const newBlogPostContent = 'New blog post content';
+        const editPostTextbox = screen.getAllByRole('textbox')[0];
+        UserEvent.clear(editPostTextbox);
+        UserEvent.type(editPostTextbox, newBlogPostContent);
+        UserEvent.click(screen.getByText('Submit'));
+
+        await waitFor(() => expect(screen.getByText(newBlogPostContent)).toBeInTheDocument());
+
+        // The timestamp has been updated
+        const newTimestamp = new Date(document
+          .getElementsByClassName('BlogPost__timestamp')[0]
+          .textContent
+          .split('Last edited on ')
+          .join('')
+        );
+        expect(newTimestamp.valueOf()).toBeGreaterThan(lastEdited.valueOf());
+      }
     );
-
-    await waitFor(() => expect(dummyPosts[id-1].title).toBeInTheDocument);
-    expect(document.body).toMatchSnapshot();
   });
 
-  it(`renders the edit form when the 'Edit' button is clicked`, async () => {
-    const id = 1;
-    const contextValue = {
-      username: dummyPosts[id-1].author
-    };
+  describe('CommentsList Child Component', () => {
+    const testUsername = dummyUsers[4].username;
 
-    render(
-      <CookingContext.Provider value={contextValue}>
-        <BlogPostPage match={{ params: { id: id.toString() } }} />
-      </CookingContext.Provider>
+    async function renderBlogPostPage() {
+      const contextValue = {
+        username: testUsername
+      };
+      render(
+        <CookingContext.Provider value={contextValue}>
+          <BlogPostPage match={{ params: { id: '1' } }} />
+        </CookingContext.Provider>
+      );
+
+      await waitFor(() => expect(screen.getByText('Comments')).toBeInTheDocument());
+    }
+
+    it(
+      `adds a new comment to the top of the comments list after clicking 'Add Comment'`,
+      async () => {
+        await renderBlogPostPage();
+
+        const newComment = 'New Comment';
+        UserEvent.type(screen.getByRole('textbox'), newComment);
+        UserEvent.click(screen.getByText('Add Comment'));
+        await waitFor(() => expect(screen.getByText(newComment)).toBeInTheDocument());
+
+        const addedComment = screen.getByText('Comments').nextSibling.nextSibling.firstChild;
+        // The comment's user matches the context's username
+        expect(addedComment.firstChild.textContent).toEqual(testUsername);
+        // The comment's content matches the new comment
+        expect(addedComment.firstChild.nextSibling.textContent).toEqual(newComment);
+      }
     );
 
-    await waitFor(() => expect(dummyPosts[id-1].title).toBeInTheDocument);
+    it(
+      `changes a comment's text and moves it to the top of the comments list after clicking 'Edit' then 'Submit'`,
+      async () => {
+        await renderBlogPostPage();
 
-    UserEvent.click(screen.getByText('Edit'));
-    expect(document.body).toMatchSnapshot();
-  });
+        const editButton = screen.getAllByText('Edit')[0];
+        UserEvent.click(editButton);
 
-  it(`marks a comment as deleted after clicking 'Delete'`, async () => {
-    const contextValue = {
-      username: dummyUsers[4].username
-    };
-    render(
-      <CookingContext.Provider value={contextValue}>
-        <BlogPostPage match={{ params: { id: '1' } }} />
-      </CookingContext.Provider>
+        const newComment = 'Edited Comment';
+        // Type in the second text box (the first is for adding comments)
+        const editTextbox = screen.getAllByRole('textbox')[1];
+        UserEvent.clear(editTextbox);
+        UserEvent.type(editTextbox, newComment);
+        UserEvent.click(screen.getByText('Submit'));
+
+        await waitFor(() => expect(screen.getByText(newComment)).toBeInTheDocument());
+
+        const editedComment = screen.getByText('Comments').nextSibling.nextSibling.firstChild;
+        // The comment's user matches the context's username
+        expect(editedComment.firstChild.textContent).toEqual(testUsername);
+        // The comment's content matches the new comment
+        expect(editedComment.firstChild.nextSibling.textContent).toEqual(newComment);
+      }
     );
 
-    await waitFor(() => expect(screen.getByText('Comments')).toBeInTheDocument());
+    it(
+      `marks a comment as deleted and moves it to the top of the comments list after clicking 'Delete'`,
+      async () => {
+        await renderBlogPostPage();
 
-    const deleteButton = screen.getAllByText('Delete')[0];
-    const commentToDelete = deleteButton.parentNode.parentNode;
-    const commentContent = commentToDelete.firstChild.nextSibling.nextSibling.textContent;
+        const deleteButton = screen.getAllByText('Delete')[0];
+        const commentToDelete = deleteButton.parentNode.parentNode;
+        const commentContent = commentToDelete.firstChild.nextSibling.nextSibling.textContent;
 
-    UserEvent.click(deleteButton);
+        UserEvent.click(deleteButton);
 
-    // Comment content was replaced
-    await waitFor(() => expect(screen.getByText('[Deleted]')).toBeInTheDocument());
+        // Comment content was replaced
+        await waitFor(() => expect(screen.getByText('[Deleted]')).toBeInTheDocument());
 
-    // Original comment content was removed from the page
-    expect(screen.queryByText(commentContent)).toEqual(null);
+        // Original comment content was removed from the page
+        expect(screen.queryByText(commentContent)).toEqual(null);
 
-    // Comment was moved to the top of the comments list, since it was the most recently edited
-    const deletedComment = screen.getByText('[Deleted]').parentNode;
-    expect(deletedComment.previousSibling).toBeNull();
+        // Comment was moved to the top of the comments list, since it was the most recently edited
+        const deletedComment = screen.getByText('[Deleted]').parentNode;
+        expect(deletedComment.previousSibling).toBeNull();
+      }
+    );
   });
 });

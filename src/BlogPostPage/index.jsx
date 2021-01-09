@@ -1,54 +1,35 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import CookingContext from '../CookingContext';
 import * as API from '../apiCalls';
-import { formatDate, sortEntities } from '../util';
-import EditPost from '../EditPost/index';
+import { sortEntities } from '../util';
+import BlogPost from '../BlogPost/index';
 import BlogPostCommentsList from '../BlogPostCommentsList/index';
 import './index.css';
 
 class BlogPostPage extends Component {
-  static contextType = CookingContext;
-
   state = {
-    isEditingPost: false,
-    lastEdited: null,
-    title: null,
-    author: null,
-    content: null,
+    blogPost: null,
     comments: null
   };
-
-  handlePostEditCancel = () => {
-    this.setState({
-      isEditingPost: false
-    });
-  }
 
   handlePostEditSubmit = (content) => {
     const { id } = this.props.match.params;
 
-    API.patchBlogPost(id, content)
-      .then(() => {
-        this.setState({
-          content,
-          isEditingPost: false
-        });
-      })
+    return API.patchBlogPost(id, content)
+      .then((blogPost) => this.setState({ blogPost }))
       .catch(console.log);
-  }
+  };
 
-  handleAdd = (content) => {
-    const { username } = this.context;
-    const { comments, title } = this.state;
+  handleCommentAdd = (content, creator) => {
+    const { comments, blogPost } = this.state;
 
     const comment = {
       content,
-      creator: username,
-      postTitle: title
+      creator,
+      postTitle: blogPost.title
     };
 
-    API.addComment(comment)
+    return API.addComment(comment)
       .then((newComment) => {
         const modifiedComment = {
           ...newComment,
@@ -62,7 +43,7 @@ class BlogPostPage extends Component {
       .catch(console.log);
   };
 
-  handleDelete = (id) => {
+  handleCommentDelete = (id) => {
     const { comments } = this.state;
 
     API.deleteComment(id)
@@ -71,7 +52,7 @@ class BlogPostPage extends Component {
         const comment = comments[commentsIndex];
         comments[commentsIndex] = {
           ...comment,
-          lastEdited: new Date(Date.now()),
+          lastEdited: new Date(),
           content: '[Deleted]',
           creator: null,
           deleted: true
@@ -107,17 +88,12 @@ class BlogPostPage extends Component {
     const { id } = this.props.match.params;
 
     API.getBlogPostById(id)
-      .then((post) => {
-        const { lastEdited, title, author, content } = post;
-
+      .then((blogPost) => {
         this.setState({
-          lastEdited,
-          title,
-          author,
-          content
+          blogPost
         });
 
-        return title;
+        return blogPost.title;
       })
       .then((title) => API.getCommentsByBlogPost(title))
       .then((comments) => this.setState({
@@ -131,37 +107,24 @@ class BlogPostPage extends Component {
   }
 
   render() {
-    const { isEditingPost, lastEdited, title, author, content, comments } = this.state;
-    const { username } = this.context;
+    const { blogPost, comments } = this.state;
 
     return (
       <main className="BlogPostPage">
-        <h1>{title}</h1>
-        <h2>By {author}</h2>
-
-        <p>Last edited on {formatDate(lastEdited)}</p>
-
-        {isEditingPost
-          ? <EditPost content={content} handleCancel={this.handlePostEditCancel} handleSubmit={this.handlePostEditSubmit} />
-          : <>
-            <p className="BlogPostPage__content">{content}</p>
-
-            {/* Display an edit button if the current user is the author */}
-            {(username && username === author) &&
-              <button
-                type="button"
-                onClick={() => this.setState({ isEditingPost: true })}
-              >
-                Edit
-              </button>}
-          </>}
+        {blogPost && <BlogPost
+          title={blogPost.title}
+          author={blogPost.author}
+          content={blogPost.content}
+          lastEdited={blogPost.lastEdited}
+          handleEditSubmit={this.handlePostEditSubmit}
+        />}
 
         {comments &&
           <BlogPostCommentsList
             comments={comments}
-            postTitle={title}
-            handleAdd={this.handleAdd}
-            handleDelete={this.handleDelete}
+            postTitle={blogPost.title}
+            handleAdd={this.handleCommentAdd}
+            handleDelete={this.handleCommentDelete}
             handleEditSubmit={this.handleCommentEditSubmit}
           />}
       </main>

@@ -20,6 +20,11 @@ class BlogPostCommentsList extends Component {
     comments: []
   };
 
+  handleAdd = (content) => {
+    const { username } = this.context;
+    return this.props.handleAdd(content, username);
+  }
+
   renderEdit = (id) => {
     this.setState({
       editingCommentId: id
@@ -27,8 +32,8 @@ class BlogPostCommentsList extends Component {
   };
 
   handleEditSubmit = (id, content) => {
-    this.props.handleEditSubmit(id, content)
-      // Un-render the EditComment after the API updates the comment
+    return this.props.handleEditSubmit(id, content)
+      // Un-render the EditComment
       .then(() => this.setState({
         editingCommentId: null
       }))
@@ -43,7 +48,7 @@ class BlogPostCommentsList extends Component {
 
   render() {
     const { username } = this.context;
-    const { comments, pageLimit, handleAdd, handleDelete } = this.props;
+    const { comments, pageLimit, handleDelete } = this.props;
     const { page, editingCommentId } = this.state;
 
     const displayButtons = comments.length > pageLimit;
@@ -53,7 +58,7 @@ class BlogPostCommentsList extends Component {
       <section className="BlogPostCommentsList">
         <h2>Comments</h2>
 
-        {username && <AddComment handleSubmit={handleAdd} />}
+        {username && <AddComment handleSubmit={this.handleAdd} />}
 
         <ul>
           {commentsToRender.map((comment) => {
@@ -127,8 +132,10 @@ BlogPostCommentsList.propTypes = {
   ),
   pageLimit: PropTypes.number,
   postTitle: PropTypes.string.isRequired,
+  // handleAdd must return a thenable object
   handleAdd: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
+  // handleEditSubmit must return a thenable object
   handleEditSubmit: PropTypes.func.isRequired
 };
 

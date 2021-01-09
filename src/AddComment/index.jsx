@@ -4,17 +4,16 @@ import './index.css';
 
 class AddComment extends Component {
   state = {
-    content: null,
+    content: '',
   };
 
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.handleSubmit(this.state.content);
-
-    this.setState({
-      content: null
-    });
+    this.props.handleSubmit(this.state.content)
+      // Clear the comment text
+      .then(() => this.setState({ content: '' }))
+      .catch(console.log)
   }
 
   render() {
@@ -23,6 +22,7 @@ class AddComment extends Component {
         <textarea
           id="content"
           name="content"
+          value={this.state.content}
           onChange={(e) => this.setState({
             content: e.target.value
           })}
@@ -37,6 +37,7 @@ class AddComment extends Component {
   }
 }
 
+// handleSubmit must return a thenable object
 AddComment.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };

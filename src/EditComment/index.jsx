@@ -4,8 +4,8 @@ import './index.css';
 
 class EditComment extends Component {
   state = {
-    content: this.props.initialContent
-  }
+    content: ''
+  };
 
   handleSubmit(e) {
     e.preventDefault();
@@ -17,6 +17,12 @@ class EditComment extends Component {
     e.preventDefault();
 
     this.props.handleCancel();
+  }
+
+  componentDidMount() {
+    this.setState({
+      content: this.props.initialContent
+    });
   }
 
   render() {

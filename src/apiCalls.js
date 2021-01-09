@@ -47,23 +47,27 @@ function getBlogPostById(id) {
   });
 }
 
-function patchBlogPost(id, updatedFields) {
+function patchBlogPost(id, content) {
   return new Promise((resolve, reject) => {
-    const { content } = updatedFields;
     getBlogPostById(id)
-      .then((post) => {
-        if (post.content === content) {
-          resolve();
+      .then((blogPost) => {
+        if (blogPost.content === content) {
+          resolve(blogPost);
         }
 
-        // Update the post stored in this file
-        const postsIndex = blogPosts.findIndex((elem) => elem.id === id);
-        blogPosts[postsIndex] = {
-          ...post,
-          content
+        const newBlogPost = {
+          ...blogPost,
+          content,
+          lastEdited: new Date()
         };
-        resolve();
-      });
+
+        // Update the post stored in this file
+        const postsIndex = blogPosts.findIndex((elem) => elem.id === parseInt(id));
+        blogPosts[postsIndex] = newBlogPost;
+
+        resolve(newBlogPost);
+      })
+      .catch(reject);
   });
 }
 
@@ -102,7 +106,7 @@ function addComment(comment) {
 
     const newComment = {
       id,
-      lastEdited: new Date(Date.now()),
+      lastEdited: new Date(),
       content,
       creator,
       postTitle
@@ -125,7 +129,7 @@ function patchComment(id, content) {
         const newComment = {
           ...comment,
           content,
-          lastEdited: new Date(Date.now())
+          lastEdited: new Date()
         };
 
         // Update the comment stored in this file
@@ -149,7 +153,7 @@ function deleteComment(id) {
     const comment = comments[commentsIndex];
     comments[commentsIndex] = {
       ...comment,
-      lastEdited: new Date(Date.now()),
+      lastEdited: new Date(),
       content: '[Deleted]',
       creator: null,
       deleted: true
