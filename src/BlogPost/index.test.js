@@ -7,6 +7,27 @@ import CookingContext from '../CookingContext';
 import { dummyPosts } from '../dummyData';
 
 describe('BlogPost Component', () => {
+  const id = 1;
+  const { title, author, content, lastEdited } = dummyPosts[id-1];
+
+  async function renderBlogPost(contextValue) {
+    render(
+      <BrowserRouter>
+        <CookingContext.Provider value={contextValue}>
+          <BlogPost
+            title={title}
+            author={author}
+            content={content}
+            lastEdited={lastEdited}
+            handleEditSubmit={() => {}}
+          />
+        </CookingContext.Provider>
+      </BrowserRouter>
+    );
+
+    await waitFor(() => expect(title).toBeInTheDocument);
+  }
+
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
@@ -25,8 +46,6 @@ describe('BlogPost Component', () => {
   });
 
   it(`renders the post as expected, where the user is NOT the post's author`, async () => {
-    const id = 1;
-    const { title, author, content, lastEdited } = dummyPosts[id-1];
     const contextValue = {
       user: {
         id: -1,
@@ -34,98 +53,36 @@ describe('BlogPost Component', () => {
       }
     };
 
-    render(
-      <BrowserRouter>
-        <CookingContext.Provider value={contextValue}>
-          <BlogPost
-            title={title}
-            author={author}
-            content={content}
-            lastEdited={lastEdited}
-            handleEditSubmit={() => {}}
-          />
-        </CookingContext.Provider>
-      </BrowserRouter>
-    );
-
-    await waitFor(() => expect(title).toBeInTheDocument);
+    await renderBlogPost(contextValue);
     expect(document.body).toMatchSnapshot();
   });
 
   it(`renders the post as expected, where the user IS the post's author`, async () => {
-    const id = 1;
-    const { title, author, content, lastEdited } = dummyPosts[id-1];
     const contextValue = {
       user: author
     };
 
-    render(
-      <BrowserRouter>
-        <CookingContext.Provider value={contextValue}>
-          <BlogPost
-            title={title}
-            author={author}
-            content={content}
-            lastEdited={lastEdited}
-            handleEditSubmit={() => {}}
-          />
-        </CookingContext.Provider>
-      </BrowserRouter>
-    );
-
-    await waitFor(() => expect(title).toBeInTheDocument);
+    await renderBlogPost(contextValue);
     expect(document.body).toMatchSnapshot();
   });
 
   it(`renders the edit form when the 'Edit' button is clicked`, async () => {
-    const id = 1;
-    const { title, author, content, lastEdited } = dummyPosts[id-1];
     const contextValue = {
       user: author
     };
 
-    render(
-      <BrowserRouter>
-        <CookingContext.Provider value={contextValue}>
-          <BlogPost
-            title={title}
-            author={author}
-            content={content}
-            lastEdited={lastEdited}
-            handleEditSubmit={() => {}}
-          />
-        </CookingContext.Provider>
-      </BrowserRouter>
-    );
-
-    await waitFor(() => expect(title).toBeInTheDocument);
+    await renderBlogPost(contextValue);
 
     UserEvent.click(screen.getByText('Edit'));
     expect(document.body).toMatchSnapshot();
   });
 
   it(`un-renders the edit form after clicking 'Cancel'`, async () => {
-    const id = 1;
-    const { title, author, content, lastEdited } = dummyPosts[id-1];
     const contextValue = {
       user: author
     };
 
-    render(
-      <BrowserRouter>
-        <CookingContext.Provider value={contextValue}>
-          <BlogPost
-            title={title}
-            author={author}
-            content={content}
-            lastEdited={lastEdited}
-            handleEditSubmit={() => {}}
-          />
-        </CookingContext.Provider>
-      </BrowserRouter>
-    );
-
-    await waitFor(() => expect(title).toBeInTheDocument);
+    await renderBlogPost(contextValue);
 
     UserEvent.click(screen.getByText('Edit'));
     UserEvent.click(screen.getByText('Cancel'));
