@@ -1,0 +1,3 @@
+.BlogPost__author:hover, .BlogPost__author:focus {
+  text-decoration: underline;
+}

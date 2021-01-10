@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import UserEvent from '@testing-library/user-event';
 import BlogPost from './index';
@@ -9,13 +10,15 @@ describe('BlogPost Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <BlogPost
-        title=""
-        author={dummyPosts[0].author}
-        content=""
-        lastEdited={new Date()}
-        handleEditSubmit={() => {}}
-      />,
+      <BrowserRouter>
+        <BlogPost
+          title=""
+          author={dummyPosts[0].author}
+          content=""
+          lastEdited={new Date()}
+          handleEditSubmit={() => {}}
+        />
+      </BrowserRouter>,
       div
     );
     ReactDOM.unmountComponentAtNode(div);
@@ -32,15 +35,17 @@ describe('BlogPost Component', () => {
     };
 
     render(
-      <CookingContext.Provider value={contextValue}>
-        <BlogPost
-          title={title}
-          author={author}
-          content={content}
-          lastEdited={lastEdited}
-          handleEditSubmit={() => {}}
-        />
-      </CookingContext.Provider>
+      <BrowserRouter>
+        <CookingContext.Provider value={contextValue}>
+          <BlogPost
+            title={title}
+            author={author}
+            content={content}
+            lastEdited={lastEdited}
+            handleEditSubmit={() => {}}
+          />
+        </CookingContext.Provider>
+      </BrowserRouter>
     );
 
     await waitFor(() => expect(title).toBeInTheDocument);
@@ -55,15 +60,17 @@ describe('BlogPost Component', () => {
     };
 
     render(
-      <CookingContext.Provider value={contextValue}>
-        <BlogPost
-          title={title}
-          author={author}
-          content={content}
-          lastEdited={lastEdited}
-          handleEditSubmit={() => {}}
-        />
-      </CookingContext.Provider>
+      <BrowserRouter>
+        <CookingContext.Provider value={contextValue}>
+          <BlogPost
+            title={title}
+            author={author}
+            content={content}
+            lastEdited={lastEdited}
+            handleEditSubmit={() => {}}
+          />
+        </CookingContext.Provider>
+      </BrowserRouter>
     );
 
     await waitFor(() => expect(title).toBeInTheDocument);
@@ -78,15 +85,17 @@ describe('BlogPost Component', () => {
     };
 
     render(
-      <CookingContext.Provider value={contextValue}>
-        <BlogPost
-          title={title}
-          author={author}
-          content={content}
-          lastEdited={lastEdited}
-          handleEditSubmit={() => {}}
-        />
-      </CookingContext.Provider>
+      <BrowserRouter>
+        <CookingContext.Provider value={contextValue}>
+          <BlogPost
+            title={title}
+            author={author}
+            content={content}
+            lastEdited={lastEdited}
+            handleEditSubmit={() => {}}
+          />
+        </CookingContext.Provider>
+      </BrowserRouter>
     );
 
     await waitFor(() => expect(title).toBeInTheDocument);
@@ -103,15 +112,17 @@ describe('BlogPost Component', () => {
     };
 
     render(
-      <CookingContext.Provider value={contextValue}>
-        <BlogPost
-          title={title}
-          author={author}
-          content={content}
-          lastEdited={lastEdited}
-          handleEditSubmit={() => {}}
-        />
-      </CookingContext.Provider>
+      <BrowserRouter>
+        <CookingContext.Provider value={contextValue}>
+          <BlogPost
+            title={title}
+            author={author}
+            content={content}
+            lastEdited={lastEdited}
+            handleEditSubmit={() => {}}
+          />
+        </CookingContext.Provider>
+      </BrowserRouter>
     );
 
     await waitFor(() => expect(title).toBeInTheDocument);

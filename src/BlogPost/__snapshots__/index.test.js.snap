@@ -11,7 +11,12 @@ exports[`BlogPost Component renders the edit form when the 'Edit' button is clic
       </h1>
       <h2>
         By 
-        FakeUser2
+        <a
+          class="BlogPost__author"
+          href="/user/2"
+        >
+          FakeUser2
+        </a>
       </h2>
       <p
         class="BlogPost__timestamp"
@@ -56,7 +61,12 @@ exports[`BlogPost Component renders the post as expected, where the user IS the 
       </h1>
       <h2>
         By 
-        FakeUser2
+        <a
+          class="BlogPost__author"
+          href="/user/2"
+        >
+          FakeUser2
+        </a>
       </h2>
       <p
         class="BlogPost__timestamp"
@@ -90,7 +100,12 @@ exports[`BlogPost Component renders the post as expected, where the user is NOT 
       </h1>
       <h2>
         By 
-        FakeUser2
+        <a
+          class="BlogPost__author"
+          href="/user/2"
+        >
+          FakeUser2
+        </a>
       </h2>
       <p
         class="BlogPost__timestamp"
@@ -119,7 +134,12 @@ exports[`BlogPost Component un-renders the edit form after clicking 'Cancel' 1`]
       </h1>
       <h2>
         By 
-        FakeUser2
+        <a
+          class="BlogPost__author"
+          href="/user/2"
+        >
+          FakeUser2
+        </a>
       </h2>
       <p
         class="BlogPost__timestamp"

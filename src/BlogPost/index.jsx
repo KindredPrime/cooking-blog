@@ -1,8 +1,10 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { formatDate } from '../util';
 import CookingContext from '../CookingContext';
 import EditPost from '../EditPost/index';
+import './index.css';
 
 class BlogPost extends Component {
   static contextType = CookingContext;
@@ -24,14 +26,16 @@ class BlogPost extends Component {
   }
 
   render() {
-    const { lastEdited, title, author, content } = this.props;
+    const { title, author, content, lastEdited } = this.props;
     const { isEditing } = this.state;
     const { user } = this.context;
 
     return (
       <section className="BlogPost">
         <h1>{title}</h1>
-        <h2>By {author.username}</h2>
+        <h2>
+          By <Link className="BlogPost__author" to={`/user/${author.id}`}>{author.username}</Link>
+        </h2>
 
         <p className="BlogPost__timestamp">Last edited on {formatDate(lastEdited)}</p>
 
