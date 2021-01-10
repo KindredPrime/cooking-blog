@@ -10,12 +10,15 @@ class Comment extends Component {
 
   render() {
     const { user } = this.context;
-    const { id, creator, postTitle, content, lastEdited, deleted, handleEdit, handleDelete } = this.props;
+    const { id, creator, blogPost, content, lastEdited, deleted, handleEdit, handleDelete } = this.props;
 
     return (
       <li className="Comment">
         {creator && <Link className="Comment__creator" to={`/user/${creator.id}`}>{creator.username}</Link>}
-        {postTitle && <p className="Comment__post-title">{postTitle}</p>}
+        {blogPost
+          && <Link className="Comment__post-title" to={`/blog-posts/${blogPost.id}`}>
+            {blogPost.title}
+          </Link>}
         <p className="Comment__content">{content}</p>
         <p className="Comment__timestamp">Last edited on {formatDate(lastEdited)}</p>
 
@@ -40,7 +43,8 @@ class Comment extends Component {
 }
 
 /*
-  There are instances where it is redundant to include either the creator or the postTitle, so they are optional.
+  There are instances where it is redundant to include either the creator or the blog post title,
+  so they're optional.
   Example: the comments on a user's account page do not need to include the user as their creator
 
   content is null when the comment has been marked as deleted
@@ -51,7 +55,16 @@ Comment.propTypes = {
     id: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired
   }),
-  postTitle: PropTypes.string,
+  blogPost: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    lastEdited: PropTypes.instanceOf(Date).isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      username: PropTypes.string.isRequired
+    }).isRequired,
+    content: PropTypes.string.isRequired
+  }),
   content: PropTypes.string,
   lastEdited: PropTypes.instanceOf(Date).isRequired,
   deleted: PropTypes.bool,

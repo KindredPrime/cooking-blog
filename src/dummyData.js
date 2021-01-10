@@ -124,7 +124,7 @@ const dummyComments = [
       id: 1,
       username: 'User1'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   },
   {
     id: 2,
@@ -134,7 +134,7 @@ const dummyComments = [
       id: 1,
       username: 'User1'
     },
-    postTitle: 'Winter Seasoning Guide'
+    blogPost: dummyPosts[4]
   },
   {
     id: 3,
@@ -144,7 +144,7 @@ const dummyComments = [
       id: 4,
       username: 'User4'
     },
-    postTitle: 'Cooking Basics for Beginners'
+    blogPost: dummyPosts[3]
   },
   {
     id: 4,
@@ -154,7 +154,7 @@ const dummyComments = [
       id: 4,
       username: 'User4'
     },
-    postTitle: `How to Save Money When Cooking`
+    blogPost: dummyPosts[1]
   },
   {
     id: 5,
@@ -164,7 +164,7 @@ const dummyComments = [
       id: 2,
       username: 'FakeUser2'
     },
-    postTitle: 'Title7'
+    blogPost: dummyPosts[6]
   },
   {
     id: 6,
@@ -174,7 +174,7 @@ const dummyComments = [
       id: 3,
       username: 'User3'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   },
   {
     id: 7,
@@ -184,7 +184,7 @@ const dummyComments = [
       id: 4,
       username: 'User4'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   },
   {
     id: 8,
@@ -194,7 +194,7 @@ const dummyComments = [
       id: 5,
       username: 'User5'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   },
   {
     id: 9,
@@ -204,7 +204,7 @@ const dummyComments = [
       id: 6,
       username: 'User6'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   },
   {
     id: 10,
@@ -214,7 +214,7 @@ const dummyComments = [
       id: 7,
       username: 'User7'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   },
   {
     id: 11,
@@ -224,7 +224,7 @@ const dummyComments = [
       id: 8,
       username: 'User8'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   },
   {
     id: 12,
@@ -234,7 +234,7 @@ const dummyComments = [
       id: 5,
       username: 'User5'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   },
   {
     id: 13,
@@ -244,7 +244,7 @@ const dummyComments = [
       id: 5,
       username: 'User5'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   },
   {
     id: 14,
@@ -254,7 +254,7 @@ const dummyComments = [
       id: 5,
       username: 'User5'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   },
   {
     id: 15,
@@ -264,7 +264,7 @@ const dummyComments = [
       id: 5,
       username: 'User5'
     },
-    postTitle: 'Lessons I Learned from Cooking'
+    blogPost: dummyPosts[0]
   }
 ];
 

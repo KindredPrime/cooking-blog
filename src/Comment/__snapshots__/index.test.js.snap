@@ -12,6 +12,12 @@ exports[`Comment Component renders the UI as expected 1`] = `
       >
         User1
       </a>
+      <a
+        class="Comment__post-title"
+        href="/blog-posts/1"
+      >
+        Lessons I Learned from Cooking
+      </a>
       <p
         class="Comment__content"
       >

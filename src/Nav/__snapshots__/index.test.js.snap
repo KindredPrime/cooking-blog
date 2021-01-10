@@ -42,11 +42,12 @@ exports[`Nav Component loads the account page when clicked 1`] = `
             <li
               class="Comment"
             >
-              <p
+              <a
                 class="Comment__post-title"
+                href="/blog-posts/1"
               >
                 Lessons I Learned from Cooking
-              </p>
+              </a>
               <p
                 class="Comment__content"
               >
@@ -62,11 +63,12 @@ exports[`Nav Component loads the account page when clicked 1`] = `
             <li
               class="Comment"
             >
-              <p
+              <a
                 class="Comment__post-title"
+                href="/blog-posts/5"
               >
                 Winter Seasoning Guide
-              </p>
+              </a>
               <p
                 class="Comment__content"
               >

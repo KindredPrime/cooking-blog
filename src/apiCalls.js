@@ -89,7 +89,7 @@ function getCommentById(id) {
 
 function getCommentsByBlogPost(title) {
   return new Promise((resolve, reject) => {
-    const postComments = comments.filter((comment) => comment.postTitle === title);
+    const postComments = comments.filter((comment) => comment.blogPost.title === title);
 
     resolve(postComments);
   });
@@ -101,7 +101,7 @@ function getCommentsByUser(username) {
 
 function addComment(comment) {
   return new Promise((resolve, reject) => {
-    const { content, creator, postTitle } = comment;
+    const { content, creator, blogPost } = comment;
     const id = comments.length + 1;
 
     const newComment = {
@@ -109,7 +109,7 @@ function addComment(comment) {
       lastEdited: new Date(),
       content,
       creator,
-      postTitle
+      blogPost
     }
 
     comments.push(newComment);

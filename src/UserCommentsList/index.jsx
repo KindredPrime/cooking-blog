@@ -37,13 +37,13 @@ class UserCommentsList extends Component {
 
         <ul>
           {commentsToRender.map((comment) => {
-            const { id, lastEdited, content, postTitle, deleted } = comment;
+            const { id, lastEdited, content, blogPost, deleted } = comment;
 
             return (
               <Comment
                 key={`comment-${id}`}
                 id={id}
-                postTitle={postTitle}
+                blogPost={blogPost}
                 content={content}
                 lastEdited={lastEdited}
                 deleted={deleted}
@@ -93,7 +93,16 @@ UserCommentsList.propTypes = {
         id: PropTypes.number.isRequired,
         username: PropTypes.string.isRequired
       }).isRequired,
-      postTitle: PropTypes.string.isRequired
+      blogPost: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        lastEdited: PropTypes.instanceOf(Date).isRequired,
+        title: PropTypes.string.isRequired,
+        author: PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          username: PropTypes.string.isRequired
+        }).isRequired,
+        content: PropTypes.string.isRequired
+      }).isRequired
     })
   ),
   pageLimit: PropTypes.number

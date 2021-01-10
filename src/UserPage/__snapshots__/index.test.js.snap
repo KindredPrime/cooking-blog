@@ -144,11 +144,12 @@ exports[`UserPage Component renders the UI as expected 1`] = `
           <li
             class="Comment"
           >
-            <p
+            <a
               class="Comment__post-title"
+              href="/blog-posts/1"
             >
               Lessons I Learned from Cooking
-            </p>
+            </a>
             <p
               class="Comment__content"
             >

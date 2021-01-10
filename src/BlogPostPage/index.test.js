@@ -76,7 +76,7 @@ describe('BlogPostPage Component', () => {
     });
 
     API.getCommentsByBlogPost = (title) => (
-      Promise.resolve(dummyComments.filter((comment) => comment.postTitle === title))
+      Promise.resolve(dummyComments.filter((comment) => comment.blogPost.title === title))
     );
   });
 

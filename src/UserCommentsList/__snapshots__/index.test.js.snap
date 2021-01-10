@@ -13,11 +13,12 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/4"
           >
             Cooking Basics for Beginners
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -33,11 +34,12 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -53,11 +55,12 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -73,11 +76,12 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -93,11 +97,12 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -113,11 +118,12 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/7"
           >
             Title7
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -133,11 +139,12 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/2"
           >
             How to Save Money When Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -153,11 +160,12 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -173,11 +181,12 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -193,11 +202,12 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -242,11 +252,12 @@ exports[`UserCommentsList Component switches to the next group of comments after
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -262,11 +273,12 @@ exports[`UserCommentsList Component switches to the next group of comments after
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -282,11 +294,12 @@ exports[`UserCommentsList Component switches to the next group of comments after
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/5"
           >
             Winter Seasoning Guide
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -302,11 +315,12 @@ exports[`UserCommentsList Component switches to the next group of comments after
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -322,11 +336,12 @@ exports[`UserCommentsList Component switches to the next group of comments after
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__post-title"
+            href="/blog-posts/1"
           >
             Lessons I Learned from Cooking
-          </p>
+          </a>
           <p
             class="Comment__content"
           >

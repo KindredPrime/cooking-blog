@@ -13,6 +13,7 @@ describe('Comment Component', () => {
         <Comment
           id={1}
           creator={dummyComments[0].creator}
+          blogPost={dummyComments[0].blogPost}
           content="content"
           lastEdited={new Date()}
           handleEdit={() => {}}
@@ -36,6 +37,7 @@ describe('Comment Component', () => {
           <Comment
             id={id}
             creator={dummyComments[id-1].creator}
+            blogPost={dummyComments[id-1].blogPost}
             content={dummyComments[id-1].content}
             lastEdited={dummyComments[id-1].lastEdited}
             handleEdit={() => {}}

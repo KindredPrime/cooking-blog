@@ -26,14 +26,14 @@ class BlogPostPage extends Component {
     const comment = {
       content,
       creator,
-      postTitle: blogPost.title
+      blogPost
     };
 
     return API.addComment(comment)
       .then((newComment) => {
         const modifiedComment = {
           ...newComment,
-          postTitle: null
+          blogPost: null
         };
 
         this.setState({
@@ -74,7 +74,7 @@ class BlogPostPage extends Component {
         comments[commentIndex] = {
           ...patchedComment,
           // It's redundant to include a comment's post title when it's on the blog post page
-          postTitle: null
+          blogPost: null
         };
 
         this.setState({
@@ -122,7 +122,7 @@ class BlogPostPage extends Component {
         {comments &&
           <BlogPostCommentsList
             comments={comments}
-            postTitle={blogPost.title}
+            blogPost={blogPost}
             handleAdd={this.handleCommentAdd}
             handleDelete={this.handleCommentDelete}
             handleEditSubmit={this.handleCommentEditSubmit}

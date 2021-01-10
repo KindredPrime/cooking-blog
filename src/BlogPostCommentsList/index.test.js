@@ -10,7 +10,6 @@ describe('BlogPostCommentsList Component', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <BlogPostCommentsList
-        postTitle=""
         handleAdd={() => {}}
         handleDelete={() => {}}
         handleEditSubmit={() => {}}
@@ -25,7 +24,6 @@ describe('BlogPostCommentsList Component', () => {
       <BrowserRouter>
         <BlogPostCommentsList
           comments={dummyComments}
-          postTitle=""
           handleAdd={() => {}}
           handleDelete={() => {}}
           handleEditSubmit={() => {}}
@@ -41,7 +39,6 @@ describe('BlogPostCommentsList Component', () => {
       <BrowserRouter>
         <BlogPostCommentsList
           comments={dummyComments}
-          postTitle=""
           handleAdd={() => {}}
           handleDelete={() => {}}
           handleEditSubmit={() => {}}
@@ -58,7 +55,6 @@ describe('BlogPostCommentsList Component', () => {
       <BrowserRouter>
         <BlogPostCommentsList
           comments={dummyComments}
-          postTitle=""
           handleAdd={() => {}}
           handleDelete={() => {}}
           handleEditSubmit={() => {}}

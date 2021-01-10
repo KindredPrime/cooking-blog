@@ -124,17 +124,25 @@ BlogPostCommentsList.propTypes = {
   comments: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      lastEdited: PropTypes.instanceOf(Date).isRequired,
-      content: PropTypes.string.isRequired,
       creator: PropTypes.shape({
         id: PropTypes.number.isRequired,
         username: PropTypes.string.isRequired
       }),
-      postTitle: PropTypes.string
+      blogPost: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        lastEdited: PropTypes.instanceOf(Date).isRequired,
+        title: PropTypes.string.isRequired,
+        author: PropTypes.shape({
+          id: PropTypes.number.isRequired,
+          username: PropTypes.string.isRequired
+        }).isRequired,
+        content: PropTypes.string.isRequired
+      }),
+      content: PropTypes.string.isRequired,
+      lastEdited: PropTypes.instanceOf(Date).isRequired
     })
   ),
   pageLimit: PropTypes.number,
-  postTitle: PropTypes.string.isRequired,
   // handleAdd must return a thenable object
   handleAdd: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
