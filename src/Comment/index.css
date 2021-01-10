@@ -1,3 +1,11 @@
 .Comment {
   margin-bottom: 50px;
 }
+
+.Comment__creator, .Comment__post-title {
+  font-weight: bold;
+}
+
+.Comment__creator:hover, .Comment__post-title:hover, .Comment__creator:focus, .Comment__post-title:focus {
+  text-decoration: underline;
+}
