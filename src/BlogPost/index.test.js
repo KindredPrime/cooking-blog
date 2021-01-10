@@ -11,7 +11,7 @@ describe('BlogPost Component', () => {
     ReactDOM.render(
       <BlogPost
         title=""
-        author=""
+        author={dummyPosts[0].author}
         content=""
         lastEdited={new Date()}
         handleEditSubmit={() => {}}
@@ -25,7 +25,10 @@ describe('BlogPost Component', () => {
     const id = 1;
     const { title, author, content, lastEdited } = dummyPosts[id-1];
     const contextValue = {
-      username: 'not-the-author'
+      user: {
+        id: -1,
+        username: 'not the author'
+      }
     };
 
     render(
@@ -48,7 +51,7 @@ describe('BlogPost Component', () => {
     const id = 1;
     const { title, author, content, lastEdited } = dummyPosts[id-1];
     const contextValue = {
-      username: author
+      user: author
     };
 
     render(
@@ -71,7 +74,7 @@ describe('BlogPost Component', () => {
     const id = 1;
     const { title, author, content, lastEdited } = dummyPosts[id-1];
     const contextValue = {
-      username: author
+      user: author
     };
 
     render(
@@ -96,7 +99,7 @@ describe('BlogPost Component', () => {
     const id = 1;
     const { title, author, content, lastEdited } = dummyPosts[id-1];
     const contextValue = {
-      username: author
+      user: author
     };
 
     render(

@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import CookingContext from '../CookingContext';
 import { formatDate } from '../util';
 import './index.css';
@@ -8,17 +9,17 @@ class Comment extends Component {
   static contextType = CookingContext;
 
   render() {
-    const { username } = this.context;
+    const { user } = this.context;
     const { id, creator, postTitle, content, lastEdited, deleted, handleEdit, handleDelete } = this.props;
 
     return (
       <li className="Comment">
-        {creator && <p className="Comment__creator">{creator}</p>}
+        {creator && <Link className="Comment__creator" to={`/user/${creator.id}`}>{creator.username}</Link>}
         {postTitle && <p className="Comment__post-title">{postTitle}</p>}
         <p className="Comment__content">{content}</p>
         <p className="Comment__timestamp">Last edited on {formatDate(lastEdited)}</p>
 
-        {(!deleted && username && username === creator) &&
+        {(!deleted && user && creator && user.id === creator.id) &&
           <div className="Comment__buttons">
             <button
               type="button"
@@ -46,7 +47,10 @@ class Comment extends Component {
 */
 Comment.propTypes = {
   id: PropTypes.number.isRequired,
-  creator: PropTypes.string,
+  creator: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    username: PropTypes.string.isRequired
+  }),
   postTitle: PropTypes.string,
   content: PropTypes.string,
   lastEdited: PropTypes.instanceOf(Date).isRequired,

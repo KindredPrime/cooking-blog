@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CookingContext = React.createContext({
-  username: null
+  user: null
 });
 
 export default CookingContext;

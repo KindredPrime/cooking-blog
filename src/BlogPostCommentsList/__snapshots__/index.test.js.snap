@@ -13,11 +13,12 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/1"
           >
             User1
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -33,11 +34,12 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/1"
           >
             User1
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -53,11 +55,12 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/4"
           >
             User4
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -73,11 +76,12 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/4"
           >
             User4
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -93,11 +97,12 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/2"
           >
             FakeUser2
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -113,11 +118,12 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/3"
           >
             User3
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -133,11 +139,12 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/4"
           >
             User4
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -153,11 +160,12 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/5"
           >
             User5
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -173,11 +181,12 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/6"
           >
             User6
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -193,11 +202,12 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/7"
           >
             User7
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -242,11 +252,12 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/8"
           >
             User8
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -262,11 +273,12 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/5"
           >
             User5
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -282,11 +294,12 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/5"
           >
             User5
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -302,11 +315,12 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/5"
           >
             User5
-          </p>
+          </a>
           <p
             class="Comment__content"
           >
@@ -322,11 +336,12 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         <li
           class="Comment"
         >
-          <p
+          <a
             class="Comment__creator"
+            href="/user/5"
           >
             User5
-          </p>
+          </a>
           <p
             class="Comment__content"
           >

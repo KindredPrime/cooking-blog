@@ -6,11 +6,12 @@ exports[`Comment Component renders the UI as expected 1`] = `
     <li
       class="Comment"
     >
-      <p
+      <a
         class="Comment__creator"
+        href="/user/1"
       >
         User1
-      </p>
+      </a>
       <p
         class="Comment__content"
       >

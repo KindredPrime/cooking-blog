@@ -17,15 +17,16 @@ class UserPage extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
+    const { user } = this.context;
 
     let pageUsername;
     API.getUserById(id)
-      .then((user) => {
-        pageUsername = user.username;
+      .then((pageUser) => {
+        pageUsername = pageUser.username;
 
-        if (pageUsername === this.context.username) {
+        if (user && pageUser.id === user.id) {
           this.setState({
-            email: user.email
+            email: pageUser.email
           });
         }
 

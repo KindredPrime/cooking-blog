@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import { render, screen } from '@testing-library/react';
 import UserEvent from '@testing-library/user-event';
+import { BrowserRouter } from 'react-router-dom';
 import BlogPostCommentsList from './index';
 import { dummyComments } from '../dummyData';
 
@@ -21,13 +22,15 @@ describe('BlogPostCommentsList Component', () => {
 
   it(`renders the UI as expected`, () => {
     render(
-      <BlogPostCommentsList
-        comments={dummyComments}
-        postTitle=""
-        handleAdd={() => {}}
-        handleDelete={() => {}}
-        handleEditSubmit={() => {}}
-      />
+      <BrowserRouter>
+        <BlogPostCommentsList
+          comments={dummyComments}
+          postTitle=""
+          handleAdd={() => {}}
+          handleDelete={() => {}}
+          handleEditSubmit={() => {}}
+        />
+      </BrowserRouter>
     );
 
     expect(document.body).toMatchSnapshot();
@@ -35,13 +38,15 @@ describe('BlogPostCommentsList Component', () => {
 
   it(`switches to the next group of comments after clicking 'Next'`, () => {
     render(
-      <BlogPostCommentsList
-        comments={dummyComments}
-        postTitle=""
-        handleAdd={() => {}}
-        handleDelete={() => {}}
-        handleEditSubmit={() => {}}
-      />
+      <BrowserRouter>
+        <BlogPostCommentsList
+          comments={dummyComments}
+          postTitle=""
+          handleAdd={() => {}}
+          handleDelete={() => {}}
+          handleEditSubmit={() => {}}
+        />
+      </BrowserRouter>
     );
 
     UserEvent.click(screen.getByText('Next'));
@@ -50,13 +55,15 @@ describe('BlogPostCommentsList Component', () => {
 
   it(`switches to the previous group of comments after clicking 'Previous'`, () => {
     render(
-      <BlogPostCommentsList
-        comments={dummyComments}
-        postTitle=""
-        handleAdd={() => {}}
-        handleDelete={() => {}}
-        handleEditSubmit={() => {}}
-      />
+      <BrowserRouter>
+        <BlogPostCommentsList
+          comments={dummyComments}
+          postTitle=""
+          handleAdd={() => {}}
+          handleDelete={() => {}}
+          handleEditSubmit={() => {}}
+        />
+      </BrowserRouter>
     );
 
     const previous = document.body;

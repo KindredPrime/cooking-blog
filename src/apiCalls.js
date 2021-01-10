@@ -25,7 +25,7 @@ function getAllBlogPosts() {
 
 function getBlogPostsByUser(username) {
   return new Promise((resolve, reject) => {
-    const userPosts = blogPosts.filter((post) => post.author === username);
+    const userPosts = blogPosts.filter((post) => post.author.username === username);
 
     signal.addEventListener('abort', () => {
       reject('getBlogPostsByUser has been aborted');
@@ -96,7 +96,7 @@ function getCommentsByBlogPost(title) {
 }
 
 function getCommentsByUser(username) {
-  return Promise.resolve(comments.filter((comment) => comment.creator === username));
+  return Promise.resolve(comments.filter((comment) => comment.creator.username === username));
 }
 
 function addComment(comment) {

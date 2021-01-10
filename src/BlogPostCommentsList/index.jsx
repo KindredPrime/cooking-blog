@@ -21,8 +21,8 @@ class BlogPostCommentsList extends Component {
   };
 
   handleAdd = (content) => {
-    const { username } = this.context;
-    return this.props.handleAdd(content, username);
+    const { user } = this.context;
+    return this.props.handleAdd(content, user);
   }
 
   renderEdit = (id) => {
@@ -47,7 +47,7 @@ class BlogPostCommentsList extends Component {
   };
 
   render() {
-    const { username } = this.context;
+    const { user } = this.context;
     const { comments, pageLimit, handleDelete } = this.props;
     const { page, editingCommentId } = this.state;
 
@@ -58,7 +58,7 @@ class BlogPostCommentsList extends Component {
       <section className="BlogPostCommentsList">
         <h2>Comments</h2>
 
-        {username && <AddComment handleSubmit={this.handleAdd} />}
+        {user && <AddComment handleSubmit={this.handleAdd} />}
 
         <ul>
           {commentsToRender.map((comment) => {
@@ -124,9 +124,12 @@ BlogPostCommentsList.propTypes = {
   comments: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      lastEdited: PropTypes.instanceOf(Date),
+      lastEdited: PropTypes.instanceOf(Date).isRequired,
       content: PropTypes.string.isRequired,
-      creator: PropTypes.string,
+      creator: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        username: PropTypes.string.isRequired
+      }),
       postTitle: PropTypes.string
     })
   ),

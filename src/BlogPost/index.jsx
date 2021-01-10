@@ -26,12 +26,12 @@ class BlogPost extends Component {
   render() {
     const { lastEdited, title, author, content } = this.props;
     const { isEditing } = this.state;
-    const { username } = this.context;
+    const { user } = this.context;
 
     return (
       <section className="BlogPost">
         <h1>{title}</h1>
-        <h2>By {author}</h2>
+        <h2>By {author.username}</h2>
 
         <p className="BlogPost__timestamp">Last edited on {formatDate(lastEdited)}</p>
 
@@ -41,7 +41,7 @@ class BlogPost extends Component {
             <p className="BlogPostPage__content">{content}</p>
 
             {/* Display an edit button if the current user is the author */}
-            {(username && username === author) &&
+            {(user && user.id === author.id) &&
               <button
                 type="button"
                 onClick={() => this.setState({ isEditing: true })}
@@ -56,7 +56,10 @@ class BlogPost extends Component {
 
 BlogPost.propTypes = {
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
+  author: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    username: PropTypes.string.isRequired
+  }).isRequired,
   content: PropTypes.string.isRequired,
   lastEdited: PropTypes.instanceOf(Date).isRequired,
   handleEditSubmit: PropTypes.func.isRequired

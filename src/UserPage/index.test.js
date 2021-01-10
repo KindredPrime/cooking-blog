@@ -16,11 +16,11 @@ describe('UserPage Component', () => {
     };
 
     API.getCommentsByUser = (username) => {
-      return Promise.resolve(dummyComments.filter((comment) => comment.creator === username));
+      return Promise.resolve(dummyComments.filter((comment) => comment.creator.username === username));
     };
 
     API.getBlogPostsByUser = (username) => {
-      return Promise.resolve(dummyPosts.filter((post) => post.author === username));
+      return Promise.resolve(dummyPosts.filter((post) => post.author.username === username));
     };
   });
 
@@ -43,8 +43,9 @@ describe('UserPage Component', () => {
 
   it('renders the UI as expected', async () => {
     const id = 3;
+    const testUser = dummyUsers[id-1];
     const contextValue = {
-      username: dummyUsers[id-1].username
+      user: testUser
     };
     render(
       <BrowserRouter>
@@ -54,7 +55,7 @@ describe('UserPage Component', () => {
       </BrowserRouter>
     );
 
-    await waitFor(() => expect(screen.getByText(dummyUsers[id-1].username)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText(testUser.username)).toBeInTheDocument());
 
     expect(document.body).toMatchSnapshot();
   });

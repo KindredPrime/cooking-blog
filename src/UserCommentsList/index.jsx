@@ -89,8 +89,11 @@ UserCommentsList.propTypes = {
       id: PropTypes.number.isRequired,
       lastEdited: PropTypes.instanceOf(Date),
       content: PropTypes.string.isRequired,
-      creator: PropTypes.string,
-      postTitle: PropTypes.string
+      creator: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        username: PropTypes.string.isRequired
+      }).isRequired,
+      postTitle: PropTypes.string.isRequired
     })
   ),
   pageLimit: PropTypes.number

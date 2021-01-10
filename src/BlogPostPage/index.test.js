@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { render, waitFor, screen } from '@testing-library/react';
 import UserEvent from '@testing-library/user-event';
 import * as API from '../apiCalls';
@@ -95,14 +96,20 @@ describe('BlogPostPage Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <BlogPostPage match={{ params: { id: '1' } }} />,
+      <BrowserRouter>
+        <BlogPostPage match={{ params: { id: '1' } }} />
+      </BrowserRouter>,
       div
     );
     ReactDOM.unmountComponentAtNode(div);
   });
 
   it('renders the UI as expected', () => {
-    render(<BlogPostPage match={{ params: { id: '1' } }} />);
+    render(
+      <BrowserRouter>
+        <BlogPostPage match={{ params: { id: '1' } }} />
+      </BrowserRouter>
+    );
 
     expect(document.body).toMatchSnapshot();
   });
@@ -114,12 +121,14 @@ describe('BlogPostPage Component', () => {
         const id = 1;
         const { title, author, lastEdited } = dummyPosts[id-1];
         const contextValue = {
-          username: author
+          user: author
         };
         render(
-          <CookingContext.Provider value={contextValue}>
-            <BlogPostPage match={{ params: { id: id.toString() } }} />
-          </CookingContext.Provider>
+          <BrowserRouter>
+            <CookingContext.Provider value={contextValue}>
+              <BlogPostPage match={{ params: { id: id.toString() } }} />
+            </CookingContext.Provider>
+          </BrowserRouter>
         );
         await waitFor(() => expect(screen.getByText(title)).toBeInTheDocument());
 
@@ -147,16 +156,18 @@ describe('BlogPostPage Component', () => {
   });
 
   describe('CommentsList Child Component', () => {
-    const testUsername = dummyUsers[4].username;
+    const testUser = dummyUsers[4];
 
     async function renderBlogPostPage() {
       const contextValue = {
-        username: testUsername
+        user: testUser
       };
       render(
-        <CookingContext.Provider value={contextValue}>
-          <BlogPostPage match={{ params: { id: '1' } }} />
-        </CookingContext.Provider>
+        <BrowserRouter>
+          <CookingContext.Provider value={contextValue}>
+            <BlogPostPage match={{ params: { id: '1' } }} />
+          </CookingContext.Provider>
+        </BrowserRouter>
       );
 
       await waitFor(() => expect(screen.getByText('Comments')).toBeInTheDocument());
@@ -174,7 +185,7 @@ describe('BlogPostPage Component', () => {
 
         const addedComment = screen.getByText('Comments').nextSibling.nextSibling.firstChild;
         // The comment's user matches the context's username
-        expect(addedComment.firstChild.textContent).toEqual(testUsername);
+        expect(addedComment.firstChild.textContent).toEqual(testUser.username);
         // The comment's content matches the new comment
         expect(addedComment.firstChild.nextSibling.textContent).toEqual(newComment);
       }
@@ -199,7 +210,7 @@ describe('BlogPostPage Component', () => {
 
         const editedComment = screen.getByText('Comments').nextSibling.nextSibling.firstChild;
         // The comment's user matches the context's username
-        expect(editedComment.firstChild.textContent).toEqual(testUsername);
+        expect(editedComment.firstChild.textContent).toEqual(testUser.username);
         // The comment's content matches the new comment
         expect(editedComment.firstChild.nextSibling.textContent).toEqual(newComment);
       }

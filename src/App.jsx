@@ -1,4 +1,5 @@
 import { Route } from 'react-router-dom';
+import { dummyUsers } from './dummyData';
 import Nav from './Nav/index';
 import Home from './Home/index';
 import UserPage from './UserPage/index';
@@ -8,8 +9,12 @@ import './App.css';
 
 function App() {
   // The username is set to a default for the static client
+  const index = 0;
   const contextValue = {
-    username: 'User1'
+    user: {
+      id: dummyUsers[index].id,
+      username: dummyUsers[index].username
+    }
   };
 
   return (

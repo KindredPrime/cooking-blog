@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import { render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import Comment from './index';
 import CookingContext from '../CookingContext';
 import { dummyComments } from '../dummyData';
@@ -8,16 +9,16 @@ describe('Comment Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <CookingContext.Provider value={{username: 'username'}}>
+      <BrowserRouter>
         <Comment
           id={1}
-          creator="creator"
+          creator={dummyComments[0].creator}
           content="content"
           lastEdited={new Date()}
           handleEdit={() => {}}
           handleDelete={() => {}}
         />
-      </CookingContext.Provider>,
+      </BrowserRouter>,
       div
     );
     ReactDOM.unmountComponentAtNode(div);
@@ -26,20 +27,22 @@ describe('Comment Component', () => {
   it('renders the UI as expected', () => {
     const id = 1;
     const contextValue = {
-      username: dummyComments[id-1].creator
+      user: dummyComments[id-1].creator
     };
 
     render(
-      <CookingContext.Provider value={contextValue}>
-        <Comment
-          id={id}
-          creator={dummyComments[id-1].creator}
-          content={dummyComments[id-1].content}
-          lastEdited={dummyComments[id-1].lastEdited}
-          handleEdit={() => {}}
-          handleDelete={() => {}}
-        />
-      </CookingContext.Provider>
+      <BrowserRouter>
+        <CookingContext.Provider value={contextValue}>
+          <Comment
+            id={id}
+            creator={dummyComments[id-1].creator}
+            content={dummyComments[id-1].content}
+            lastEdited={dummyComments[id-1].lastEdited}
+            handleEdit={() => {}}
+            handleDelete={() => {}}
+          />
+        </CookingContext.Provider>
+      </BrowserRouter>
     );
 
     expect(document.body).toMatchSnapshot();
