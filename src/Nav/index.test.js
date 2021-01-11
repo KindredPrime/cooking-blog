@@ -8,7 +8,12 @@ import Nav from './index';
 import App from '../App';
 
 describe('Nav Component', () => {
-  const origAPI = API;
+  const origAPI = {
+    getAllBlogPosts: API.getAllBlogPosts,
+    getUserById: API.getUserById,
+    getBlogPostsByUser: API.getBlogPostsByUser,
+    getCommentsByUser: API.getCommentsByUser
+  };
 
   /**
    * Rewrite API methods to mock their results
@@ -20,18 +25,16 @@ describe('Nav Component', () => {
       const user = dummyUsers.find((user) => user.id == id);
 
       if (!user) {
-        reject(`There is no user with id ${id}`);
+        reject(new Error(`There is no user with id ${id}`));
       }
 
       resolve(user);
     });
 
-    API.getBlogPostsByUser = (id) => new Promise((resolve, reject) => {
-      API.getUserById(id)
-        .then((user) => {
-          resolve(dummyPosts.filter((post) => post.author.username === user.username));
-        })
-        .catch(reject);
+    API.getBlogPostsByUser = (username) => new Promise((resolve, reject) => {
+      const userPosts = dummyPosts.filter((post) => post.author.username === username);
+
+      resolve(userPosts)
     });
 
     API.getCommentsByUser = (username) => {
@@ -68,7 +71,7 @@ describe('Nav Component', () => {
     );
 
     userEvent.click(screen.getByText('Home'));
-    await waitFor(() => expect('Welcome to the Cooking Blog!').toBeInTheDocument);
+    await waitFor(() => expect(screen.getByText('Welcome to the Cooking Blog!')).toBeInTheDocument());
 
     expect(document.body).toMatchSnapshot();
   });
@@ -81,8 +84,9 @@ describe('Nav Component', () => {
     );
 
     userEvent.click(screen.getByText('Account'));
-    await waitFor(() => expect(dummyUsers[0].username).toBeInTheDocument);
+    await waitFor(() => expect(screen.getByText(dummyUsers[0].username)).toBeInTheDocument());
 
+    //screen.debug();
     expect(document.body).toMatchSnapshot();
   });
 });

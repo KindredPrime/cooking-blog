@@ -1,16 +1,27 @@
 import { Component } from 'react';
 import * as API from '../apiCalls';
 import PostsList from '../PostsList/index';
+import APIError from '../APIError/index';
 
 class Home extends Component {
   state = {
-    blogPosts: null
+    blogPosts: null,
+    error: null
   };
 
   componentDidMount() {
     API.getAllBlogPosts()
-      .then((blogPosts) => this.setState({ blogPosts }))
-      .catch(console.log);
+      .then((blogPosts) => {
+        this.setState({
+          blogPosts,
+          error: null
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          error
+        });
+      });
   }
 
   componentWillUnmount() {
@@ -18,7 +29,7 @@ class Home extends Component {
   }
 
   render() {
-    const { blogPosts } = this.state;
+    const { blogPosts, error } = this.state;
 
     return (
       <main className="Home">
@@ -29,6 +40,8 @@ class Home extends Component {
         </p>
 
         {blogPosts && <PostsList initialBlogPosts={blogPosts} />}
+
+        {error && <APIError message={error.message} />}
       </main>
     );
   }

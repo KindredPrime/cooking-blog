@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`BlogPostPage Component renders an error as expected 1`] = `
+<body>
+  <div>
+    <main
+      class="BlogPostPage"
+    >
+      <p
+        class="APIError"
+      >
+        Test Error
+      </p>
+    </main>
+  </div>
+</body>
+`;
+
 exports[`BlogPostPage Component renders the UI as expected 1`] = `
 <body>
   <div>

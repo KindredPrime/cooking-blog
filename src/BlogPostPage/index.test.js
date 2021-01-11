@@ -8,7 +8,15 @@ import BlogPostPage from './index';
 import CookingContext from '../CookingContext';
 
 describe('BlogPostPage Component', () => {
-  const origAPI = API;
+  const origAPI = {
+    getBlogPostById: API.getBlogPostById,
+    patchBlogPost: API.patchBlogPost,
+    addComment: API.addComment,
+    deleteComment: API.deleteComment,
+    getCommentById: API.getCommentById,
+    patchComment: API.patchComment,
+    getCommentsByBlogPost: API.getCommentsByBlogPost
+  };
 
   /**
    * Rewrite API methods to mock their results
@@ -112,6 +120,28 @@ describe('BlogPostPage Component', () => {
     );
 
     expect(document.body).toMatchSnapshot();
+  });
+
+  it('renders an error as expected', async () => {
+    const error = 'Test Error';
+    const tempOrigAPI = {
+      getBlogPostById: API.getBlogPostById
+    };
+    API.getBlogPostById = () => new Promise((resolve, reject) => {
+      throw new Error(error);
+    });
+
+    render(
+      <BrowserRouter>
+        <BlogPostPage match={{ params: { id: '1' } }} />
+      </BrowserRouter>
+    );
+
+    await waitFor(() => expect(screen.getByText(error)).toBeInTheDocument());
+    expect(document.body).toMatchSnapshot();
+
+    // Reset the API
+    API.getBlogPostById = tempOrigAPI.getBlogPostById;
   });
 
   describe('BlogPost Child Component', () => {

@@ -1,10 +1,12 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import APIError from '../APIError/index';
 
 class EditPost extends Component {
   state = {
     content: this.props.content,
-    isSubmitting: false
+    isSubmitting: false,
+    error: null
   };
 
   handleCancel(e) {
@@ -22,39 +24,51 @@ class EditPost extends Component {
       isSubmitting: true
     });
 
-    this.props.handleSubmit(content);
+    this.props.handleSubmit(content)
+      .then(() => this.setState({
+        isSubmitting: false,
+        error: null
+      }))
+      .catch((error) => this.setState({
+        isSubmitting: false,
+        error
+      }));
   }
 
   render() {
-    const { content, isSubmitting } = this.state;
+    const { content, isSubmitting, error } = this.state;
 
     return (
-      <form className="EditPost" onSubmit={(e) => this.handleSubmit(e)}>
-        <textarea
-          defaultValue={content}
-          onChange={(e) => this.setState({
-            content: e.target.value
-          })}
-        ></textarea>
+      <div className="EditPost">
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+          <textarea
+            defaultValue={content}
+            onChange={(e) => this.setState({
+              content: e.target.value
+            })}
+          ></textarea>
 
-        <div className="EditPost__buttons">
-          <button
-            type="submit"
-            disabled={isSubmitting}
-          >
-            Submit
-          </button>
-          <button
-            type="submit"
-            onClick={(e) => this.handleCancel(e)}
-            disabled={isSubmitting}
-          >
-            Cancel
-          </button>
+          <div className="EditPost__buttons">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+            >
+              Submit
+            </button>
+            <button
+              type="submit"
+              onClick={(e) => this.handleCancel(e)}
+              disabled={isSubmitting}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
 
         {isSubmitting && <p>Editing post...</p>}
-        </div>
-      </form>
+
+        {error && <APIError message={error.message} />}
+      </div>
     );
   }
 }

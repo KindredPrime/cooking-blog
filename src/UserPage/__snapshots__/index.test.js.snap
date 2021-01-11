@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`UserPage Component renders an error as expected 1`] = `
+<body>
+  <div>
+    <main
+      class="UserPage"
+    >
+      <h1 />
+      <p
+        class="APIError"
+      >
+        Test Error
+      </p>
+    </main>
+  </div>
+</body>
+`;
+
 exports[`UserPage Component renders the UI as expected 1`] = `
 <body>
   <div>

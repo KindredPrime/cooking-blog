@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddComment Component renders an error as expected 1`] = `
+<body>
+  <div>
+    <form
+      class="AddComment"
+    >
+      <textarea
+        id="content"
+        name="content"
+        required=""
+      >
+        New Comment
+      </textarea>
+      <button
+        type="submit"
+      >
+        Add Comment
+      </button>
+      <p
+        class="APIError"
+      >
+        Test Error
+      </p>
+    </form>
+  </div>
+</body>
+`;

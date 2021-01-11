@@ -2,6 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as API from '../apiCalls';
 import { sortEntities } from '../util';
+import APIError from '../APIError/index';
 import BlogPost from '../BlogPost/index';
 import BlogPostCommentsList from '../BlogPostCommentsList/index';
 import './index.css';
@@ -9,17 +10,21 @@ import './index.css';
 class BlogPostPage extends Component {
   state = {
     blogPost: null,
-    comments: null
+    comments: null,
+    error: null
   };
 
+  /*
+    Errors thrown by the API call are caught and handled in the BlogPost component
+  */
   handlePostEditSubmit = (content) => {
     const { id } = this.props.match.params;
 
     return API.patchBlogPost(id, content)
       .then((blogPost) => this.setState({ blogPost }))
-      .catch(console.log);
   };
 
+  // Errors thrown by the API call are caught and handled in the BlogPostCommentsList component
   handleCommentAdd = (content, creator) => {
     const { comments, blogPost } = this.state;
 
@@ -39,14 +44,14 @@ class BlogPostPage extends Component {
         this.setState({
           comments: sortEntities([modifiedComment, ...comments])
         });
-      })
-      .catch(console.log);
+      });
   };
 
+  // Errors thrown by the API call are caught and handled in the BlogPostCommentsList component
   handleCommentDelete = (id) => {
     const { comments } = this.state;
 
-    API.deleteComment(id)
+    return API.deleteComment(id)
       .then(() => {
         const commentsIndex = comments.findIndex((comment) => comment.id === id);
         const comment = comments[commentsIndex];
@@ -61,10 +66,10 @@ class BlogPostPage extends Component {
         this.setState({
           comments: sortEntities(comments)
         });
-      })
-      .catch(console.log)
+      });
   };
 
+  // Errors thrown by the API call are caught and handled in the BlogPostCommentsList component
   handleCommentEditSubmit = (id, content) => {
     return API.patchComment(id, content)
       .then((patchedComment) => {
@@ -80,8 +85,7 @@ class BlogPostPage extends Component {
         this.setState({
           comments: sortEntities(comments)
         });
-      })
-      .catch(console.log);
+      });
   };
 
   componentDidMount() {
@@ -90,7 +94,9 @@ class BlogPostPage extends Component {
     API.getBlogPostById(id)
       .then((blogPost) => {
         this.setState({
-          blogPost
+          blogPost,
+          blogPostError: null,
+          error: null
         });
 
         return blogPost.title;
@@ -99,7 +105,11 @@ class BlogPostPage extends Component {
       .then((comments) => this.setState({
         comments: sortEntities(comments)
       }))
-      .catch(console.log);
+      .catch((error) => {
+        this.setState({
+          error
+        });
+      });
   }
 
   componentWillUnmount() {
@@ -107,10 +117,12 @@ class BlogPostPage extends Component {
   }
 
   render() {
-    const { blogPost, comments } = this.state;
+    const { blogPost, comments, error } = this.state;
 
     return (
       <main className="BlogPostPage">
+        {error && <APIError message={error.message} />}
+
         {blogPost && <BlogPost
           title={blogPost.title}
           author={blogPost.author}

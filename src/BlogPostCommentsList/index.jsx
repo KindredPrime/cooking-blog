@@ -20,6 +20,7 @@ class BlogPostCommentsList extends Component {
     comments: []
   };
 
+  // Any errors thrown by this function are caught in AddComment
   handleAdd = (content) => {
     const { user } = this.context;
     return this.props.handleAdd(content, user);
@@ -31,13 +32,13 @@ class BlogPostCommentsList extends Component {
     });
   };
 
+  // Errors are caught and handled by the EditComment component
   handleEditSubmit = (id, content) => {
     return this.props.handleEditSubmit(id, content)
       // Un-render the EditComment
       .then(() => this.setState({
         editingCommentId: null
-      }))
-      .catch(console.log);
+      }));
   };
 
   handleEditCancel = () => {

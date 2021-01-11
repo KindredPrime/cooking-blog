@@ -16,7 +16,7 @@ function abortTasks() {
 function getAllBlogPosts() {
   return new Promise((resolve, reject) => {
     signal.addEventListener('abort', () => {
-      reject('getAllBlogPosts has been aborted');
+      reject(new Error('getAllBlogPosts has been aborted'));
     });
 
     resolve(blogPosts)
@@ -28,7 +28,7 @@ function getBlogPostsByUser(username) {
     const userPosts = blogPosts.filter((post) => post.author.username === username);
 
     signal.addEventListener('abort', () => {
-      reject('getBlogPostsByUser has been aborted');
+      reject(new Error('getBlogPostsByUser has been aborted'));
     });
 
     resolve(userPosts)
@@ -40,7 +40,7 @@ function getBlogPostById(id) {
     const blogPost = blogPosts.find((post) => post.id === parseInt(id));
 
     if (!blogPost) {
-      reject(`There is no blog post with id ${id}`);
+      reject(new Error(`There is no blog post with id ${id}`));
     }
 
     resolve(blogPost);
@@ -80,7 +80,7 @@ function getCommentById(id) {
     const comment = comments.find((comment) => comment.id === id);
 
     if (!comment) {
-      reject(`Comment with id ${id} does not exist`);
+      reject(new Error(`Comment with id ${id} does not exist`));
     }
 
     resolve(comment);
@@ -147,7 +147,7 @@ function deleteComment(id) {
     const commentsIndex = comments.findIndex((comment) => comment.id === id);
 
     if (commentsIndex < 0) {
-      reject(`Comment with id ${id} does not exist`);
+      reject(new Error(`Comment with id ${id} does not exist`));
     }
 
     const comment = comments[commentsIndex];

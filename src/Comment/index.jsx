@@ -3,14 +3,34 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CookingContext from '../CookingContext';
 import { formatDate } from '../util';
+import APIError from '../APIError/index';
 import './index.css';
 
 class Comment extends Component {
   static contextType = CookingContext;
 
+  state = {
+    error: null
+  };
+
+  handleDelete(id) {
+    this.props.handleDelete(id)
+      .then(() => {
+        this.setState({
+          error: null
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          error
+        });
+      });
+  }
+
   render() {
     const { user } = this.context;
-    const { id, creator, blogPost, content, lastEdited, deleted, handleEdit, handleDelete } = this.props;
+    const { id, creator, blogPost, content, lastEdited, deleted, handleEdit } = this.props;
+    const { error } = this.state;
 
     return (
       <li className="Comment">
@@ -32,11 +52,13 @@ class Comment extends Component {
             </button>
             <button
               type="button"
-              onClick={() => handleDelete(id)}
+              onClick={() => this.handleDelete(id)}
             >
               Delete
             </button>
           </div>}
+
+        {error && <APIError message={error.message} />}
       </li>
     );
   }

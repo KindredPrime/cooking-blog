@@ -1,9 +1,10 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import CookingContext from '../CookingContext';
+import * as API from '../apiCalls';
+import APIError from '../APIError';
 import PostsList from '../PostsList/index';
 import UserCommentsList from '../UserCommentsList/index';
-import * as API from '../apiCalls';
 
 class UserPage extends Component {
   static contextType = CookingContext;
@@ -12,7 +13,8 @@ class UserPage extends Component {
     username: null,
     email: null,
     blogPosts: null,
-    comments: null
+    comments: null,
+    error: null
   };
 
   componentDidMount() {
@@ -31,14 +33,23 @@ class UserPage extends Component {
         }
 
         this.setState({
-          username: pageUsername
+          username: pageUsername,
+          error: null
         });
       })
       .then(() => API.getCommentsByUser(pageUsername))
-      .then((comments) => this.setState({ comments }))
+      .then((comments) => {
+        this.setState({ comments })
+      })
       .then(() => API.getBlogPostsByUser(pageUsername))
-      .then((blogPosts) => this.setState({ blogPosts }))
-      .catch(console.log);
+      .then((blogPosts) => {
+        this.setState({ blogPosts })
+      })
+      .catch((error) => {
+        this.setState({
+          error
+        });
+      });
   }
 
   componentWillUnmount() {
@@ -46,13 +57,15 @@ class UserPage extends Component {
   }
 
   render() {
-    const { username, email, blogPosts, comments } = this.state;
+    const { username, email, blogPosts, comments, error } = this.state;
 
     return (
       <main className="UserPage">
         <h1>{username}</h1>
 
         {email && <p>Email: {email}</p>}
+
+        {error && <APIError message={error.message} />}
 
         {blogPosts && <PostsList initialBlogPosts={blogPosts} />}
 

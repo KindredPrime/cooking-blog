@@ -19,15 +19,19 @@ class BlogPost extends Component {
     });
   }
 
+  /*
+    Any errors thrown by this function are caught by the function that calls this function
+  */
   handleEditSubmit = (content) => {
-    this.props.handleEditSubmit(content)
-      .then(() => this.setState({ isEditing: false }))
-      .catch(console.log);
+    return this.props.handleEditSubmit(content)
+      .then(() => this.setState({
+        isEditing: false
+      }));
   }
 
   render() {
     const { title, author, content, lastEdited } = this.props;
-    const { isEditing } = this.state;
+    const { isEditing, error } = this.state;
     const { user } = this.context;
 
     return (

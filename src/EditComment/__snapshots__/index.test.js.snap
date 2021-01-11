@@ -1,34 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`EditComment Component renders an error as expected 1`] = `
+<body>
+  <div>
+    <div
+      class="EditComment"
+    >
+      <form
+        class="EditComment"
+      >
+        <textarea
+          id="content"
+          name="content"
+          required=""
+        >
+          Initial Content
+        </textarea>
+        <div
+          class="EditComment__button-wrapper"
+        >
+          <button
+            class="EditComment__submit"
+            type="submit"
+          >
+            Submit
+          </button>
+          <button
+            type="submit"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+      <p
+        class="APIError"
+      >
+        Test error
+      </p>
+    </div>
+  </div>
+</body>
+`;
+
 exports[`EditComment Component renders the UI as expected 1`] = `
 <body>
   <div>
-    <form
+    <div
       class="EditComment"
     >
-      <textarea
-        id="content"
-        name="content"
-        required=""
+      <form
+        class="EditComment"
       >
-        Initial Content
-      </textarea>
-      <div
-        class="EditComment__button-wrapper"
-      >
-        <button
-          class="EditComment__submit"
-          type="submit"
+        <textarea
+          id="content"
+          name="content"
+          required=""
         >
-          Submit
-        </button>
-        <button
-          type="submit"
+          Initial Content
+        </textarea>
+        <div
+          class="EditComment__button-wrapper"
         >
-          Cancel
-        </button>
-      </div>
-    </form>
+          <button
+            class="EditComment__submit"
+            type="submit"
+          >
+            Submit
+          </button>
+          <button
+            type="submit"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </body>
 `;

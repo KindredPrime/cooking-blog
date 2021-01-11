@@ -1,5 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Comment Component renders an error as expected 1`] = `
+<body>
+  <div>
+    <li
+      class="Comment"
+    >
+      <a
+        class="Comment__creator"
+        href="/user/1"
+      >
+        User1
+      </a>
+      <a
+        class="Comment__post-title"
+        href="/blog-posts/1"
+      >
+        Lessons I Learned from Cooking
+      </a>
+      <p
+        class="Comment__content"
+      >
+        These are all great lessons!
+      </p>
+      <p
+        class="Comment__timestamp"
+      >
+        Last edited on 
+        Dec 19 2020 07:37:16
+      </p>
+      <div
+        class="Comment__buttons"
+      >
+        <button
+          type="button"
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+        >
+          Delete
+        </button>
+      </div>
+      <p
+        class="APIError"
+      >
+        Test Error
+      </p>
+    </li>
+  </div>
+</body>
+`;
+
 exports[`Comment Component renders the UI as expected 1`] = `
 <body>
   <div>

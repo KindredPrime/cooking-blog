@@ -59,4 +59,26 @@ describe('UserPage Component', () => {
 
     expect(document.body).toMatchSnapshot();
   });
+
+  it('renders an error as expected', async () => {
+    const error = 'Test Error';
+    const tempOrigAPI = {
+      getUserById: API.getUserById
+    };
+    API.getUserById = () => new Promise((resolve, reject) => {
+      throw new Error(error);
+    });
+
+    render(
+      <BrowserRouter>
+        <UserPage match={{ params: { id: '1' } }} />
+      </BrowserRouter>
+    );
+
+    await waitFor(() => expect(screen.getByText(error)).toBeInTheDocument());
+    expect(document.body).toMatchSnapshot();
+
+    // Reset the API
+    API.getUserById = tempOrigAPI.getUserById;
+  });
 });

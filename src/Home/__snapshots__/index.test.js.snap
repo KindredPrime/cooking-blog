@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Component renders an error as expected 1`] = `
+<body>
+  <div>
+    <main
+      class="Home"
+    >
+      <h1>
+        Welcome to the Cooking Blog!
+      </h1>
+      <p>
+        Ever wanted to learn more about cooking, or share your experiences with others? Here you can read all kinds of posts from other users: things they've tried, things they want to try, recipes, cooking tips, etc. And if you create an account you can make posts of your own, and leave comments on posts.
+      </p>
+      <p
+        class="APIError"
+      >
+        Test Error
+      </p>
+    </main>
+  </div>
+</body>
+`;

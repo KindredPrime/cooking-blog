@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import UserEvent from '@testing-library/user-event';
 import EditComment from './index';
 
 describe('EditComment Component', () => {
@@ -17,6 +18,24 @@ describe('EditComment Component', () => {
       <EditComment initialContent="Initial Content" handleSubmit={() => {}} handleCancel={() => {}} />
     );
 
+    expect(document.body).toMatchSnapshot();
+  });
+
+  it('renders an error as expected', async () => {
+    const error = 'Test error';
+    render(
+      <EditComment
+        initialContent="Initial Content"
+        handleSubmit={() => new Promise((resolve, reject) => {
+          throw new Error(error);
+        })}
+        handleCancel={() => {}}
+      />
+    );
+
+    UserEvent.click(screen.getByText('Submit'));
+
+    await waitFor(() => expect(screen.getByText(error)).toBeInTheDocument());
     expect(document.body).toMatchSnapshot();
   });
 });
