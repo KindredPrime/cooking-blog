@@ -15,7 +15,7 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         >
           <a
             class="Comment__creator"
-            href="/user/1"
+            href="/users/1"
           >
             User1
           </a>
@@ -36,7 +36,7 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         >
           <a
             class="Comment__creator"
-            href="/user/1"
+            href="/users/1"
           >
             User1
           </a>
@@ -57,7 +57,7 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         >
           <a
             class="Comment__creator"
-            href="/user/4"
+            href="/users/4"
           >
             User4
           </a>
@@ -78,7 +78,7 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         >
           <a
             class="Comment__creator"
-            href="/user/4"
+            href="/users/4"
           >
             User4
           </a>
@@ -99,7 +99,7 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         >
           <a
             class="Comment__creator"
-            href="/user/2"
+            href="/users/2"
           >
             FakeUser2
           </a>
@@ -120,7 +120,7 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         >
           <a
             class="Comment__creator"
-            href="/user/3"
+            href="/users/3"
           >
             User3
           </a>
@@ -141,7 +141,7 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         >
           <a
             class="Comment__creator"
-            href="/user/4"
+            href="/users/4"
           >
             User4
           </a>
@@ -162,7 +162,7 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         >
           <a
             class="Comment__creator"
-            href="/user/5"
+            href="/users/5"
           >
             User5
           </a>
@@ -183,7 +183,7 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         >
           <a
             class="Comment__creator"
-            href="/user/6"
+            href="/users/6"
           >
             User6
           </a>
@@ -204,7 +204,7 @@ exports[`BlogPostCommentsList Component renders the UI as expected 1`] = `
         >
           <a
             class="Comment__creator"
-            href="/user/7"
+            href="/users/7"
           >
             User7
           </a>
@@ -254,7 +254,7 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         >
           <a
             class="Comment__creator"
-            href="/user/8"
+            href="/users/8"
           >
             User8
           </a>
@@ -275,7 +275,7 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         >
           <a
             class="Comment__creator"
-            href="/user/5"
+            href="/users/5"
           >
             User5
           </a>
@@ -296,7 +296,7 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         >
           <a
             class="Comment__creator"
-            href="/user/5"
+            href="/users/5"
           >
             User5
           </a>
@@ -317,7 +317,7 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         >
           <a
             class="Comment__creator"
-            href="/user/5"
+            href="/users/5"
           >
             User5
           </a>
@@ -338,7 +338,7 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         >
           <a
             class="Comment__creator"
-            href="/user/5"
+            href="/users/5"
           >
             User5
           </a>

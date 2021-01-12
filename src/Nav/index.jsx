@@ -6,7 +6,7 @@ function Nav() {
     <nav className="Nav">
       <NavLink exact to="/">Home</NavLink>
       {/* The user is set to a default for the static client */}
-      <NavLink to="/user/1">Account</NavLink>
+      <NavLink to="/users/1">Account</NavLink>
     </nav>
   );
 }

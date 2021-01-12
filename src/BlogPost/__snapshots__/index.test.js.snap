@@ -13,7 +13,7 @@ exports[`BlogPost Component renders the edit form when the 'Edit' button is clic
         By 
         <a
           class="BlogPost__author"
-          href="/user/2"
+          href="/users/2"
         >
           FakeUser2
         </a>
@@ -65,7 +65,7 @@ exports[`BlogPost Component renders the post as expected, where the user IS the 
         By 
         <a
           class="BlogPost__author"
-          href="/user/2"
+          href="/users/2"
         >
           FakeUser2
         </a>
@@ -104,7 +104,7 @@ exports[`BlogPost Component renders the post as expected, where the user is NOT 
         By 
         <a
           class="BlogPost__author"
-          href="/user/2"
+          href="/users/2"
         >
           FakeUser2
         </a>
@@ -138,7 +138,7 @@ exports[`BlogPost Component un-renders the edit form after clicking 'Cancel' 1`]
         By 
         <a
           class="BlogPost__author"
-          href="/user/2"
+          href="/users/2"
         >
           FakeUser2
         </a>

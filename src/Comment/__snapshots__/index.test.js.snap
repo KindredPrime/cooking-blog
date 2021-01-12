@@ -8,7 +8,7 @@ exports[`Comment Component renders an error as expected 1`] = `
     >
       <a
         class="Comment__creator"
-        href="/user/1"
+        href="/users/1"
       >
         User1
       </a>
@@ -61,7 +61,7 @@ exports[`Comment Component renders the UI as expected 1`] = `
     >
       <a
         class="Comment__creator"
-        href="/user/1"
+        href="/users/1"
       >
         User1
       </a>

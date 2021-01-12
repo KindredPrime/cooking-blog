@@ -38,7 +38,7 @@ class BlogPost extends Component {
       <section className="BlogPost">
         <h1>{title}</h1>
         <h2>
-          By <Link className="BlogPost__author" to={`/user/${author.id}`}>{author.username}</Link>
+          By <Link className="BlogPost__author" to={`/users/${author.id}`}>{author.username}</Link>
         </h2>
 
         <p className="BlogPost__timestamp">Last edited on {formatDate(lastEdited)}</p>

@@ -24,7 +24,7 @@ function App() {
 
         <Route exact path="/" component={Home} />
         <Route
-          path="/user/:id"
+          path="/users/:id"
           component={UserPage}
         />
         <Route

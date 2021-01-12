@@ -34,7 +34,7 @@ class Comment extends Component {
 
     return (
       <li className="Comment">
-        {creator && <Link className="Comment__creator" to={`/user/${creator.id}`}>{creator.username}</Link>}
+        {creator && <Link className="Comment__creator" to={`/users/${creator.id}`}>{creator.username}</Link>}
         {blogPost
           && <Link className="Comment__post-title" to={`/blog-posts/${blogPost.id}`}>
             {blogPost.title}

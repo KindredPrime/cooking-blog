@@ -17,7 +17,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
         <a
           aria-current="page"
           class="active"
-          href="/user/1"
+          href="/users/1"
         >
           Account
         </a>
@@ -147,7 +147,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
           Home
         </a>
         <a
-          href="/user/1"
+          href="/users/1"
         >
           Account
         </a>
