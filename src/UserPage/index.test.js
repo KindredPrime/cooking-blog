@@ -7,7 +7,11 @@ import { dummyPosts, dummyComments, dummyUsers } from '../dummyData';
 import CookingContext from '../CookingContext';
 
 describe('UserPage Component', () => {
-  const origAPI = API;
+  const origAPI = {
+    getUserById: API.getUserById,
+    getCommentsByUser: API.getCommentsByUser,
+    getBlogPostsByUser: API.getBlogPostsByUser
+  };
 
   // Mock API calls
   beforeAll(() => {
