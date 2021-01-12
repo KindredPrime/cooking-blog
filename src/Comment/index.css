@@ -4,6 +4,7 @@
 
 .Comment__creator, .Comment__post-title {
   font-weight: bold;
+  font-size: 18px;
 }
 
 .Comment__creator:hover, .Comment__post-title:hover, .Comment__creator:focus, .Comment__post-title:focus {

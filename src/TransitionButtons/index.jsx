@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './index.css';
 
 function TransitionButtons(props) {
   const { isAtTheBeginning, isAtTheEnd, handlePrevClick, handleNextClick } = props;

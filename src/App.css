@@ -1,5 +1,4 @@
 body {
-  text-align: center;
   margin: 0;
 }
 
@@ -16,4 +15,16 @@ ul {
 a {
   color: black;
   text-decoration: none;
+}
+
+header * {
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+}
+
+p.timestamp {
+  font-size: 16px;
 }

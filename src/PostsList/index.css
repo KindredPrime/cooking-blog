@@ -2,18 +2,19 @@
   margin-top: 50px;
 }
 
-li.blog-post {
+.PostsList__blog-post {
   margin-bottom: 50px;
 }
 
-li.blog-post * {
+.PostsList__blog-post * {
   margin: 0 0 5px 0;
 }
 
-a.blog-title {
+.PostsList__title {
   font-weight: bold;
+  font-size: 20px;
 }
 
-a.blog-title:focus, a.blog-title:hover {
+.PostsList__title:focus, .PostsList__title:hover {
   text-decoration: underline;
 }
