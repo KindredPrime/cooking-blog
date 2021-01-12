@@ -164,7 +164,15 @@ function deleteComment(id) {
 }
 
 function getUserById(id) {
-  return Promise.resolve(users.find((user) => user.id === parseInt(id)));
+  return new Promise((resolve, reject) => {
+    const user = users.find((user) => user.id === parseInt(id));
+
+    if (user === undefined) {
+      reject(new Error(`User with id ${id} does not exist`));
+    }
+
+    resolve(user);
+  });
 }
 
 export {
