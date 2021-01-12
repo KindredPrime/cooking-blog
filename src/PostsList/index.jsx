@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { sortEntities, formatDate, isOnLastPage } from '../util';
+import TransitionButtons from '../TransitionButtons/index';
 import './index.css';
 
 class PostsList extends Component {
@@ -42,37 +43,29 @@ class PostsList extends Component {
             const { id, title, lastEdited } = post;
 
             return (
-              <li key={`post-${id}`} className="blog-post">
-                <Link className="blog-title" to={`/blog-posts/${id}`}>{title}</Link>
+              <li key={`post-${id}`} className="PostsList__blog-post">
+                <Link className="PostsList__title" to={`/blog-posts/${id}`}>{title}</Link>
                 <p className="timestamp">Last edited: {formatDate(lastEdited)}</p>
               </li>
             );
           })}
         </ul>
 
-        {displayButtons &&
-          <>
-            <button
-              type="button"
-              className="page-button prev-posts"
-              disabled={page === 1}
-              onClick={() => this.setState({
-                page: page-1
-              })}
-            >
-              Previous
-            </button>
-            <button
-              type="button"
-              className="page-button"
-              disabled={isOnLastPage(sortedPosts, page, pageLimit)}
-              onClick={() => this.setState({
-                page: page+1
-              })}
-            >
-              Next
-            </button>
-          </>}
+        {displayButtons
+          && <TransitionButtons
+            isAtTheBeginning={page === 1}
+            isAtTheEnd={isOnLastPage(sortedPosts, page, pageLimit)}
+            handlePrevClick={() => {
+              this.setState({
+                page: page - 1
+              });
+            }}
+            handleNextClick={() => {
+              this.setState({
+                page: page + 1
+              });
+            }}
+          />}
       </section>
     );
   }

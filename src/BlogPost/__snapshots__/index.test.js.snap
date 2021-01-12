@@ -21,7 +21,7 @@ exports[`BlogPost Component renders the edit form when the 'Edit' button is clic
         </p>
       </header>
       <p
-        class="BlogPost__timestamp"
+        class="timestamp"
       >
         Last edited: 
         Dec 17 2020 07:37:16
@@ -75,7 +75,7 @@ exports[`BlogPost Component renders the post as expected, where the user IS the 
         </p>
       </header>
       <p
-        class="BlogPost__timestamp"
+        class="timestamp"
       >
         Last edited: 
         Dec 17 2020 07:37:16
@@ -116,7 +116,7 @@ exports[`BlogPost Component renders the post as expected, where the user is NOT 
         </p>
       </header>
       <p
-        class="BlogPost__timestamp"
+        class="timestamp"
       >
         Last edited: 
         Dec 17 2020 07:37:16
@@ -152,7 +152,7 @@ exports[`BlogPost Component un-renders the edit form after clicking 'Cancel' 1`]
         </p>
       </header>
       <p
-        class="BlogPost__timestamp"
+        class="timestamp"
       >
         Last edited: 
         Dec 17 2020 07:37:16

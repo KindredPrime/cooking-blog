@@ -175,7 +175,7 @@ describe('BlogPostPage Component', () => {
 
         // The timestamp has been updated
         const newTimestamp = new Date(document
-          .getElementsByClassName('BlogPost__timestamp')[0]
+          .getElementsByClassName('timestamp')[0]
           .textContent
           .split('Last edited: ')
           .join('')

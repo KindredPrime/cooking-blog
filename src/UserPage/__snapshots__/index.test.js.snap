@@ -44,10 +44,10 @@ exports[`UserPage Component renders the UI as expected 1`] = `
         </header>
         <ul>
           <li
-            class="blog-post"
+            class="PostsList__blog-post"
           >
             <a
-              class="blog-title"
+              class="PostsList__title"
               href="/blog-posts/8"
             >
               Title8
@@ -60,10 +60,10 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             </p>
           </li>
           <li
-            class="blog-post"
+            class="PostsList__blog-post"
           >
             <a
-              class="blog-title"
+              class="PostsList__title"
               href="/blog-posts/6"
             >
               Title6
@@ -76,10 +76,10 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             </p>
           </li>
           <li
-            class="blog-post"
+            class="PostsList__blog-post"
           >
             <a
-              class="blog-title"
+              class="PostsList__title"
               href="/blog-posts/11"
             >
               Title11
@@ -92,10 +92,10 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             </p>
           </li>
           <li
-            class="blog-post"
+            class="PostsList__blog-post"
           >
             <a
-              class="blog-title"
+              class="PostsList__title"
               href="/blog-posts/7"
             >
               Title7
@@ -108,10 +108,10 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             </p>
           </li>
           <li
-            class="blog-post"
+            class="PostsList__blog-post"
           >
             <a
-              class="blog-title"
+              class="PostsList__title"
               href="/blog-posts/10"
             >
               Title10
@@ -124,10 +124,10 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             </p>
           </li>
           <li
-            class="blog-post"
+            class="PostsList__blog-post"
           >
             <a
-              class="blog-title"
+              class="PostsList__title"
               href="/blog-posts/9"
             >
               Title9
@@ -140,10 +140,10 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             </p>
           </li>
           <li
-            class="blog-post"
+            class="PostsList__blog-post"
           >
             <a
-              class="blog-title"
+              class="PostsList__title"
               href="/blog-posts/3"
             >
               5 Easy Cooking Tips
@@ -181,7 +181,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
               I know, right?
             </p>
             <p
-              class="Comment__timestamp"
+              class="timestamp"
             >
               Last edited: 
               Dec 19 2020 08:37:16

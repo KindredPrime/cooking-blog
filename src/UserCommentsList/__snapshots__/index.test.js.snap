@@ -27,7 +27,7 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
             I wish I knew these when I started learning to cook!
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Jan 05 2021 08:28:28
@@ -48,7 +48,7 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
             Comment14
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Jan 05 2021 06:07:08
@@ -69,7 +69,7 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
             Comment15
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Jan 03 2021 20:21:22
@@ -90,7 +90,7 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
             Comment13
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Jan 02 2021 13:14:15
@@ -111,7 +111,7 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
             Comment12
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Jan 01 2021 12:13:14
@@ -132,7 +132,7 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
             What an insightful post
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Jan 01 2021 10:31:39
@@ -153,7 +153,7 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
             Great advice!  This'll help me save so much money feeding my three teenagers!
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Dec 31 2020 09:24:43
@@ -174,7 +174,7 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
             It's amazing what you can learn from cooking
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Dec 20 2020 10:43:16
@@ -195,7 +195,7 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
             Comment10
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Dec 19 2020 15:22:16
@@ -216,26 +216,30 @@ exports[`UserCommentsList Component renders the UI as expected 1`] = `
             I know, right?
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Dec 19 2020 08:37:16
           </p>
         </li>
       </ul>
-      <button
-        class="page-button prev"
-        disabled=""
-        type="button"
+      <div
+        class="TransitionButtons"
       >
-        Previous
-      </button>
-      <button
-        class="page-button next"
-        type="button"
-      >
-        Next
-      </button>
+        <button
+          class="TransitionButtons__prev"
+          disabled=""
+          type="button"
+        >
+          Previous
+        </button>
+        <button
+          class="TransitionButtons__next"
+          type="button"
+        >
+          Next
+        </button>
+      </div>
     </section>
   </div>
 </body>
@@ -268,7 +272,7 @@ exports[`UserCommentsList Component switches to the next group of comments after
             These are all great lessons!
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Dec 19 2020 07:37:16
@@ -289,7 +293,7 @@ exports[`UserCommentsList Component switches to the next group of comments after
             Huh, I never thought about it this way
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Dec 17 2020 20:12:16
@@ -310,7 +314,7 @@ exports[`UserCommentsList Component switches to the next group of comments after
             I can't wait to try these seasoning combinations in my next meal!
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Dec 17 2020 08:37:52
@@ -331,7 +335,7 @@ exports[`UserCommentsList Component switches to the next group of comments after
             Comment11
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Dec 15 2020 17:18:19
@@ -352,26 +356,30 @@ exports[`UserCommentsList Component switches to the next group of comments after
             Comment9
           </p>
           <p
-            class="Comment__timestamp"
+            class="timestamp"
           >
             Last edited: 
             Dec 12 2020 07:07:07
           </p>
         </li>
       </ul>
-      <button
-        class="page-button prev"
-        type="button"
+      <div
+        class="TransitionButtons"
       >
-        Previous
-      </button>
-      <button
-        class="page-button next"
-        disabled=""
-        type="button"
-      >
-        Next
-      </button>
+        <button
+          class="TransitionButtons__prev"
+          type="button"
+        >
+          Previous
+        </button>
+        <button
+          class="TransitionButtons__next"
+          disabled=""
+          type="button"
+        >
+          Next
+        </button>
+      </div>
     </section>
   </div>
 </body>

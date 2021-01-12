@@ -5,6 +5,7 @@ import { isOnLastPage } from '../util';
 import Comment from '../Comment/index';
 import EditComment from '../EditComment/index';
 import AddComment from '../AddComment/index';
+import TransitionButtons from '../TransitionButtons/index';
 import './index.css';
 
 class BlogPostCommentsList extends Component {
@@ -94,30 +95,21 @@ class BlogPostCommentsList extends Component {
           })}
         </ul>
 
-        {displayButtons && (
-          <>
-            <button
-              type="button"
-              className="page-button prev"
-              disabled={page === 1}
-              onClick={() => this.setState({
-                page: page-1
-              })}
-            >
-              Previous
-            </button>
-            <button
-              type="button"
-              className="page-button next"
-              disabled={isOnLastPage(comments, page, pageLimit)}
-              onClick={() => this.setState({
-                page: page+1
-              })}
-            >
-              Next
-            </button>
-          </>
-        )}
+        {displayButtons
+          && <TransitionButtons
+            isAtTheBeginning={page === 1}
+            isAtTheEnd={isOnLastPage(comments, page, pageLimit)}
+            handlePrevClick={() => {
+              this.setState({
+                page: page - 1
+              });
+            }}
+            handleNextClick={() => {
+              this.setState({
+                page: page + 1
+              });
+            }}
+          />}
       </section>
     );
   }

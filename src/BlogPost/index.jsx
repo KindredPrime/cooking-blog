@@ -43,7 +43,7 @@ class BlogPost extends Component {
           </p>
         </header>
 
-        <p className="BlogPost__timestamp">Last edited: {formatDate(lastEdited)}</p>
+        <p className="timestamp">Last edited: {formatDate(lastEdited)}</p>
 
         {isEditing
           ? <EditPost content={content} handleCancel={this.handleEditCancel} handleSubmit={this.handleEditSubmit} />

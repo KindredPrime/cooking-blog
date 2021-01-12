@@ -2,6 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { isOnLastPage, sortEntities } from '../util';
 import Comment from '../Comment/index';
+import TransitionButtons from '../TransitionButtons/index';
 import './index.css';
 
 class UserCommentsList extends Component {
@@ -56,30 +57,21 @@ class UserCommentsList extends Component {
           })}
         </ul>
 
-        {displayButtons && (
-          <>
-            <button
-              type="button"
-              className="page-button prev"
-              disabled={page === 1}
-              onClick={() => this.setState({
-                page: page-1
-              })}
-            >
-              Previous
-            </button>
-            <button
-              type="button"
-              className="page-button next"
-              disabled={isOnLastPage(sortedComments, page, pageLimit)}
-              onClick={() => this.setState({
-                page: page+1
-              })}
-            >
-              Next
-            </button>
-          </>
-        )}
+        {displayButtons
+          && <TransitionButtons
+            isAtTheBeginning={page === 1}
+            isAtTheEnd={isOnLastPage(sortedComments, page, pageLimit)}
+            handlePrevClick={() => {
+              this.setState({
+                page: page - 1
+              });
+            }}
+            handleNextClick={() => {
+              this.setState({
+                page: page + 1
+              });
+            }}
+          />}
       </section>
     );
   }

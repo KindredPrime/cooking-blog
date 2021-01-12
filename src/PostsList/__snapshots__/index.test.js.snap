@@ -13,10 +13,10 @@ exports[`PostsList Component renders the UI as expected 1`] = `
       </header>
       <ul>
         <li
-          class="blog-post"
+          class="PostsList__blog-post"
         >
           <a
-            class="blog-title"
+            class="PostsList__title"
             href="/blog-posts/8"
           >
             Title8
@@ -29,10 +29,10 @@ exports[`PostsList Component renders the UI as expected 1`] = `
           </p>
         </li>
         <li
-          class="blog-post"
+          class="PostsList__blog-post"
         >
           <a
-            class="blog-title"
+            class="PostsList__title"
             href="/blog-posts/6"
           >
             Title6
@@ -45,10 +45,10 @@ exports[`PostsList Component renders the UI as expected 1`] = `
           </p>
         </li>
         <li
-          class="blog-post"
+          class="PostsList__blog-post"
         >
           <a
-            class="blog-title"
+            class="PostsList__title"
             href="/blog-posts/4"
           >
             Cooking Basics for Beginners
@@ -61,19 +61,23 @@ exports[`PostsList Component renders the UI as expected 1`] = `
           </p>
         </li>
       </ul>
-      <button
-        class="page-button prev-posts"
-        disabled=""
-        type="button"
+      <div
+        class="TransitionButtons"
       >
-        Previous
-      </button>
-      <button
-        class="page-button"
-        type="button"
-      >
-        Next
-      </button>
+        <button
+          class="TransitionButtons__prev"
+          disabled=""
+          type="button"
+        >
+          Previous
+        </button>
+        <button
+          class="TransitionButtons__next"
+          type="button"
+        >
+          Next
+        </button>
+      </div>
     </section>
   </div>
 </body>
@@ -92,10 +96,10 @@ exports[`PostsList Component switches to the next group of blog posts after clic
       </header>
       <ul>
         <li
-          class="blog-post"
+          class="PostsList__blog-post"
         >
           <a
-            class="blog-title"
+            class="PostsList__title"
             href="/blog-posts/3"
           >
             5 Easy Cooking Tips
@@ -108,19 +112,23 @@ exports[`PostsList Component switches to the next group of blog posts after clic
           </p>
         </li>
       </ul>
-      <button
-        class="page-button prev-posts"
-        type="button"
+      <div
+        class="TransitionButtons"
       >
-        Previous
-      </button>
-      <button
-        class="page-button"
-        disabled=""
-        type="button"
-      >
-        Next
-      </button>
+        <button
+          class="TransitionButtons__prev"
+          type="button"
+        >
+          Previous
+        </button>
+        <button
+          class="TransitionButtons__next"
+          disabled=""
+          type="button"
+        >
+          Next
+        </button>
+      </div>
     </section>
   </div>
 </body>

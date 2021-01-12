@@ -40,7 +40,7 @@ class Comment extends Component {
             {blogPost.title}
           </Link>}
         <p className="Comment__content">{content}</p>
-        <p className="Comment__timestamp">Last edited: {formatDate(lastEdited)}</p>
+        <p className="timestamp">Last edited: {formatDate(lastEdited)}</p>
 
         {(!deleted && user && creator && user.id === creator.id) &&
           <div className="Comment__buttons">

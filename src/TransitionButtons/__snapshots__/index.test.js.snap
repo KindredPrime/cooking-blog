@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransitionButtons Component renders the UI as expected, at the beginning 1`] = `
+<body>
+  <div>
+    <div
+      class="TransitionButtons"
+    >
+      <button
+        class="TransitionButtons__prev"
+        disabled=""
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        class="TransitionButtons__next"
+        type="button"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`TransitionButtons Component renders the UI as expected, at the end 1`] = `
+<body>
+  <div>
+    <div
+      class="TransitionButtons"
+    >
+      <button
+        class="TransitionButtons__prev"
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        class="TransitionButtons__next"
+        disabled=""
+        type="button"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`TransitionButtons Component renders the UI as expected, in the middle 1`] = `
+<body>
+  <div>
+    <div
+      class="TransitionButtons"
+    >
+      <button
+        class="TransitionButtons__prev"
+        type="button"
+      >
+        Previous
+      </button>
+      <button
+        class="TransitionButtons__next"
+        type="button"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</body>
+`;
