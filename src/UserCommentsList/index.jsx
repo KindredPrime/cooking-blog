@@ -33,7 +33,9 @@ class UserCommentsList extends Component {
 
     return (
       <section className="UserCommentsList">
-        <h2>Comments</h2>
+        <header>
+          <h2>Comments</h2>
+        </header>
 
         <ul>
           {commentsToRender.map((comment) => {

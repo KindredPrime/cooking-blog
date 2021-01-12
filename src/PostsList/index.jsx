@@ -32,8 +32,10 @@ class PostsList extends Component {
     const postsToRender = sortedPosts.slice((page-1) * pageLimit, page * pageLimit);
 
     return (
-      <div className="PostsList">
-        <h1>Posts</h1>
+      <section className="PostsList">
+        <header>
+          <h2>Posts</h2>
+        </header>
 
         <ul>
           {postsToRender.map((post) => {
@@ -42,7 +44,7 @@ class PostsList extends Component {
             return (
               <li key={`post-${id}`} className="blog-post">
                 <Link className="blog-title" to={`/blog-posts/${id}`}>{title}</Link>
-                <p className="timestamp">Last edited on {formatDate(lastEdited)}</p>
+                <p className="timestamp">Last edited: {formatDate(lastEdited)}</p>
               </li>
             );
           })}
@@ -71,7 +73,7 @@ class PostsList extends Component {
               Next
             </button>
           </>}
-      </div>
+      </section>
     );
   }
 }

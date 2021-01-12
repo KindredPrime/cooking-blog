@@ -36,12 +36,14 @@ class BlogPost extends Component {
 
     return (
       <section className="BlogPost">
-        <h1>{title}</h1>
-        <h2>
-          By <Link className="BlogPost__author" to={`/users/${author.id}`}>{author.username}</Link>
-        </h2>
+        <header>
+          <h1>{title}</h1>
+          <p>
+            By <Link className="BlogPost__author" to={`/users/${author.id}`}>{author.username}</Link>
+          </p>
+        </header>
 
-        <p className="BlogPost__timestamp">Last edited on {formatDate(lastEdited)}</p>
+        <p className="BlogPost__timestamp">Last edited: {formatDate(lastEdited)}</p>
 
         {isEditing
           ? <EditPost content={content} handleCancel={this.handleEditCancel} handleSubmit={this.handleEditSubmit} />

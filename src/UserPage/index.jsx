@@ -61,7 +61,9 @@ class UserPage extends Component {
 
     return (
       <main className="UserPage">
-        <h1>{username}</h1>
+        <header>
+          <h1>{username}</h1>
+        </header>
 
         {email && <p>Email: {email}</p>}
 

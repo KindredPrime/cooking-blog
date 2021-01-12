@@ -6,22 +6,24 @@ exports[`BlogPost Component renders the edit form when the 'Edit' button is clic
     <section
       class="BlogPost"
     >
-      <h1>
-        Lessons I Learned from Cooking
-      </h1>
-      <h2>
-        By 
-        <a
-          class="BlogPost__author"
-          href="/users/2"
-        >
-          FakeUser2
-        </a>
-      </h2>
+      <header>
+        <h1>
+          Lessons I Learned from Cooking
+        </h1>
+        <p>
+          By 
+          <a
+            class="BlogPost__author"
+            href="/users/2"
+          >
+            FakeUser2
+          </a>
+        </p>
+      </header>
       <p
         class="BlogPost__timestamp"
       >
-        Last edited on 
+        Last edited: 
         Dec 17 2020 07:37:16
       </p>
       <div
@@ -58,22 +60,24 @@ exports[`BlogPost Component renders the post as expected, where the user IS the 
     <section
       class="BlogPost"
     >
-      <h1>
-        Lessons I Learned from Cooking
-      </h1>
-      <h2>
-        By 
-        <a
-          class="BlogPost__author"
-          href="/users/2"
-        >
-          FakeUser2
-        </a>
-      </h2>
+      <header>
+        <h1>
+          Lessons I Learned from Cooking
+        </h1>
+        <p>
+          By 
+          <a
+            class="BlogPost__author"
+            href="/users/2"
+          >
+            FakeUser2
+          </a>
+        </p>
+      </header>
       <p
         class="BlogPost__timestamp"
       >
-        Last edited on 
+        Last edited: 
         Dec 17 2020 07:37:16
       </p>
       <p
@@ -97,22 +101,24 @@ exports[`BlogPost Component renders the post as expected, where the user is NOT 
     <section
       class="BlogPost"
     >
-      <h1>
-        Lessons I Learned from Cooking
-      </h1>
-      <h2>
-        By 
-        <a
-          class="BlogPost__author"
-          href="/users/2"
-        >
-          FakeUser2
-        </a>
-      </h2>
+      <header>
+        <h1>
+          Lessons I Learned from Cooking
+        </h1>
+        <p>
+          By 
+          <a
+            class="BlogPost__author"
+            href="/users/2"
+          >
+            FakeUser2
+          </a>
+        </p>
+      </header>
       <p
         class="BlogPost__timestamp"
       >
-        Last edited on 
+        Last edited: 
         Dec 17 2020 07:37:16
       </p>
       <p
@@ -131,22 +137,24 @@ exports[`BlogPost Component un-renders the edit form after clicking 'Cancel' 1`]
     <section
       class="BlogPost"
     >
-      <h1>
-        Lessons I Learned from Cooking
-      </h1>
-      <h2>
-        By 
-        <a
-          class="BlogPost__author"
-          href="/users/2"
-        >
-          FakeUser2
-        </a>
-      </h2>
+      <header>
+        <h1>
+          Lessons I Learned from Cooking
+        </h1>
+        <p>
+          By 
+          <a
+            class="BlogPost__author"
+            href="/users/2"
+          >
+            FakeUser2
+          </a>
+        </p>
+      </header>
       <p
         class="BlogPost__timestamp"
       >
-        Last edited on 
+        Last edited: 
         Dec 17 2020 07:37:16
       </p>
       <p

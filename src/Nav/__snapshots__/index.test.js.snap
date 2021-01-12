@@ -25,19 +25,23 @@ exports[`Nav Component loads the account page when clicked 1`] = `
       <main
         class="UserPage"
       >
-        <h1>
-          User1
-        </h1>
+        <header>
+          <h1>
+            User1
+          </h1>
+        </header>
         <p>
           Email: 
           user1@gmail.com
         </p>
-        <div
+        <section
           class="PostsList"
         >
-          <h1>
-            Posts
-          </h1>
+          <header>
+            <h2>
+              Posts
+            </h2>
+          </header>
           <ul>
             <li
               class="blog-post"
@@ -51,7 +55,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Jan 05 2021 08:28:28
               </p>
             </li>
@@ -67,18 +71,20 @@ exports[`Nav Component loads the account page when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Dec 28 2020 18:24:43
               </p>
             </li>
           </ul>
-        </div>
+        </section>
         <section
           class="UserCommentsList"
         >
-          <h2>
-            Comments
-          </h2>
+          <header>
+            <h2>
+              Comments
+            </h2>
+          </header>
           <ul>
             <li
               class="Comment"
@@ -97,7 +103,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
               <p
                 class="Comment__timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Dec 19 2020 07:37:16
               </p>
             </li>
@@ -118,7 +124,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
               <p
                 class="Comment__timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Dec 17 2020 08:37:52
               </p>
             </li>
@@ -155,18 +161,22 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
       <main
         class="Home"
       >
-        <h1>
-          Welcome to the Cooking Blog!
-        </h1>
+        <header>
+          <h1>
+            Welcome to the Cooking Blog!
+          </h1>
+        </header>
         <p>
           Ever wanted to learn more about cooking, or share your experiences with others? Here you can read all kinds of posts from other users: things they've tried, things they want to try, recipes, cooking tips, etc. And if you create an account you can make posts of your own, and leave comments on posts.
         </p>
-        <div
+        <section
           class="PostsList"
         >
-          <h1>
-            Posts
-          </h1>
+          <header>
+            <h2>
+              Posts
+            </h2>
+          </header>
           <ul>
             <li
               class="blog-post"
@@ -180,7 +190,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Jan 06 2021 12:22:39
               </p>
             </li>
@@ -196,7 +206,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Jan 05 2021 14:22:39
               </p>
             </li>
@@ -212,7 +222,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Jan 05 2021 08:28:28
               </p>
             </li>
@@ -228,7 +238,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Jan 04 2021 18:22:39
               </p>
             </li>
@@ -244,7 +254,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Jan 02 2021 16:22:39
               </p>
             </li>
@@ -260,7 +270,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Dec 28 2020 18:24:43
               </p>
             </li>
@@ -276,7 +286,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Dec 17 2020 07:37:16
               </p>
             </li>
@@ -292,7 +302,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Dec 15 2020 19:22:39
               </p>
             </li>
@@ -308,7 +318,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Dec 15 2020 11:56:48
               </p>
             </li>
@@ -324,7 +334,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
               <p
                 class="timestamp"
               >
-                Last edited on 
+                Last edited: 
                 Dec 15 2020 11:22:39
               </p>
             </li>
@@ -342,7 +352,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
           >
             Next
           </button>
-        </div>
+        </section>
       </main>
     </div>
   </div>

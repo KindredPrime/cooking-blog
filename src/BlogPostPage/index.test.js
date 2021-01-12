@@ -177,7 +177,7 @@ describe('BlogPostPage Component', () => {
         const newTimestamp = new Date(document
           .getElementsByClassName('BlogPost__timestamp')[0]
           .textContent
-          .split('Last edited on ')
+          .split('Last edited: ')
           .join('')
         );
         expect(newTimestamp.valueOf()).toBeGreaterThan(lastEdited.valueOf());
@@ -213,7 +213,7 @@ describe('BlogPostPage Component', () => {
         UserEvent.click(screen.getByText('Add Comment'));
         await waitFor(() => expect(screen.getByText(newComment)).toBeInTheDocument());
 
-        const addedComment = screen.getByText('Comments').nextSibling.nextSibling.firstChild;
+        const addedComment = screen.getByRole('list').firstChild;
         // The comment's user matches the context's username
         expect(addedComment.firstChild.textContent).toEqual(testUser.username);
         // The comment's content matches the new comment
@@ -238,7 +238,7 @@ describe('BlogPostPage Component', () => {
 
         await waitFor(() => expect(screen.getByText(newComment)).toBeInTheDocument());
 
-        const editedComment = screen.getByText('Comments').nextSibling.nextSibling.firstChild;
+        const editedComment = screen.getByRole('list').firstChild;
         // The comment's user matches the context's username
         expect(editedComment.firstChild.textContent).toEqual(testUser.username);
         // The comment's content matches the new comment

@@ -6,7 +6,9 @@ exports[`UserPage Component renders an error as expected 1`] = `
     <main
       class="UserPage"
     >
-      <h1 />
+      <header>
+        <h1 />
+      </header>
       <p
         class="APIError"
       >
@@ -23,19 +25,23 @@ exports[`UserPage Component renders the UI as expected 1`] = `
     <main
       class="UserPage"
     >
-      <h1>
-        User3
-      </h1>
+      <header>
+        <h1>
+          User3
+        </h1>
+      </header>
       <p>
         Email: 
         user3@gmail.com
       </p>
-      <div
+      <section
         class="PostsList"
       >
-        <h1>
-          Posts
-        </h1>
+        <header>
+          <h2>
+            Posts
+          </h2>
+        </header>
         <ul>
           <li
             class="blog-post"
@@ -49,7 +55,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             <p
               class="timestamp"
             >
-              Last edited on 
+              Last edited: 
               Jan 06 2021 12:22:39
             </p>
           </li>
@@ -65,7 +71,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             <p
               class="timestamp"
             >
-              Last edited on 
+              Last edited: 
               Jan 05 2021 14:22:39
             </p>
           </li>
@@ -81,7 +87,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             <p
               class="timestamp"
             >
-              Last edited on 
+              Last edited: 
               Jan 04 2021 18:22:39
             </p>
           </li>
@@ -97,7 +103,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             <p
               class="timestamp"
             >
-              Last edited on 
+              Last edited: 
               Jan 02 2021 16:22:39
             </p>
           </li>
@@ -113,7 +119,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             <p
               class="timestamp"
             >
-              Last edited on 
+              Last edited: 
               Dec 15 2020 19:22:39
             </p>
           </li>
@@ -129,7 +135,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             <p
               class="timestamp"
             >
-              Last edited on 
+              Last edited: 
               Dec 15 2020 11:22:39
             </p>
           </li>
@@ -145,18 +151,20 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             <p
               class="timestamp"
             >
-              Last edited on 
+              Last edited: 
               Dec 01 2020 12:54:31
             </p>
           </li>
         </ul>
-      </div>
+      </section>
       <section
         class="UserCommentsList"
       >
-        <h2>
-          Comments
-        </h2>
+        <header>
+          <h2>
+            Comments
+          </h2>
+        </header>
         <ul>
           <li
             class="Comment"
@@ -175,7 +183,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
             <p
               class="Comment__timestamp"
             >
-              Last edited on 
+              Last edited: 
               Dec 19 2020 08:37:16
             </p>
           </li>

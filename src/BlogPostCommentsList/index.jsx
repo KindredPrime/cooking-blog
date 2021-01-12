@@ -57,7 +57,9 @@ class BlogPostCommentsList extends Component {
 
     return (
       <section className="BlogPostCommentsList">
-        <h2>Comments</h2>
+        <header>
+          <h2>Comments</h2>
+        </header>
 
         {user && <AddComment handleSubmit={this.handleAdd} />}
 
