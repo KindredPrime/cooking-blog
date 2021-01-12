@@ -362,6 +362,111 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
             Jan 03 2021 20:21:22
           </p>
         </li>
+        <li
+          class="Comment"
+        >
+          <a
+            class="Comment__creator"
+            href="/users/5"
+          >
+            User5
+          </a>
+          <p
+            class="Comment__content"
+          >
+            Comment16
+          </p>
+          <p
+            class="timestamp"
+          >
+            Last edited: 
+            Jan 04 2021 20:21:22
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <a
+            class="Comment__creator"
+            href="/users/5"
+          >
+            User5
+          </a>
+          <p
+            class="Comment__content"
+          >
+            Comment17
+          </p>
+          <p
+            class="timestamp"
+          >
+            Last edited: 
+            Jan 05 2021 20:21:22
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <a
+            class="Comment__creator"
+            href="/users/5"
+          >
+            User5
+          </a>
+          <p
+            class="Comment__content"
+          >
+            Comment18
+          </p>
+          <p
+            class="timestamp"
+          >
+            Last edited: 
+            Jan 06 2021 20:21:22
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <a
+            class="Comment__creator"
+            href="/users/5"
+          >
+            User5
+          </a>
+          <p
+            class="Comment__content"
+          >
+            Comment19
+          </p>
+          <p
+            class="timestamp"
+          >
+            Last edited: 
+            Jan 07 2021 20:21:22
+          </p>
+        </li>
+        <li
+          class="Comment"
+        >
+          <a
+            class="Comment__creator"
+            href="/users/5"
+          >
+            User5
+          </a>
+          <p
+            class="Comment__content"
+          >
+            Comment20
+          </p>
+          <p
+            class="timestamp"
+          >
+            Last edited: 
+            Jan 08 2021 20:21:22
+          </p>
+        </li>
       </ul>
       <div
         class="TransitionButtons"
@@ -374,7 +479,6 @@ exports[`BlogPostCommentsList Component switches to the next group of comments a
         </button>
         <button
           class="TransitionButtons__next"
-          disabled=""
           type="button"
         >
           Next

@@ -265,6 +265,66 @@ const dummyComments = [
       username: 'User5'
     },
     blogPost: dummyPosts[0]
+  },
+  {
+    id: 16,
+    lastEdited: new Date('Jan 4 20:21:22 2021'),
+    content: 'Comment16',
+    creator: {
+      id: 5,
+      username: 'User5'
+    },
+    blogPost: dummyPosts[1]
+  },
+  {
+    id: 17,
+    lastEdited: new Date('Jan 5 20:21:22 2021'),
+    content: 'Comment17',
+    creator: {
+      id: 5,
+      username: 'User5'
+    },
+    blogPost: dummyPosts[2]
+  },
+  {
+    id: 18,
+    lastEdited: new Date('Jan 6 20:21:22 2021'),
+    content: 'Comment18',
+    creator: {
+      id: 5,
+      username: 'User5'
+    },
+    blogPost: dummyPosts[3]
+  },
+  {
+    id: 19,
+    lastEdited: new Date('Jan 7 20:21:22 2021'),
+    content: 'Comment19',
+    creator: {
+      id: 5,
+      username: 'User5'
+    },
+    blogPost: dummyPosts[4]
+  },
+  {
+    id: 20,
+    lastEdited: new Date('Jan 8 20:21:22 2021'),
+    content: 'Comment20',
+    creator: {
+      id: 5,
+      username: 'User5'
+    },
+    blogPost: dummyPosts[5]
+  },
+  {
+    id: 21,
+    lastEdited: new Date('Jan 9 20:21:22 2021'),
+    content: 'Comment21',
+    creator: {
+      id: 5,
+      username: 'User5'
+    },
+    blogPost: dummyPosts[6]
   }
 ];
 
