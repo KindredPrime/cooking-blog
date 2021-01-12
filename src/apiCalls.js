@@ -96,7 +96,9 @@ function getCommentsByBlogPost(title) {
 }
 
 function getCommentsByCreator(username) {
-  return Promise.resolve(comments.filter((comment) => comment.creator.username === username));
+  return Promise.resolve(comments
+    .filter((comment) => comment.creator && comment.creator.username === username)
+  );
 }
 
 function addComment(comment) {
