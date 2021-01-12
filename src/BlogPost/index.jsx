@@ -31,7 +31,7 @@ class BlogPost extends Component {
 
   render() {
     const { title, author, content, lastEdited } = this.props;
-    const { isEditing, error } = this.state;
+    const { isEditing } = this.state;
     const { user } = this.context;
 
     return (
