@@ -11,8 +11,8 @@ describe('Nav Component', () => {
   const origAPI = {
     getAllBlogPosts: API.getAllBlogPosts,
     getUserById: API.getUserById,
-    getBlogPostsByUser: API.getBlogPostsByUser,
-    getCommentsByUser: API.getCommentsByUser
+    getBlogPostsByAuthor: API.getBlogPostsByAuthor,
+    getCommentsByCreator: API.getCommentsByCreator
   };
 
   /**
@@ -31,13 +31,13 @@ describe('Nav Component', () => {
       resolve(user);
     });
 
-    API.getBlogPostsByUser = (username) => new Promise((resolve, reject) => {
+    API.getBlogPostsByAuthor = (username) => new Promise((resolve, reject) => {
       const userPosts = dummyPosts.filter((post) => post.author.username === username);
 
       resolve(userPosts)
     });
 
-    API.getCommentsByUser = (username) => {
+    API.getCommentsByCreator = (username) => {
       return Promise.resolve(dummyComments.filter((comment) => comment.creator.username === username));
     };
   });
@@ -48,8 +48,8 @@ describe('Nav Component', () => {
   afterAll(() => {
     API.getAllBlogPosts = origAPI.getAllBlogPosts;
     API.getUserById = origAPI.getUserById;
-    API.getBlogPostsByUser = origAPI.getBlogPostsByUser;
-    API.getCommentsByUser = origAPI.getCommentsByUser;
+    API.getBlogPostsByAuthor = origAPI.getBlogPostsByAuthor;
+    API.getCommentsByCreator = origAPI.getCommentsByCreator;
   });
 
   it('renders without crashing', () => {

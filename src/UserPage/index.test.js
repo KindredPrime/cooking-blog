@@ -9,8 +9,8 @@ import CookingContext from '../CookingContext';
 describe('UserPage Component', () => {
   const origAPI = {
     getUserById: API.getUserById,
-    getCommentsByUser: API.getCommentsByUser,
-    getBlogPostsByUser: API.getBlogPostsByUser
+    getCommentsByCreator: API.getCommentsByCreator,
+    getBlogPostsByAuthor: API.getBlogPostsByAuthor
   };
 
   // Mock API calls
@@ -19,19 +19,19 @@ describe('UserPage Component', () => {
       return Promise.resolve(dummyUsers.find((user) => user.id === parseInt(id)));
     };
 
-    API.getCommentsByUser = (username) => {
+    API.getCommentsByCreator = (username) => {
       return Promise.resolve(dummyComments.filter((comment) => comment.creator.username === username));
     };
 
-    API.getBlogPostsByUser = (username) => {
+    API.getBlogPostsByAuthor = (username) => {
       return Promise.resolve(dummyPosts.filter((post) => post.author.username === username));
     };
   });
 
   afterAll(() => {
     API.getUserById = origAPI.getUserById;
-    API.getCommentsByUser = origAPI.getCommentsByUser;
-    API.getBlogPostsByUser = origAPI.getBlogPostsByUser;
+    API.getCommentsByCreator = origAPI.getCommentsByCreator;
+    API.getBlogPostsByAuthor = origAPI.getBlogPostsByAuthor;
   });
 
   it('renders without crashing', () => {

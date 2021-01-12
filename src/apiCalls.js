@@ -23,12 +23,12 @@ function getAllBlogPosts() {
   });
 }
 
-function getBlogPostsByUser(username) {
+function getBlogPostsByAuthor(username) {
   return new Promise((resolve, reject) => {
     const userPosts = blogPosts.filter((post) => post.author.username === username);
 
     signal.addEventListener('abort', () => {
-      reject(new Error('getBlogPostsByUser has been aborted'));
+      reject(new Error('getBlogPostsByAuthor has been aborted'));
     });
 
     resolve(userPosts)
@@ -95,7 +95,7 @@ function getCommentsByBlogPost(title) {
   });
 }
 
-function getCommentsByUser(username) {
+function getCommentsByCreator(username) {
   return Promise.resolve(comments.filter((comment) => comment.creator.username === username));
 }
 
@@ -170,13 +170,13 @@ function getUserById(id) {
 export {
   abortTasks,
   getAllBlogPosts,
-  getBlogPostsByUser,
+  getBlogPostsByAuthor,
   getBlogPostById,
   patchBlogPost,
   getAllComments,
   getCommentById,
   getCommentsByBlogPost,
-  getCommentsByUser,
+  getCommentsByCreator,
   addComment,
   patchComment,
   deleteComment,

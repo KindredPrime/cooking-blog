@@ -37,11 +37,11 @@ class UserPage extends Component {
           error: null
         });
       })
-      .then(() => API.getCommentsByUser(pageUsername))
+      .then(() => API.getCommentsByCreator(pageUsername))
       .then((comments) => {
         this.setState({ comments })
       })
-      .then(() => API.getBlogPostsByUser(pageUsername))
+      .then(() => API.getBlogPostsByAuthor(pageUsername))
       .then((blogPosts) => {
         this.setState({ blogPosts })
       })
