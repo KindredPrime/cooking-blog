@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom';
-import { dummyUsers } from './dummyData';
+import { apiUsers } from './dummyData';
 import Nav from './Nav/index';
 import Home from './Home/index';
 import UserPage from './UserPage/index';
@@ -12,8 +12,8 @@ function App() {
   const index = 0;
   const contextValue = {
     user: {
-      id: dummyUsers[index].id,
-      username: dummyUsers[index].username
+      id: apiUsers[index].id,
+      username: apiUsers[index].username
     }
   };
 

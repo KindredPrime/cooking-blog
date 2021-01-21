@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import Home from './index';
-import * as API from '../apiCalls';
+import API from '../apiCalls';
 
 describe('Home Component', () => {
   it('renders without crashing', () => {

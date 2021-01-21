@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as API from '../apiCalls';
-import { sortEntities } from '../util';
+import API from '../apiCalls';
+import { formatDate, sortEntities } from '../util';
 import APIError from '../APIError/index';
 import BlogPost from '../BlogPost/index';
 import BlogPostCommentsList from '../BlogPostCommentsList/index';
@@ -25,20 +25,24 @@ class BlogPostPage extends Component {
   };
 
   // Errors thrown by the API call are caught and handled in the BlogPostCommentsList component
-  handleCommentAdd = (content, creator) => {
+  handleCommentAdd = (content, creatorId, creatorUsername) => {
     const { comments, blogPost } = this.state;
 
     const comment = {
       content,
-      creator,
-      blogPost
+      creatorId,
+      creatorUsername,
+      postId: blogPost.id,
+      postTitle: blogPost.title
     };
 
     return API.addComment(comment)
       .then((newComment) => {
         const modifiedComment = {
           ...newComment,
-          blogPost: null
+          // nullify these fields so they aren't rendered
+          postId: null,
+          postTitle: null
         };
 
         this.setState({
@@ -57,9 +61,10 @@ class BlogPostPage extends Component {
         const comment = comments[commentsIndex];
         comments[commentsIndex] = {
           ...comment,
-          lastEdited: new Date(),
+          lastEdited: formatDate(new Date().toString()),
           content: '[Deleted]',
-          creator: null,
+          creatorId: null,
+          creatorUsername: null,
           deleted: true
         };
 
@@ -98,13 +103,13 @@ class BlogPostPage extends Component {
           blogPostError: null,
           error: null
         });
-
-        return blogPost.title;
       })
-      .then((title) => API.getCommentsByBlogPost(title))
-      .then((comments) => this.setState({
-        comments: sortEntities(comments)
-      }))
+      .then(() => API.getCommentsByBlogPost(id))
+      .then((comments) => {
+        this.setState({
+          comments: sortEntities(comments)
+        });
+      })
       .catch((error) => {
         this.setState({
           error
@@ -125,7 +130,8 @@ class BlogPostPage extends Component {
 
         {blogPost && <BlogPost
           title={blogPost.title}
-          author={blogPost.author}
+          authorId={blogPost.authorId}
+          authorUsername={blogPost.authorUsername}
           content={blogPost.content}
           lastEdited={blogPost.lastEdited}
           handleEditSubmit={this.handlePostEditSubmit}
@@ -134,7 +140,6 @@ class BlogPostPage extends Component {
         {comments &&
           <BlogPostCommentsList
             comments={comments}
-            blogPost={blogPost}
             handleAdd={this.handleCommentAdd}
             handleDelete={this.handleCommentDelete}
             handleEditSubmit={this.handleCommentEditSubmit}

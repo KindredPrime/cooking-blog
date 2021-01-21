@@ -2,8 +2,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, MemoryRouter } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import * as API from '../apiCalls';
-import { dummyPosts, dummyUsers, dummyComments } from '../dummyData';
+import API from '../apiCalls';
+import { clientBlogPosts, apiUsers, clientComments } from '../dummyData';
 import Nav from './index';
 import App from '../App';
 
@@ -19,10 +19,10 @@ describe('Nav Component', () => {
    * Rewrite API methods to mock their results
    */
   beforeAll(() => {
-    API.getAllBlogPosts = () => Promise.resolve(dummyPosts);
+    API.getAllBlogPosts = () => Promise.resolve(clientBlogPosts);
 
     API.getUserById = (id) => new Promise((resolve, reject) => {
-      const user = dummyUsers.find((user) => user.id == id);
+      const user = apiUsers.find((user) => user.id == id);
 
       if (!user) {
         reject(new Error(`There is no user with id ${id}`));
@@ -31,14 +31,14 @@ describe('Nav Component', () => {
       resolve(user);
     });
 
-    API.getBlogPostsByAuthor = (username) => new Promise((resolve, reject) => {
-      const userPosts = dummyPosts.filter((post) => post.author.username === username);
+    API.getBlogPostsByAuthor = (id) => new Promise((resolve, reject) => {
+      const userPosts = clientBlogPosts.filter((post) => post.authorId === id);
 
       resolve(userPosts)
     });
 
-    API.getCommentsByCreator = (username) => {
-      return Promise.resolve(dummyComments.filter((comment) => comment.creator.username === username));
+    API.getCommentsByCreator = (id) => {
+      return Promise.resolve(clientComments.filter((comment) => comment.creatorId === id));
     };
   });
 
@@ -84,7 +84,7 @@ describe('Nav Component', () => {
     );
 
     userEvent.click(screen.getByText('Account'));
-    await waitFor(() => expect(screen.getByText(dummyUsers[0].username)).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText(apiUsers[0].username)).toBeInTheDocument());
 
     //screen.debug();
     expect(document.body).toMatchSnapshot();

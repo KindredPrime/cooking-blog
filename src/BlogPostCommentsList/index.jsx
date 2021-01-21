@@ -24,7 +24,7 @@ class BlogPostCommentsList extends Component {
   // Any errors thrown by this function are caught in AddComment
   handleAdd = (content) => {
     const { user } = this.context;
-    return this.props.handleAdd(content, user);
+    return this.props.handleAdd(content, user.id, user.username);
   }
 
   renderEdit = (id) => {
@@ -66,7 +66,7 @@ class BlogPostCommentsList extends Component {
 
         <ul>
           {commentsToRender.map((comment) => {
-            const { id, lastEdited, content, creator, deleted } = comment;
+            const { id, lastEdited, content, creatorId, creatorUsername, deleted } = comment;
 
             if (!deleted && editingCommentId && id === editingCommentId) {
               return (
@@ -84,7 +84,8 @@ class BlogPostCommentsList extends Component {
               <Comment
                 key={`comment-${id}`}
                 id={id}
-                creator={creator}
+                creatorId={creatorId}
+                creatorUsername={creatorUsername}
                 content={content}
                 lastEdited={lastEdited}
                 deleted={deleted}
@@ -119,22 +120,12 @@ BlogPostCommentsList.propTypes = {
   comments: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      creator: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        username: PropTypes.string.isRequired
-      }),
-      blogPost: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        lastEdited: PropTypes.instanceOf(Date).isRequired,
-        title: PropTypes.string.isRequired,
-        author: PropTypes.shape({
-          id: PropTypes.number.isRequired,
-          username: PropTypes.string.isRequired
-        }).isRequired,
-        content: PropTypes.string.isRequired
-      }),
+      creatorId: PropTypes.number,
+      creatorUsername: PropTypes.string,
+      postId: PropTypes.number,
+      postTitle: PropTypes.string,
       content: PropTypes.string.isRequired,
-      lastEdited: PropTypes.instanceOf(Date).isRequired
+      lastEdited: PropTypes.string.isRequired
     })
   ),
   pageLimit: PropTypes.number,

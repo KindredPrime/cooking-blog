@@ -27,7 +27,7 @@ exports[`Comment Component renders an error as expected 1`] = `
         class="timestamp"
       >
         Last edited: 
-        Dec 19 2020 07:37:16
+        07:37:16 Dec 19, 2020
       </p>
       <div
         class="Comment__buttons"
@@ -80,7 +80,7 @@ exports[`Comment Component renders the UI as expected 1`] = `
         class="timestamp"
       >
         Last edited: 
-        Dec 19 2020 07:37:16
+        07:37:16 Dec 19, 2020
       </p>
       <div
         class="Comment__buttons"

@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { sortEntities, formatDate, isOnLastPage } from '../util';
+import { sortEntities, isOnLastPage } from '../util';
 import TransitionButtons from '../TransitionButtons/index';
 import './index.css';
 
@@ -45,7 +45,7 @@ class PostsList extends Component {
             return (
               <li key={`post-${id}`} className="PostsList__blog-post">
                 <Link className="PostsList__title" to={`/blog-posts/${id}`}>{title}</Link>
-                <p className="timestamp">Last edited: {formatDate(lastEdited)}</p>
+                <p className="timestamp">Last edited: {lastEdited}</p>
               </li>
             );
           })}
@@ -75,13 +75,9 @@ PostsList.propTypes = {
   initialBlogPosts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      lastEdited: PropTypes.instanceOf(Date).isRequired,
+      lastEdited: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
-      author: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        username: PropTypes.string.isRequired
-      }).isRequired
+      content: PropTypes.string.isRequired
     })
   ),
   pageLimit: PropTypes.number

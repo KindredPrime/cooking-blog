@@ -56,7 +56,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
               class="timestamp"
             >
               Last edited: 
-              Jan 06 2021 12:22:39
+              12:22:39 Jan 06, 2021
             </p>
           </li>
           <li
@@ -72,7 +72,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
               class="timestamp"
             >
               Last edited: 
-              Jan 05 2021 14:22:39
+              14:22:39 Jan 05, 2021
             </p>
           </li>
           <li
@@ -88,7 +88,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
               class="timestamp"
             >
               Last edited: 
-              Jan 04 2021 18:22:39
+              18:22:39 Jan 04 2021
             </p>
           </li>
           <li
@@ -104,7 +104,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
               class="timestamp"
             >
               Last edited: 
-              Jan 02 2021 16:22:39
+              16:22:39 Jan 02, 2021
             </p>
           </li>
           <li
@@ -120,7 +120,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
               class="timestamp"
             >
               Last edited: 
-              Dec 15 2020 19:22:39
+              19:22:39 Dec 15, 2020
             </p>
           </li>
           <li
@@ -136,7 +136,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
               class="timestamp"
             >
               Last edited: 
-              Dec 15 2020 11:22:39
+              11:22:39 Dec 15, 2020
             </p>
           </li>
           <li
@@ -152,7 +152,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
               class="timestamp"
             >
               Last edited: 
-              Dec 01 2020 12:54:31
+              12:54:31 Dec 01, 2020
             </p>
           </li>
         </ul>
@@ -184,7 +184,7 @@ exports[`UserPage Component renders the UI as expected 1`] = `
               class="timestamp"
             >
               Last edited: 
-              Dec 19 2020 08:37:16
+              08:37:16 Dec 19, 2020
             </p>
           </li>
         </ul>

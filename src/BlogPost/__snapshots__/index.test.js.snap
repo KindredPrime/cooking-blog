@@ -24,7 +24,7 @@ exports[`BlogPost Component renders the edit form when the 'Edit' button is clic
         class="timestamp"
       >
         Last edited: 
-        Dec 17 2020 07:37:16
+        07:37:16 Dec 17, 2020
       </p>
       <div
         class="EditPost"
@@ -78,7 +78,7 @@ exports[`BlogPost Component renders the post as expected, where the user IS the 
         class="timestamp"
       >
         Last edited: 
-        Dec 17 2020 07:37:16
+        07:37:16 Dec 17, 2020
       </p>
       <p
         class="BlogPostPage__content"
@@ -119,7 +119,7 @@ exports[`BlogPost Component renders the post as expected, where the user is NOT 
         class="timestamp"
       >
         Last edited: 
-        Dec 17 2020 07:37:16
+        07:37:16 Dec 17, 2020
       </p>
       <p
         class="BlogPostPage__content"
@@ -155,7 +155,7 @@ exports[`BlogPost Component un-renders the edit form after clicking 'Cancel' 1`]
         class="timestamp"
       >
         Last edited: 
-        Dec 17 2020 07:37:16
+        07:37:16 Dec 17, 2020
       </p>
       <p
         class="BlogPostPage__content"

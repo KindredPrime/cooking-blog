@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { formatDate } from '../util';
 import CookingContext from '../CookingContext';
 import EditPost from '../EditPost/index';
 import './index.css';
@@ -30,7 +29,7 @@ class BlogPost extends Component {
   }
 
   render() {
-    const { title, author, content, lastEdited } = this.props;
+    const { title, authorId, authorUsername, content, lastEdited } = this.props;
     const { isEditing } = this.state;
     const { user } = this.context;
 
@@ -39,11 +38,11 @@ class BlogPost extends Component {
         <header>
           <h1>{title}</h1>
           <p>
-            By <Link className="BlogPost__author" to={`/users/${author.id}`}>{author.username}</Link>
+            By <Link className="BlogPost__author" to={`/users/${authorId}`}>{authorUsername}</Link>
           </p>
         </header>
 
-        <p className="timestamp">Last edited: {formatDate(lastEdited)}</p>
+        <p className="timestamp">Last edited: {lastEdited}</p>
 
         {isEditing
           ? <EditPost content={content} handleCancel={this.handleEditCancel} handleSubmit={this.handleEditSubmit} />
@@ -51,7 +50,7 @@ class BlogPost extends Component {
             <p className="BlogPostPage__content">{content}</p>
 
             {/* Display an edit button if the current user is the author */}
-            {(user && user.id === author.id) &&
+            {(user && user.id === authorId) &&
               <button
                 type="button"
                 onClick={() => this.setState({ isEditing: true })}
@@ -66,12 +65,10 @@ class BlogPost extends Component {
 
 BlogPost.propTypes = {
   title: PropTypes.string.isRequired,
-  author: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    username: PropTypes.string.isRequired
-  }).isRequired,
+  authorId: PropTypes.number.isRequired,
+  authorUsername: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  lastEdited: PropTypes.instanceOf(Date).isRequired,
+  lastEdited: PropTypes.string.isRequired,
   handleEditSubmit: PropTypes.func.isRequired
 };
 

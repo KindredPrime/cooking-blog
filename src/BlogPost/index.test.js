@@ -4,11 +4,11 @@ import { render, screen, waitFor } from '@testing-library/react';
 import UserEvent from '@testing-library/user-event';
 import BlogPost from './index';
 import CookingContext from '../CookingContext';
-import { dummyPosts } from '../dummyData';
+import { clientBlogPosts } from '../dummyData';
 
 describe('BlogPost Component', () => {
   const id = 1;
-  const { title, author, content, lastEdited } = dummyPosts[id-1];
+  const { title, authorId, authorUsername, content, lastEdited } = clientBlogPosts[id-1];
 
   async function renderBlogPost(contextValue) {
     render(
@@ -16,7 +16,8 @@ describe('BlogPost Component', () => {
         <CookingContext.Provider value={contextValue}>
           <BlogPost
             title={title}
-            author={author}
+            authorId={authorId}
+            authorUsername={authorUsername}
             content={content}
             lastEdited={lastEdited}
             handleEditSubmit={() => {}}
@@ -34,9 +35,10 @@ describe('BlogPost Component', () => {
       <BrowserRouter>
         <BlogPost
           title=""
-          author={dummyPosts[0].author}
+          authorId={clientBlogPosts[0].authorId}
+          authorUsername={clientBlogPosts[0].authorUsername}
           content=""
-          lastEdited={new Date()}
+          lastEdited={'today'}
           handleEditSubmit={() => {}}
         />
       </BrowserRouter>,
@@ -59,7 +61,10 @@ describe('BlogPost Component', () => {
 
   it(`renders the post as expected, where the user IS the post's author`, async () => {
     const contextValue = {
-      user: author
+      user: {
+        id: authorId,
+        username: authorUsername
+      }
     };
 
     await renderBlogPost(contextValue);
@@ -68,7 +73,10 @@ describe('BlogPost Component', () => {
 
   it(`renders the edit form when the 'Edit' button is clicked`, async () => {
     const contextValue = {
-      user: author
+      user: {
+        id: authorId,
+        username: authorUsername
+      }
     };
 
     await renderBlogPost(contextValue);
@@ -79,7 +87,10 @@ describe('BlogPost Component', () => {
 
   it(`un-renders the edit form after clicking 'Cancel'`, async () => {
     const contextValue = {
-      user: author
+      user: {
+        id: authorId,
+        username: authorUsername
+      }
     };
 
     await renderBlogPost(contextValue);

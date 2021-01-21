@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import PostsList from './index';
 import { render, screen } from '@testing-library/react';
-import { dummyPosts } from '../dummyData';
+import { clientBlogPosts } from '../dummyData';
 import UserEvent from '@testing-library/user-event';
 
 describe('PostsList Component', () => {
@@ -20,7 +20,7 @@ describe('PostsList Component', () => {
   it('renders the UI as expected', () => {
     render(
       <BrowserRouter>
-        <PostsList initialBlogPosts={dummyPosts} pageLimit={3} />
+        <PostsList initialBlogPosts={clientBlogPosts} pageLimit={3} />
       </BrowserRouter>
     );
 
@@ -30,7 +30,7 @@ describe('PostsList Component', () => {
   it(`switches to the next group of blog posts after clicking 'Next'`, () => {
     render(
       <BrowserRouter>
-        <PostsList initialBlogPosts={dummyPosts} />
+        <PostsList initialBlogPosts={clientBlogPosts} />
       </BrowserRouter>
     );
 
@@ -41,7 +41,7 @@ describe('PostsList Component', () => {
   it(`switches to the previous group of comments after clicking 'Previous'`, () => {
     render(
       <BrowserRouter>
-        <PostsList initialBlogPosts={dummyPosts} />
+        <PostsList initialBlogPosts={clientBlogPosts} />
       </BrowserRouter>
     );
 

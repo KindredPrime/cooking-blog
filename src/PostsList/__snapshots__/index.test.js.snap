@@ -25,7 +25,7 @@ exports[`PostsList Component renders the UI as expected 1`] = `
             class="timestamp"
           >
             Last edited: 
-            Jan 06 2021 12:22:39
+            12:22:39 Jan 06, 2021
           </p>
         </li>
         <li
@@ -41,7 +41,7 @@ exports[`PostsList Component renders the UI as expected 1`] = `
             class="timestamp"
           >
             Last edited: 
-            Jan 05 2021 14:22:39
+            14:22:39 Jan 05, 2021
           </p>
         </li>
         <li
@@ -57,7 +57,7 @@ exports[`PostsList Component renders the UI as expected 1`] = `
             class="timestamp"
           >
             Last edited: 
-            Jan 05 2021 08:28:28
+            08:28:28 Jan 05, 2021
           </p>
         </li>
       </ul>
@@ -108,7 +108,7 @@ exports[`PostsList Component switches to the next group of blog posts after clic
             class="timestamp"
           >
             Last edited: 
-            Dec 01 2020 12:54:31
+            12:54:31 Dec 01, 2020
           </p>
         </li>
       </ul>

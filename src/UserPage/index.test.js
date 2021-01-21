@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import * as API from '../apiCalls';
+import API from '../apiCalls';
 import UserPage from './index';
-import { dummyPosts, dummyComments, dummyUsers } from '../dummyData';
+import { clientBlogPosts, clientComments, apiUsers } from '../dummyData';
 import CookingContext from '../CookingContext';
 
 describe('UserPage Component', () => {
@@ -16,15 +16,15 @@ describe('UserPage Component', () => {
   // Mock API calls
   beforeAll(() => {
     API.getUserById = (id) => {
-      return Promise.resolve(dummyUsers.find((user) => user.id === parseInt(id)));
+      return Promise.resolve(apiUsers.find((user) => user.id === parseInt(id)));
     };
 
-    API.getCommentsByCreator = (username) => {
-      return Promise.resolve(dummyComments.filter((comment) => comment.creator.username === username));
+    API.getCommentsByCreator = (id) => {
+      return Promise.resolve(clientComments.filter((comment) => comment.creatorId === id));
     };
 
-    API.getBlogPostsByAuthor = (username) => {
-      return Promise.resolve(dummyPosts.filter((post) => post.author.username === username));
+    API.getBlogPostsByAuthor = (id) => {
+      return Promise.resolve(clientBlogPosts.filter((post) => post.authorId === id));
     };
   });
 
@@ -47,7 +47,7 @@ describe('UserPage Component', () => {
 
   it('renders the UI as expected', async () => {
     const id = 3;
-    const testUser = dummyUsers[id-1];
+    const testUser = apiUsers[id-1];
     const contextValue = {
       user: testUser
     };

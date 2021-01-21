@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import CookingContext from '../CookingContext';
-import * as API from '../apiCalls';
+import API from '../apiCalls';
 import APIError from '../APIError';
 import PostsList from '../PostsList/index';
 import UserCommentsList from '../UserCommentsList/index';
@@ -21,10 +21,10 @@ class UserPage extends Component {
     const { id } = this.props.match.params;
     const { user } = this.context;
 
-    let pageUsername;
+    let userId;
     API.getUserById(id)
       .then((pageUser) => {
-        pageUsername = pageUser.username;
+        userId = pageUser.id;
 
         if (user && pageUser.id === user.id) {
           this.setState({
@@ -33,15 +33,15 @@ class UserPage extends Component {
         }
 
         this.setState({
-          username: pageUsername,
+          username: pageUser.username,
           error: null
         });
       })
-      .then(() => API.getCommentsByCreator(pageUsername))
+      .then(() => API.getCommentsByCreator(userId))
       .then((comments) => {
         this.setState({ comments })
       })
-      .then(() => API.getBlogPostsByAuthor(pageUsername))
+      .then(() => API.getBlogPostsByAuthor(userId))
       .then((blogPosts) => {
         this.setState({ blogPosts })
       })

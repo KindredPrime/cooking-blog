@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import * as API from '../apiCalls';
+//import * as API from '../apiCalls';
+import API from '../apiCalls';
 import PostsList from '../PostsList/index';
 import APIError from '../APIError/index';
 

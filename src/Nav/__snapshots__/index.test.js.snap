@@ -56,7 +56,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Jan 05 2021 08:28:28
+                08:28:28 Jan 05, 2021
               </p>
             </li>
             <li
@@ -72,7 +72,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Dec 28 2020 18:24:43
+                18:24:43 Dec 28, 2020
               </p>
             </li>
           </ul>
@@ -104,7 +104,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Dec 19 2020 07:37:16
+                07:37:16 Dec 19, 2020
               </p>
             </li>
             <li
@@ -125,7 +125,7 @@ exports[`Nav Component loads the account page when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Dec 17 2020 08:37:52
+                08:37:52 Dec 17, 2020
               </p>
             </li>
           </ul>
@@ -191,7 +191,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Jan 06 2021 12:22:39
+                12:22:39 Jan 06, 2021
               </p>
             </li>
             <li
@@ -207,7 +207,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Jan 05 2021 14:22:39
+                14:22:39 Jan 05, 2021
               </p>
             </li>
             <li
@@ -223,7 +223,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Jan 05 2021 08:28:28
+                08:28:28 Jan 05, 2021
               </p>
             </li>
             <li
@@ -239,7 +239,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Jan 04 2021 18:22:39
+                18:22:39 Jan 04 2021
               </p>
             </li>
             <li
@@ -255,7 +255,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Jan 02 2021 16:22:39
+                16:22:39 Jan 02, 2021
               </p>
             </li>
             <li
@@ -271,7 +271,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Dec 28 2020 18:24:43
+                18:24:43 Dec 28, 2020
               </p>
             </li>
             <li
@@ -287,7 +287,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Dec 17 2020 07:37:16
+                07:37:16 Dec 17, 2020
               </p>
             </li>
             <li
@@ -303,7 +303,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Dec 15 2020 19:22:39
+                19:22:39 Dec 15, 2020
               </p>
             </li>
             <li
@@ -319,7 +319,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Dec 15 2020 11:56:48
+                11:56:48 Dec 15, 2020
               </p>
             </li>
             <li
@@ -335,7 +335,7 @@ exports[`Nav Component loads the homepage when clicked 1`] = `
                 class="timestamp"
               >
                 Last edited: 
-                Dec 15 2020 11:22:39
+                11:22:39 Dec 15, 2020
               </p>
             </li>
           </ul>

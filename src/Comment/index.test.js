@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import UserEvent from '@testing-library/user-event';
 import Comment from './index';
 import CookingContext from '../CookingContext';
-import { dummyComments } from '../dummyData';
+import { clientComments } from '../dummyData';
 
 describe('Comment Component', () => {
   it('renders without crashing', () => {
@@ -13,10 +13,12 @@ describe('Comment Component', () => {
       <BrowserRouter>
         <Comment
           id={1}
-          creator={dummyComments[0].creator}
-          blogPost={dummyComments[0].blogPost}
+          creatorId={clientComments[0].creatorId}
+          creatorUsername={clientComments[0].creatorUsername}
+          postId={clientComments[0].postId}
+          postTitle={clientComments[0].postTitle}
           content="content"
-          lastEdited={new Date()}
+          lastEdited={'today'}
           handleEdit={() => {}}
           handleDelete={() => {}}
         />
@@ -29,7 +31,10 @@ describe('Comment Component', () => {
   it('renders the UI as expected', () => {
     const id = 1;
     const contextValue = {
-      user: dummyComments[id-1].creator
+      user: {
+        id: clientComments[id-1].creatorId,
+        username: clientComments[id-1].creatorUsername
+      }
     };
 
     render(
@@ -37,10 +42,12 @@ describe('Comment Component', () => {
         <CookingContext.Provider value={contextValue}>
           <Comment
             id={id}
-            creator={dummyComments[id-1].creator}
-            blogPost={dummyComments[id-1].blogPost}
-            content={dummyComments[id-1].content}
-            lastEdited={dummyComments[id-1].lastEdited}
+            creatorId={clientComments[id-1].creatorId}
+            creatorUsername={clientComments[id-1].creatorUsername}
+            postId={clientComments[id-1].postId}
+            postTitle={clientComments[id-1].postTitle}
+            content={clientComments[id-1].content}
+            lastEdited={clientComments[id-1].lastEdited}
             handleEdit={() => {}}
             handleDelete={() => {}}
           />
@@ -54,9 +61,12 @@ describe('Comment Component', () => {
   it('renders an error as expected', async () => {
     const error = 'Test Error';
     const id = 1;
-    const comment = dummyComments[id-1];
+    const comment = clientComments[id-1];
     const contextValue = {
-      user: comment.creator
+      user: {
+        id: comment.creatorId,
+        username: comment.creatorUsername
+      }
     };
 
     render(
@@ -64,8 +74,10 @@ describe('Comment Component', () => {
         <CookingContext.Provider value={contextValue}>
           <Comment
             id={id}
-            creator={comment.creator}
-            blogPost={comment.blogPost}
+            creatorId={comment.creatorId}
+            creatorUsername={comment.creatorUsername}
+            postId={comment.postId}
+            postTitle={comment.postTitle}
             content={comment.content}
             lastEdited={comment.lastEdited}
             handleEdit={() => {}}

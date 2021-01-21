@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import UserEvent from '@testing-library/user-event';
 import UserCommentsList from './index';
-import { dummyComments } from '../dummyData';
+import { clientComments } from '../dummyData';
 
 describe('UserCommentsList Component', () => {
   it('renders without crashing', () => {
@@ -20,7 +20,7 @@ describe('UserCommentsList Component', () => {
   it(`renders the UI as expected`, () => {
     render(
       <BrowserRouter>
-        <UserCommentsList initialComments={dummyComments} />
+        <UserCommentsList initialComments={clientComments} />
       </BrowserRouter>
     );
 
@@ -30,7 +30,7 @@ describe('UserCommentsList Component', () => {
   it(`switches to the next group of comments after clicking 'Next'`, () => {
     render(
       <BrowserRouter>
-        <UserCommentsList initialComments={dummyComments} />
+        <UserCommentsList initialComments={clientComments} />
       </BrowserRouter>
     );
 
@@ -41,7 +41,7 @@ describe('UserCommentsList Component', () => {
   it(`switches to the previous group of comments after clicking 'Previous'`, () => {
     render(
       <BrowserRouter>
-        <UserCommentsList initialComments={dummyComments} />
+        <UserCommentsList initialComments={clientComments} />
       </BrowserRouter>
     );
 

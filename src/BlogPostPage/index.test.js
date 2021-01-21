@@ -2,8 +2,9 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { render, waitFor, screen } from '@testing-library/react';
 import UserEvent from '@testing-library/user-event';
-import * as API from '../apiCalls';
-import { dummyPosts, dummyComments, dummyUsers } from '../dummyData';
+import API from '../apiCalls';
+import { formatDate } from '../util';
+import { clientBlogPosts, clientComments, apiUsers } from '../dummyData';
 import BlogPostPage from './index';
 import CookingContext from '../CookingContext';
 
@@ -23,7 +24,7 @@ describe('BlogPostPage Component', () => {
    */
   beforeAll(() => {
     API.getBlogPostById = (id) => new Promise((resolve, reject) => {
-      const blogPost = dummyPosts.find((post) => post.id === parseInt(id));
+      const blogPost = clientBlogPosts.find((post) => post.id === parseInt(id));
 
       if (!blogPost) {
         reject(`There is no blog post with id ${id}`);
@@ -42,7 +43,7 @@ describe('BlogPostPage Component', () => {
           const newBlogPost = {
             ...blogPost,
             content,
-            lastEdited: new Date()
+            lastEdited: formatDate(new Date().toString())
           };
           resolve(newBlogPost);
         })
@@ -51,14 +52,14 @@ describe('BlogPostPage Component', () => {
 
     API.addComment = (comment) => Promise.resolve({
       ...comment,
-      id: dummyComments.length + 1,
-      lastEdited: new Date()
+      id: clientComments.length + 1,
+      lastEdited: formatDate(new Date().toString())
     })
 
     API.deleteComment = () => Promise.resolve();
 
     API.getCommentById = (id) => new Promise((resolve, reject) => {
-      const comment = dummyComments.find((comment) => comment.id === id);
+      const comment = clientComments.find((comment) => comment.id === id);
 
       if (!comment) {
         reject(`Comment with id ${id} does not exist`);
@@ -77,14 +78,14 @@ describe('BlogPostPage Component', () => {
           resolve({
             ...comment,
             content,
-            lastEdited: new Date()
+            lastEdited: formatDate(new Date().toString())
           });
         })
         .catch(reject);
     });
 
-    API.getCommentsByBlogPost = (title) => (
-      Promise.resolve(dummyComments.filter((comment) => comment.blogPost.title === title))
+    API.getCommentsByBlogPost = (id) => (
+      Promise.resolve(clientComments.filter((comment) => comment.postId === parseInt(id)))
     );
   });
 
@@ -149,9 +150,12 @@ describe('BlogPostPage Component', () => {
       `changes the post's content and updates the post's timestamp after clicking 'Edit' then 'Submit'`,
       async () => {
         const id = 1;
-        const { title, author, lastEdited } = dummyPosts[id-1];
+        const { title, authorId, authorUsername, lastEdited } = clientBlogPosts[id-1];
         const contextValue = {
-          user: author
+          user: {
+            id: authorId,
+            username: authorUsername
+          }
         };
         render(
           <BrowserRouter>
@@ -180,13 +184,13 @@ describe('BlogPostPage Component', () => {
           .split('Last edited: ')
           .join('')
         );
-        expect(newTimestamp.valueOf()).toBeGreaterThan(lastEdited.valueOf());
+        expect(newTimestamp.valueOf()).toBeGreaterThan(Date.parse(lastEdited));
       }
     );
   });
 
   describe('CommentsList Child Component', () => {
-    const testUser = dummyUsers[4];
+    const testUser = apiUsers[4];
 
     async function renderBlogPostPage() {
       const contextValue = {

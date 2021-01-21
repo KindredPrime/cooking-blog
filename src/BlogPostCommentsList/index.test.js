@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import UserEvent from '@testing-library/user-event';
 import { BrowserRouter } from 'react-router-dom';
 import BlogPostCommentsList from './index';
-import { dummyComments } from '../dummyData';
+import { clientComments } from '../dummyData';
 
 describe('BlogPostCommentsList Component', () => {
   it('renders without crashing', () => {
@@ -23,7 +23,7 @@ describe('BlogPostCommentsList Component', () => {
     render(
       <BrowserRouter>
         <BlogPostCommentsList
-          comments={dummyComments}
+          comments={clientComments}
           handleAdd={() => {}}
           handleDelete={() => {}}
           handleEditSubmit={() => {}}
@@ -38,7 +38,7 @@ describe('BlogPostCommentsList Component', () => {
     render(
       <BrowserRouter>
         <BlogPostCommentsList
-          comments={dummyComments}
+          comments={clientComments}
           handleAdd={() => {}}
           handleDelete={() => {}}
           handleEditSubmit={() => {}}
@@ -54,7 +54,7 @@ describe('BlogPostCommentsList Component', () => {
     render(
       <BrowserRouter>
         <BlogPostCommentsList
-          comments={dummyComments}
+          comments={clientComments}
           handleAdd={() => {}}
           handleDelete={() => {}}
           handleEditSubmit={() => {}}
